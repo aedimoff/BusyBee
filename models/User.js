@@ -13,7 +13,10 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  favorites: {
+    type: Object
+  },
 }, {
   timestamps: true
 })

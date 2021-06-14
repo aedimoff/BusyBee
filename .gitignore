@@ -67,3 +67,5 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
+# react app node_modules 
+frontend/node_modules
