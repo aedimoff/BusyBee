@@ -19,14 +19,13 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
-<<<<<<< HEAD
     if (!isValid) {
     return res.status(400).json(errors);
     }
 
     User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      errors.handle = "User already exists";
+      errors.email = "User already exists";
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
@@ -70,7 +69,7 @@ router.post("/login", (req, res) => {
 
   User.findOne({ email }).then(user => {
     if (!user) {
-      errors.handle = "This user does not exist";
+      errors.email = "This user does not exist";
       return res.status(400).json(errors);
     }
 
@@ -91,36 +90,6 @@ router.post("/login", (req, res) => {
     });
   });
 });
-=======
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
-    User.findOne({email: req.body.email })
-        .then(user => {
-            if (user) {
-                // return res.status(400).json({email: "A user has already registered with this address"})
-                errors.email = 'Email already exists';
-                return res.status(400).json(errors);
-            } else {
-                const newUser = new User({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password
-                })
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser.save()
-                            .then(user => res.json(user))
-                            .catch(err => console.log(err));
-                    })
-                })
-
-            }
-        })
-})
->>>>>>> 67165d36e3aac88580eb5392849eff313477d152
 
 router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
