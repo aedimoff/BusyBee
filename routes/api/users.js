@@ -7,7 +7,7 @@ const User = require('../../models/User')
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
-      handle: req.user.handle,
+      name: req.user.name,
       email: req.user.email
     });
   })
