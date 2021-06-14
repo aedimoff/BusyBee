@@ -12,7 +12,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     });
   })
 
-router.post('./register', (req, res) => {
+router.post('/register', (req, res) => {
     User.findOne({email: req.body.email })
         .then(user => {
             if (user) {
