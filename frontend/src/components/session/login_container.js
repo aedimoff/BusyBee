@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, removeErrors } from '../../actions/session_actions';
-import Login from './signup';
+import Login from './login';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => ({
   openModal: (formType) => dispatch(openModal(formType))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

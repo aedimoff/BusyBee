@@ -5,13 +5,18 @@ import { MdClose } from 'react-icons/md';
 class Signup extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: '',
+      email: '',
+      password: ''
+    }
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.removeErrors();
-  // }
+  componentDidMount() {
+    this.props.removeErrors();
+  }
 
   showModal() {
     state = {
@@ -26,6 +31,20 @@ class Signup extends React.Component {
     return (e) => {
         this.setState({ [type]: e.target.value })
     }
+}
+
+displayErrors() {
+  if (!this.props.errors.length) {
+      return null
+  } else {
+      return (
+          <ul className="rendor-errors">
+              {this.props.errors.map((error1, idx1) => {
+                  return <li key={idx1}>{error1}</li>
+              })}
+          </ul>
+      )
+  }
 }
 
   handleSubmit(e) {
