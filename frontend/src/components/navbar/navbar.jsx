@@ -7,14 +7,14 @@ class NavBar extends React.Component {
     super(props);
   }
 
-  showModal() {
-    state = {
-      show: false,
-    };
-    showModal = (e) => {
-      this.setState({ show: true });
-    };
-  }
+  // showModal() {
+  //   state = {
+  //     show: false,
+  //   };
+  //   showModal = (e) => {
+  //     this.setState({ show: true });
+  //   };
+  // }
 
   render() {
     const { openModal, closeModal } = this.props;
@@ -36,5 +36,7 @@ class NavBar extends React.Component {
         {display}
       </nav>
     )
-  }
-}
+  };
+};
+
+export default NavBar;

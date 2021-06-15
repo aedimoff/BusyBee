@@ -12,7 +12,11 @@ mongoose
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("hello"))
+app.get("/", (req, res) => {
+    // res.send("hello")
+    res.sendFile(path.join(__dirname, './frontend/public', 'index.html'))
+    })
+
 app.use(passport.initialize());
 require('./config/passport')(passport)
 

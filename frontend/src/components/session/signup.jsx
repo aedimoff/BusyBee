@@ -18,14 +18,14 @@ class Signup extends React.Component {
     this.props.removeErrors();
   }
 
-  showModal() {
-    state = {
-        show: false,
-    };
-    showModal = (e) => {
-        this.setState({ show: true });
-    };
-  }
+  // showModal() {
+  //   state = {
+  //       show: false,
+  //   };
+  //   showModal = (e) => {
+  //       this.setState({ show: true });
+  //   };
+  // }
 
   handleInput(type) {
     return (e) => {
