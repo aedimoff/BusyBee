@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { MdClose } from 'react-icons/md';
 
 class Signup extends React.Component {
   constructor(props) {
