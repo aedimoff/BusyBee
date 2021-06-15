@@ -4,7 +4,6 @@ import Nav from './navbar';
 import { closeModal, openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
-  console.log("MSTP, navBar", state)
   return {
   currentUser: state.session.user,
   session: state.session
