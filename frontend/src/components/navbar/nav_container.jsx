@@ -1,13 +1,15 @@
-import React from 'react';
 import { signup, login, logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import Nav from './navbar';
 import { closeModal, openModal } from "../../actions/modal_actions";
 
-const mapStateToProps = state => ({
-  currentUser: state.users[state.session.id],
+const mapStateToProps = state => {
+  console.log("MSTP, navBar", state)
+  return {
+  currentUser: state.session.user,
   session: state.session
-});
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   signup: formUser => dispatch(signup(formUser)),
