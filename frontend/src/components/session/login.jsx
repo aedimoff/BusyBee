@@ -72,11 +72,11 @@ class Login extends React.Component {
               </label>
               <div className="auth-btn" onClick={this.handleSubmit}>Log in</div>
               <div className="auth-footer">
-                  <h6>By continuing, you agree to Danterest's Terms of</h6>
+                  <h6>By continuing, you agree to ErrantErrands's Terms of</h6>
                   <h6>Service, Privacy policy.</h6>
               </div>
               <div className="need-account" onClick={() => openModal('signup')}>
-                  Not on Danterest yet? Sign up</div>
+                  Not on ErrantErrands yet? Sign up</div>
             </div>
           </div>
         </form>
