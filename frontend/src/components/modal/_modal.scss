@@ -1,3 +1,11 @@
+:root {
+  --main-yellow: #FBE8A6;
+  --main-salmon: #F4976C;
+  --dark-blue: #303C6C;
+  --mid-blue: #B4DFe5;
+  --light-blue: #D2FDFF;
+}
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -13,7 +21,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: var(--light-blue);
   border-radius: 16px;
   padding: 48px 64px;
 }

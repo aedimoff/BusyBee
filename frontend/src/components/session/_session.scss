@@ -1,3 +1,11 @@
+:root {
+  --main-yellow: #FBE8A6;
+  --main-salmon: #F4976C;
+  --dark-blue: #303C6C;
+  --mid-blue: #B4DFe5;
+  --light-blue: #D2FDFF;
+}
+
 input {
   display: block;
   box-sizing: border-box;
@@ -9,12 +17,14 @@ input {
   font-family: inherit;
   font-size: inherit;
   border: 1px solid lightgray;
+  background-color: var(--main-yellow);
+  color: var(--dark-blue);
 }
 
 input:focus {
   outline-offset: 0px;
   outline: none;
-  border: 3px solid rgb(80, 125, 216);
+  border: 3px solid var(--dark-blue);
   border-radius: 12px;
 }
 
@@ -29,9 +39,9 @@ input:focus {
   box-sizing: border-box;
   font-weight: bold;
   padding: 12px 16px;
-  background-color: rgb(230, 0, 35);
+  background-color: var(--main-salmon);
   border-radius: 20px;
-  color: white;
+  color: var(--dark-blue);
   text-align: center;
 }
 
@@ -42,7 +52,7 @@ input:focus {
 .need-account {
   display: flex;
   justify-content: center;
-  color: rgb(53, 53, 53);
+  color: var(--dark-blue);
   font-weight: 600;
   font-size: 16px;
   padding-top: 36px;
@@ -51,4 +61,30 @@ input:focus {
 .need-account:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.auth-title {
+  color: var(--dark-blue);
+}
+
+.already-member {
+  color: var(--dark-blue);
+}
+
+.already-member:hover {
+  cursor: pointer;
+}
+
+.auth-footer {
+  color: var(--dark-blue);
+}
+
+.close-x {
+  display: flex;
+  justify-content: flex-end;
+  position: relative; left:48px; bottom:32px;
+}
+
+.close-x:hover {
+  cursor: pointer;
 }

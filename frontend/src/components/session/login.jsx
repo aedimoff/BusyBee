@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
+import './_session.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -52,7 +53,9 @@ class Login extends React.Component {
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x"><MdClose size={25}/></div>
         <form className="login-form-box" onSubmit={this.handleSubmit}>
-
+          <div className="auth-title">
+            <h2 >Welcome to Errant Errands</h2>
+          </div>
         {this.displayErrors()}
           <div className="login-form">
             <div className="session-form-inputs">
@@ -72,11 +75,11 @@ class Login extends React.Component {
               </label>
               <div className="auth-btn" onClick={this.handleSubmit}>Log in</div>
               <div className="auth-footer">
-                  <h6>By continuing, you agree to Danterest's Terms of</h6>
+                  <h6>By continuing, you agree to ErrantErrands's Terms of</h6>
                   <h6>Service, Privacy policy.</h6>
               </div>
               <div className="need-account" onClick={() => openModal('signup')}>
-                  Not on Danterest yet? Sign up</div>
+                  Not on ErrantErrands yet? Sign up</div>
             </div>
           </div>
         </form>

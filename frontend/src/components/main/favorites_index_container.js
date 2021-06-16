@@ -7,7 +7,9 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-    fetchFavorites: () => dispatch(fetchFavorites)
+    // fetchFavorites: () => dispatch(fetchFavorites),
+    // fetchFavorite: () dispatch(fetchFavorite),
+    // addFavorite: 
 })
 
 export default connect(mSTP, mDTP)(FavoritesIndex)
