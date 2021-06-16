@@ -3,7 +3,7 @@ import FavoritesIndex from './favorites_indexfavorites'
 // import { fetchFavorites probably }
 
 const mSTP = state => ({
-    favorites: Object.values(state.favorites)
+    favorites: Object.values(state.user.favorites)
 })
 
 const mDTP = dispatch => ({
