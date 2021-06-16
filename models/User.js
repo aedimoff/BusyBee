@@ -13,7 +13,29 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  favorites: {
+    type: Object,
+    data: {
+      place_id: null,
+      name: "",
+      LatLng: "",
+      address: "",
+      hours: "",
+      selected: {
+        type: Array,
+        data: {
+          place_id: ""
+        }
+      },
+    }
+  },
+  // selected: {
+  //   type: Array,
+  //   data: {
+  //     place_id: ""
+  //   }
+  // },
 }, {
   timestamps: true
 })
