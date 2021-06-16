@@ -8,7 +8,8 @@ import LoginFormContainer from './session/login_container';
 import SignupFormContainer from './session/signup_container';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
-import Map from './map/map'
+import Map from './map/map';
+import './app1.scss';
 require('dotenv').config()
 
 

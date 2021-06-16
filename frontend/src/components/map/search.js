@@ -32,7 +32,7 @@ const Search = ({ panTo }) => {
 
   return (
     <div className="search">
-      <Combobox
+      <Combobox className="search-bar"
         onSelect={async (address) => {
             setValue(address, true);
             clearSuggestions();
