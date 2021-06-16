@@ -44,7 +44,7 @@ const Map = () => {
 
     return (
         <div>
-            <h1 className="map-header">ErrantErrands</h1>
+            {/* <h1 className="map-header">ErrantErrands</h1> */}
             <GoogleMap mapContainerStyle={mapContainerStyle}
             zoom={12}
             center={center}

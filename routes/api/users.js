@@ -17,6 +17,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   })
 
 router.post('/register', (req, res) => {
+  
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -28,6 +29,7 @@ router.post('/register', (req, res) => {
       errors.email = "User already exists";
       return res.status(400).json(errors);
     } else {
+      console.log('userRoute', req, res);
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
