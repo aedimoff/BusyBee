@@ -6,10 +6,10 @@ import {
     InfoWindow,
 } from "@react-google-maps/api";
 
-
+import Search from "./search";
 import mapStyles from "./mapStyles";
 
-require("dotenv").config();
+require("dotenv").config(); 
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -39,12 +39,20 @@ const Map = () => {
         mapRef.current = map;
     })
 
+    const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({lat, lng});
+        mapRef.current.setZoom(16);
+    })
+
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
 
     return (
         <div>
             <h1 className="map-header">ErrantErrands</h1>
+
+            <Search panTo={panTo}/>
+
             <GoogleMap mapContainerStyle={mapContainerStyle}
             zoom={12}
             center={center}
@@ -57,6 +65,40 @@ const Map = () => {
         </div>
     )
 }
+
+// function Search() {
+//   const {
+//     ready,
+//     value,
+//     suggestions: { status, data },
+//     setValue,
+//     clearSuggestions,
+//   } = usePlacesAutocomplete({
+//     requestOptions: {
+//       location: { lat: () => 33.830296, lng: () => -116.545296 },
+//       radius: 200 * 1000,
+//     },
+//   });
+
+//   return (
+//     <div className="search">
+//       <Combobox
+//         onSelect={(address) => {
+//           console.log(address);
+//         }}
+//       >
+//         <ComboboxInput
+//           value={value}
+//           onChange={(e) => {
+//             setValue(e.target.value);
+//           }}
+//           disabled={!ready}
+//           placeholder="Search for a business"
+//         />
+//       </Combobox>
+//     </div>
+//   );
+// };
 
 
 
