@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
+import './_session.scss';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -84,6 +85,14 @@ displayErrors() {
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')}
+              placeholder="Password"
+              />
+            </label>
+            <label>
+              <input
+              type="password"
+              value={this.state.password2}
+              onChange={this.handleInput('password2')}
               placeholder="Password"
               />
             </label>

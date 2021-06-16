@@ -70,3 +70,5 @@ yarn-debug.log*
 
 # react app node_modules 
 frontend/node_modules
+
+config/keys_dev
