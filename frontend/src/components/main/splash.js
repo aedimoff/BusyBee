@@ -10,7 +10,6 @@ class Splash extends React.Component {
         <h1>ErrantErrands</h1>
         {/* <FavoritesIndexContainer */}
         {/* <MapContainer /> */}
-        
       </div>
     );
   }
