@@ -5,11 +5,12 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
-// import './stylesheets/application';
+import './index.css';
+import App from './App';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-
   if (localStorage.jwtToken) {
 
     setAuthToken(localStorage.jwtToken);
@@ -30,3 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(<Root store={store} />, root);
 });
+
