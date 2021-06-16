@@ -4,11 +4,11 @@ export const fetchSelecteds = () => {
     return axios.get(`api/user/favorites`)
 };
 
-export const fetchselected = (placeId) => {
+export const fetchSelected = (placeId) => {
     return axios.get(`api/user/favorites/selected/${placeId}`)
 };
 
-export const addselected = (placeId) => {
+export const addSelected = (placeId) => {
     return axios.post(`api/user/favorites/selected`)
 };
 
