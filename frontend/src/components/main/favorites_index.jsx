@@ -2,10 +2,10 @@ import React from 'react';
 // import some data or some shit
 
 class FavoritesIndex extends React.Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.addToSelected = this.addToSelected.bind(this)
-    // }
+    constructor(props) {
+        super(props)
+        this.addToSelected = this.addToSelected.bind(this)
+    }
 
     addToSelected() {
         // if !selected
