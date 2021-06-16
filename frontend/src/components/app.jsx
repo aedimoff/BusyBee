@@ -30,6 +30,9 @@ const App = () => (
           <AuthRoute exact path="/register" component={SignupFormContainer} />
           <Redirect to="/"/>
       </Switch>
+      <footer>
+          Copyright &copy; 2021 a DreamTeam production tm
+      </footer>
     </div>
 );
 
