@@ -8,12 +8,21 @@ import LoginFormContainer from './session/login_container';
 import SignupFormContainer from './session/signup_container';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
+import Search from './map/search'
+import Map from './map/map'
+require('dotenv').config()
+
+
 
 const App = () => (
     <div className="App">
       <Modal />
       <header>
         <Route path="/" component={NavBarContainer}></Route>
+        <div>
+          {Search()}
+          {Map()}
+        </div>
       </header>
       <Switch>
           <AuthRoute exact path="/" component={Splash} />
