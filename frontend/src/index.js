@@ -7,6 +7,7 @@ import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 import './index.css';
 import App from './App';
+// import Sass from './stylesheets/appl'
 
 
 document.addEventListener('DOMContentLoaded', () => {

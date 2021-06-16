@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import { MdClose } from 'react-icons/md';
+import './_session.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -52,7 +53,9 @@ class Login extends React.Component {
       <div className="login-form-container">
         <div onClick={this.props.closeModal} className="close-x"><MdClose size={25}/></div>
         <form className="login-form-box" onSubmit={this.handleSubmit}>
-
+          <div className="auth-title">
+            <h2 >Welcome to Errant Errands</h2>
+          </div>
         {this.displayErrors()}
           <div className="login-form">
             <div className="session-form-inputs">
