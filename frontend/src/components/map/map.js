@@ -5,7 +5,7 @@ import {
     Marker,
     InfoWindow,
 } from "@react-google-maps/api";
-
+//fuck
 import Search from "./search";
 import mapStyles from "./mapStyles";
 
