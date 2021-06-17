@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys_dev');
+const keys = require('../../config/keys.js');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
@@ -17,6 +17,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   })
 
 router.post('/register', (req, res) => {
+  
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -41,12 +42,13 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { id: user.id, email: user.email };
+              const payload = { id: user.id, email: user.email, name: user.name };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
                   success: true,
-                  token: "Bearer " + token
+                  token: "Bearer " + token,
+                  currentUser: user
                 });
               });
             })
@@ -64,23 +66,24 @@ router.post("/login", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const name = req.body.name;
+  const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({ name }).then(user => {
+  User.findOne({ email }).then(user => {
     if (!user) {
-      errors.name = "This user does not exist";
+      errors.email = "This user does not exist";
       return res.status(400).json(errors);
     }
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, name: user.name };
+        const payload = { id: user.id, name: user.name, email: user.email };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
-            token: "Bearer " + token
+            token: "Bearer " + token,
+            currentUser: user
           });
         });
       } else {

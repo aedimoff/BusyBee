@@ -7,8 +7,7 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>ErrantErrands</h1>
+      <div className="splash-container">
         {/* <BusinessCardContainer /> */}
         <FavoritesIndexContainer />
         {/* <MapContainer /> */}

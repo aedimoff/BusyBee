@@ -1,70 +1,72 @@
-import React from 'react';
+import React from "react";
+import "./map.scss";
 import {
-    GoogleMap,
-    useLoadScript,
-    Marker,
-    InfoWindow,
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 import Search from "./search";
 import mapStyles from "./mapStyles";
 
-require("dotenv").config(); 
+require("dotenv").config();
 
 const libraries = ["places"];
 const mapContainerStyle = {
-    width: "75vw",
-    height: "75vh",
+  width: "75vw",
+  height: "75vh",
 };
 const center = {
-    lat: 33.830296,
-    lng: -116.545296,
-}
+  lat: 33.830296,
+  lng: -116.545296,
+};
 
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
-
 };
 
 const Map = () => {
-    const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
-      libraries,
-    });
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+    libraries,
+  });
 
-    const mapRef = React.useRef();
-    const onMapLoad = React.useCallback((map) => {
-        mapRef.current = map;
-    })
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  });
 
-    const panTo = React.useCallback(({lat, lng}) => {
-        mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(16);
-    })
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(20);
+  });
 
-    if (loadError) return "Error loading maps";
-    if (!isLoaded) return "Loading Maps";
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
 
-    return (
-        <div>
-            <h1 className="map-header">ErrantErrands</h1>
+  return (
+    <div className="map-container">
+      <div className="map">
 
-            <Search panTo={panTo}/>
+        <Search panTo={panTo} />
 
-            <GoogleMap mapContainerStyle={mapContainerStyle}
-            zoom={12}
-            center={center}
-            options={options}
-            onClick={(e) => {
-                console.log(e);
-            }}
-            onLoad={onMapLoad}
-            />
-        </div>
-    )
-}
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={12}
+          center={center}
+          options={options}
+          onClick={(e) => {
+            console.log(e);
+          }}
+          onLoad={onMapLoad}
+        />
+      </div>
+    </div>
+  );
+};
 
 // function Search() {
 //   const {
@@ -100,6 +102,4 @@ const Map = () => {
 //   );
 // };
 
-
-
-export default Map
+export default Map;

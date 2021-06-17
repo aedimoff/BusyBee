@@ -1,0 +1,45 @@
+:root {
+  --main-yellow: #FBE8A6;
+  --main-salmon: #F4976C;
+  --dark-blue: #303C6C;
+  --mid-blue: #B4DFe5;
+  --light-blue: #D2FDFF;
+  --main-orange: #e9a459;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  background: var(--mid-blue);
+}
+
+.google-map {
+  border: 30px #e3841e;;
+}
+
+.search-bar > input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  margin-top: 4px;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: inherit;
+  border: 2px solid var(--mid-blue);
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
+}
+
+.search-bar > input::placeholder {
+  color: var(--light-blue)
+}
+
+.search-bar > input:focus {
+  outline-offset: 0px;
+  outline: none;
+  border: 3px solid var(--mid-blue);
+  border-radius: 12px;
+}
+
