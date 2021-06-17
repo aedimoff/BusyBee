@@ -1,7 +1,6 @@
 import React from 'react'; 
 // import some data or some shit
 import { AiOutlineCheckSquare } from 'react-icons/ai'
-import { AiOutlineHeart } from 'react-icons/ai'
 
 class FavoritesIndex extends React.Component {
     constructor(props) {
@@ -32,7 +31,6 @@ class FavoritesIndex extends React.Component {
         //             )}
         //         </div>
                <div>
-                <button className="favorite-button"><AiOutlineHeart/>Favorite</button>
                 <button className="select-button"><AiOutlineCheckSquare size={15}/>Select</button>
                 <h1>List of favorite businesses here</h1>
                </div>
