@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const users = require("./routes/api/users");
+const googleroute = require("./routes/api/google");
+const request = require('request');
 
 require('dotenv').config()
 
@@ -34,6 +36,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users)
+app.use("/api/googleroute", googleroute)
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
+
+// app.get("/api/googleroute", (req, res) => {
+//   request(
+//     { url: "https://maps.googleapis.com/maps/api/place/details" },
+//     (error, response, body) => {
+//       if (error || response.statusCode !== 200) {
+//         return res.status(500).json({ type: "error", message: err.message });
+//       }
+
+//       res.json(JSON.parse(body));
+//     }
+//   );
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`servers is running on port ${port}`))

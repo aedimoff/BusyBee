@@ -9,6 +9,7 @@ import {
 
 import Search from "./search";
 import mapStyles from "./mapStyles";
+import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
 
 require("dotenv").config();
@@ -29,6 +30,9 @@ const options = {
   zoomControl: true,
 };
 
+//Get place_id from click on business (maybe add favorites button), then submit 
+//places search request (HTTP request, probably) to get full set of info.
+//Figure out custom infoWindow(?)
 const Map = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -45,8 +49,17 @@ const Map = () => {
     mapRef.current.setZoom(20);
   });
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
+    const getFavorite = (placeId) => {
+        MapAPIUtil.getPlaceInfo(placeId).then(res=>
+            console.log("Response on frontend", res)
+        ).catch(err =>
+            console.log("error on frontend", err)
+        )
+    }
+
+    if (loadError) return "Error loading maps";
+    if (!isLoaded) return "Loading Maps";
+
 
   const display = isLoaded ? 
         (<div className="map">
@@ -59,7 +72,7 @@ const Map = () => {
             center={center}
             options={options}
             onClick={(e) => {
-              console.log(e);
+                getFavorite(e.placeId)
             }}
             onLoad={onMapLoad}
           />
