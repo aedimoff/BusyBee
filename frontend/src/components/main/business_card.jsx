@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
+import './main.scss'
 
 class BusinessCard extends React.Component{
   constructor(props){
@@ -22,9 +23,9 @@ removeFromSelected() {
     return(
           <div className="business-card">
               
-                <h1>Business 1</h1>
-                <p>123 Fake St</p>
-                <AiOutlineHeart />
+                <h1 className="business-title">Business 1</h1>
+                <p className="business-address">123 Fake St</p>
+                <AiOutlineHeart size={15} />
                 <AiOutlineCheckSquare size={15} onClick={this.addToSelected}/>
           </div>
     )

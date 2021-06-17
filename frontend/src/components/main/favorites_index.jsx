@@ -2,6 +2,7 @@ import React from 'react';
 // import some data or some shit
 import { AiOutlineCheckSquare } from 'react-icons/ai'
 import BusinessCard from './business_card';
+import './main.scss'
 
 class FavoritesIndex extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class FavoritesIndex extends React.Component {
         //              <button onClick={this.addToSelected} <i check mark icon ></i>>{fav}</button>
         //             )}
         //         </div>
-               <div>
+               <div className="favorites-index">
                 <BusinessCard />
                 <BusinessCard />
                 <BusinessCard />

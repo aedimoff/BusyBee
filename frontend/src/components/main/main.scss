@@ -10,3 +10,15 @@
   background: var(--main-yellow);
 }
 
+.favorites-index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 50px;
+}
+
+.business-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
