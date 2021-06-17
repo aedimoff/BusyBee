@@ -29,7 +29,7 @@ const App = () => (
           <Redirect to="/"/>
       </Switch>
       <footer>
-          Copyright &copy; 2021 a DreamTeam production tm
+          Copyright &copy; 2021 a DreamTeam production
       </footer>
     </div>
 );
