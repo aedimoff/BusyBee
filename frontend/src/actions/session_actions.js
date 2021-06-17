@@ -35,9 +35,9 @@ export const signup = (user) => (dispatch) =>
     .then((res) => {
       handleLoginOrSignUpSuccess(res, dispatch);
     })
-    .catch((err) => {
-      dispatch(receiveErrors(err.response.data));
-    });
+    // .catch((err) => {
+    //   dispatch(receiveErrors(err.response.data));
+    // });
 
 export const login = (user) => (dispatch) =>
   APIUtil.login(user)

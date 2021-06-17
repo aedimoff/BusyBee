@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import "./navbar.scss";
 import logo1 from "../../assets/runner.png";
 import { FaGithub } from 'react-icons/fa';
@@ -25,7 +24,6 @@ class NavBar extends React.Component {
   getLinks() {
     const { openModal } = this.props;
     if (this.props.loggedin)  {
-      console.log(this.props);
       return (
         <div className="navbar2">
           <div className="logo-container">

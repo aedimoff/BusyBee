@@ -6,15 +6,11 @@ const axios = require('axios');
 router.post(
   "/getplace",
   (req, res) => {
-
- 
-    console.log("In /getPlace express endpoint", req.body.params.placeId)
-      getPlaceInfoFromGoogle(req.body.params.placeId).then(googleResponse => {
-        console.log("Returned from google", googleResponse.data)
-        res.status(200).json(googleResponse.data)
-      }).catch(err => {
-        console.log("Error fetching from google (in express endpoint", err)
-      })
+    getPlaceInfoFromGoogle(req.body.params.placeId).then(googleResponse => {
+      res.status(200).json(googleResponse.data)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 );
 

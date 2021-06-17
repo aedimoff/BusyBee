@@ -3,8 +3,8 @@ import "./map.scss";
 import {
   GoogleMap,
   useLoadScript,
-  Marker,
-  InfoWindow,
+  // Marker,
+  // InfoWindow,
 } from "@react-google-maps/api";
 
 import Search from "./search";
@@ -33,11 +33,22 @@ const options = {
 //Get place_id from click on business (maybe add favorites button), then submit 
 //places search request (HTTP request, probably) to get full set of info.
 //Figure out custom infoWindow(?)
-const Map = () => {
+const Map = (props) => {
+  console.log("props in map", props)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
   });
+
+  // const getId = (props) => {
+  //   if (props.session.currentUser) {
+  //     return props.session.currentUser.id
+  //   } else {
+  //     return props.session.user.id
+  //   }
+  // };
+
+  
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -49,9 +60,9 @@ const Map = () => {
     mapRef.current.setZoom(20);
   });
 
-    const getFavorite = (placeId) => {
+    const getFavorite = (placeId, user) => {
         MapAPIUtil.getPlaceInfo(placeId).then(res=>
-            console.log("Response on frontend", res)
+            console.log("Response on frontend", res, user)
         ).catch(err =>
             console.log("error on frontend", err)
         )
@@ -84,39 +95,5 @@ const Map = () => {
     </div>
   );
 };
-
-// function Search() {
-//   const {
-//     ready,
-//     value,
-//     suggestions: { status, data },
-//     setValue,
-//     clearSuggestions,
-//   } = usePlacesAutocomplete({
-//     requestOptions: {
-//       location: { lat: () => 33.830296, lng: () => -116.545296 },
-//       radius: 200 * 1000,
-//     },
-//   });
-
-//   return (
-//     <div className="search">
-//       <Combobox
-//         onSelect={(address) => {
-//           console.log(address);
-//         }}
-//       >
-//         <ComboboxInput
-//           value={value}
-//           onChange={(e) => {
-//             setValue(e.target.value);
-//           }}
-//           disabled={!ready}
-//           placeholder="Search for a business"
-//         />
-//       </Combobox>
-//     </div>
-//   );
-// };
 
 export default Map;
