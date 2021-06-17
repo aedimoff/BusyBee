@@ -21,14 +21,16 @@ removeFromSelected() {
   render() {
         
     return(
+        <div className="business-card-container">
           <div className="business-card">
               <div className="click-icons"> 
-                <AiOutlineHeart size={15} />
-                <AiOutlineCheckSquare size={15} onClick={this.addToSelected}/>
+                <AiOutlineHeart size={18} className="heart-icon"/>
+                <AiOutlineCheckSquare size={18} onClick={this.addToSelected} className="check-icon"/>
               </div>
                 <h1 className="business-title">Business 1</h1>
                 <p className="business-address">123 Fake St</p>
           </div>
+        </div>
     )
   }
 }

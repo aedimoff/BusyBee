@@ -23,17 +23,46 @@
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  padding: 50px;
+  // box-sizing: border-box;
+  padding: 50px 0px;
   z-index: 3;
   overflow: scroll;
-  width: 150px;
+  width: 250px;
   height: 500px;
+}
+
+.business-card-container {
+  width: 100%;
+  border-bottom: rgb(231, 230, 230) 5px solid;
 }
 
 .business-card {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  box-sizing: border-box;
+  padding: 20px 0px;
+  width: 100%;
+}
+
+.click-icons > * {
+  padding: 5px;
+}
+
+.heart-icon:hover {
+  color: rgb(245, 124, 144);
+}
+
+.check-icon:hover {
+  color: rgb(1, 156, 1);
+}
+
+.business-title {
+  font-size: 18px;
+}
+
+.business-address {
+  font-size: 12px;
 }
