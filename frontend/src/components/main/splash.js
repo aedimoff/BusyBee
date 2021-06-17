@@ -1,6 +1,6 @@
 import React from 'react';
 // import MapContainer from './map_container'
-import FavoritesIndexContainer from './favorites_container'
+import FavoritesIndexContainer from './favorites_index_container'
 
 class Splash extends React.Component {
 

@@ -1,10 +1,15 @@
 import React from 'react'; 
 // import some data or some shit
+import { AiOutlineCheckSquare } from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 class FavoritesIndex extends React.Component {
     constructor(props) {
         super(props)
-        this.addToSelected = this.addToSelected.bind(this)
+        // this.addToSelected = this.addToSelected.bind(this)
+        // this.state = {
+        //     favorites: []
+        // }
     }
 
     addToSelected() {
@@ -18,7 +23,7 @@ class FavoritesIndex extends React.Component {
     }
 
     render() {
-        if (this.props.favorites.length) {
+        // if (this.props.favorites.length) {
             return (
         //         <div> 
         //              {this.props.favorites.map(fav =>
@@ -26,15 +31,13 @@ class FavoritesIndex extends React.Component {
         //              <button onClick={this.addToSelected} <i check mark icon ></i>>{fav}</button>
         //             )}
         //         </div>
-               <>
-               <button className="select-button"><i className="far fa-check-square"></i></button>
-               <button className="favorite-button"><i class="far fa-heart"></i></button>
-               <h1>
-               List of favorite businesses here
-               </h1>
-               </>
+               <div>
+                <button className="favorite-button"><AiOutlineHeart/>Favorite</button>
+                <button className="select-button"><AiOutlineCheckSquare size={15}/>Select</button>
+                <h1>List of favorite businesses here</h1>
+               </div>
             )
-        }
+        // }
     }
 }
 
