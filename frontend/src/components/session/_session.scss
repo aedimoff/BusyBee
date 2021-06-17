@@ -17,7 +17,7 @@ input {
   font-family: inherit;
   font-size: inherit;
   border: 1px solid lightgray;
-  background-color: var(--main-yellow);
+  background-color: var(--light-blue);
   color: var(--dark-blue);
 }
 
@@ -87,4 +87,27 @@ input:focus {
 
 .close-x:hover {
   cursor: pointer;
+}
+
+.demo-user {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 12px 16px;
+  background-color: var(--dark-blue);
+  border-radius: 20px;
+  color: var(--light-blue);
+  text-align: center;
+}
+
+.demo-user:hover {
+  cursor: pointer;
+}
+
+.or {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding: 16px 0px;
 }

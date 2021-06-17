@@ -10,8 +10,12 @@ class Login extends React.Component {
       email: "",
       password: "",
     };
-
+    this.demoSubmit = this.demoSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demo = {
+      email: 'demo@gmail.com',
+      password: '123123'
+  }
   }
 
   componentDidMount() {
@@ -28,6 +32,13 @@ class Login extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.login(user).then(() => {
+      this.props.closeModal();
+      this.props.history.push("/home");
+    });
+  }
+
+  demoSubmit() {
+    this.props.login(this.demo).then(() => {
       this.props.closeModal();
       this.props.history.push("/home");
     });
@@ -76,8 +87,10 @@ class Login extends React.Component {
                   placeholder="Password"
                 />
               </label>
-              <div className="auth-btn" onClick={this.handleSubmit}>
-                Log in
+              <div className="auth-btn" onClick={this.handleSubmit}>Log in</div>
+              <p className="or">OR</p>
+              <div onClick={this.demoSubmit} className="demo-user">
+                  Continue as Demo User
               </div>
               <div className="auth-footer">
                 <h6>By continuing, you agree to ErrantErrands's Terms of</h6>
