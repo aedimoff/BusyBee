@@ -37,8 +37,8 @@ export const addFavorite = (placeId) => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const removeFavorite = (placeId) => dispatch => (
-    ApiUtil.removeFavorite(placeId)
+export const deleteFavorite = (placeId) => dispatch => (
+    ApiUtil.deleteFavorite(placeId)
     .then((placeId) => dispatch(removeFavorite(placeId)))
     .catch(err => console.log(err))
 );
