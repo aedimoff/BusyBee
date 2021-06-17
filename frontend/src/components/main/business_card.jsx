@@ -22,11 +22,12 @@ removeFromSelected() {
         
     return(
           <div className="business-card">
-              
-                <h1 className="business-title">Business 1</h1>
-                <p className="business-address">123 Fake St</p>
+              <div className="click-icons"> 
                 <AiOutlineHeart size={15} />
                 <AiOutlineCheckSquare size={15} onClick={this.addToSelected}/>
+              </div>
+                <h1 className="business-title">Business 1</h1>
+                <p className="business-address">123 Fake St</p>
           </div>
     )
   }
