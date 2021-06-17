@@ -8,7 +8,7 @@ import {
 
 import Search from "./search";
 import mapStyles from "./mapStyles";
-import { getPlaceInfo } from "../../util/map_api_util";
+import mapUtil from "../../util/map_api_util";
 
 require("dotenv").config(); 
 
@@ -48,6 +48,16 @@ const Map = () => {
         mapRef.current.setZoom(16);
     })
 
+    const getFavorite = (e) => {
+        const data = fetch(
+          `https://maps.googleapis.com/maps/api/place/details/json?place_id=${e}&fields=formatted_address,rating,name,location,opening_hours,place_id,types,website&key=${process.env.REACT_APP_MAPS_API_KEY}`,
+          {
+            mode: "no-cors",
+          }
+        ).then((res) => {
+            console.log(res)
+        });
+    }
 
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
@@ -63,10 +73,7 @@ const Map = () => {
             center={center}
             options={options}
             onClick={(e) => {
-                getPlaceInfo(e.placeId)
-                    .then((res) => (
-                        console.log(res)
-                    ))
+                getFavorite(e.placeId)
             }}
             onLoad={onMapLoad}
             />
