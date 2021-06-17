@@ -8,6 +8,12 @@ const keys = require('../../config/keys_dev');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
+
+// router.get(/getPlace, request) {
+//   MapApiUtil.getCurrentPlace(request).then(response => {
+//     res.json(response.toJson())    
+//   })
+// }
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
       id: req.user.id,

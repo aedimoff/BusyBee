@@ -3,7 +3,7 @@ const router = express.Router();
 import { getPlaceInfoFromGoogle } from "../../frontend/src/util/map_api_util";
 
 router.get(
-  "/getplace",
+  "googleroute/getplace/",
   (req, res) => {
       getPlaceInfoFromGoogle(req)
       console.log("consolelog", req, res)

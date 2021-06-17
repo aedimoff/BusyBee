@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 
 export const getPlaceInfoFromGoogle = (placeId) => {
@@ -10,8 +9,8 @@ export const getPlaceInfoFromGoogle = (placeId) => {
 export const getPlaceInfo = (placeId) => {
     console.log("this is API UTIL INFO")
     return axios.get(
-        "/api/getplace",
-        {}
+        `api/googleroute/getplace`,
+        {params: placeId}
     );
 }
 

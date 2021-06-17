@@ -63,7 +63,7 @@ const Map = () => {
             center={center}
             options={options}
             onClick={(e) => {
-                getPlaceInfo(e)
+                getPlaceInfo(e.placeId)
                     .then((res) => (
                         console.log(res)
                     ))
