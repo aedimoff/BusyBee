@@ -9,7 +9,8 @@ class Signup extends React.Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      submitting: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,6 +50,8 @@ displayErrors() {
 }
 
   handleSubmit(e) {
+    e.preventDefault();
+    this.setState({submitting: true})
     this.props.signup(this.state)
       .then(() => this.props.closeModal())
   };
