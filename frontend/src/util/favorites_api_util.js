@@ -12,7 +12,7 @@ export const addFavorite = (placeId) => {
     return axios.post(`api/user/favorites/`, placeId)
 };
 
-export const removeFavorite = (placeId) => {
+export const deleteFavorite = (placeId) => {
     return axios.delete(`api/user/favorites/`, placeId)
 };
 
