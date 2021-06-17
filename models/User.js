@@ -15,18 +15,9 @@ const UserSchema = new Schema({
     required: true
   },
   favorites: {
-    type: Object,
+    type: Array,
     data: {
-      place_id: null,
-      name: "",
-      LatLng: "",
-      address: "",
-      hours: "",
-      selected: {
-        type: Array,
-        data: {
-          place_id: ""
-        }
+      place_id: null
       },
     }
   },
@@ -36,7 +27,8 @@ const UserSchema = new Schema({
   //     place_id: ""
   //   }
   // },
-}, {
+// }, 
+{
   timestamps: true
 })
 

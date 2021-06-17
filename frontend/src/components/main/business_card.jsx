@@ -1,35 +1,32 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { AiOutlineCheckSquare } from 'react-icons/ai';
 
 class BusinessCard extends React.Component{
   constructor(props){
     super(props);
-
-    // this.state = {
-    //     placeId: null,
-    //     Name: "",
-    //     LatLng: "",
-    //     Hours: ""
-    // }
   }
 
-  render() {
-      
+addToSelected() {
+    // if !selected
+    // some function to add to selected if we're still doing that
+    // selected add to "selected" array, which interacts with directions api, 
+}
 
+removeFromSelected() {
+    // if selected 
+}
+
+  render() {
         
     return(
           <div className="business-card">
-              <ul>
-                  {this.props.businesses.map(business => (
-                    <div onClick={this.props.addFavorite(business.placeId)}>
-                    <AiOutlineHeart className="favorite-button"/>
-                    <span>{business.name}</span>
-                    <span>{business.hours}</span>
-                    </div>
-                ))}
-                </ul>
+              
+                <h1>Business 1</h1>
+                <p>123 Fake St</p>
+                <AiOutlineHeart />
+                <AiOutlineCheckSquare size={15} onClick={this.addToSelected}/>
           </div>
-       
     )
   }
 }

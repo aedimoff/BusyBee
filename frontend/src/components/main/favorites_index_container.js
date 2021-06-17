@@ -3,8 +3,8 @@ import { fetchFavorites, fetchFavorite, addFavorite, deleteFavorite } from '../.
 import FavoritesIndex from './favorites_index'
 
 const mSTP = state => ({
-    favorites: []
-    // Object.values(state.user.favorites.data),
+    favorites: 
+    Object.values(state.user.favorites.data.placeId),
     // currentUser: state.session.currentUser
 })
 

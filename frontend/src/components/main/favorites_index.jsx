@@ -1,6 +1,7 @@
 import React from 'react'; 
 // import some data or some shit
 import { AiOutlineCheckSquare } from 'react-icons/ai'
+import BusinessCard from './business_card';
 
 class FavoritesIndex extends React.Component {
     constructor(props) {
@@ -11,15 +12,7 @@ class FavoritesIndex extends React.Component {
         // }
     }
 
-    addToSelected() {
-        // if !selected
-        // some function to add to selected if we're still doing that
-        // selected add to "selected" array, which interacts with directions api, 
-    }
-
-    removeFromSelected() {
-        // if selected 
-    }
+    
 
     render() {
         // if (this.props.favorites.length) {
@@ -31,8 +24,14 @@ class FavoritesIndex extends React.Component {
         //             )}
         //         </div>
                <div>
-                <button className="select-button"><AiOutlineCheckSquare size={15}/>Select</button>
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
                 {/* <h1>List of favorite businesses here</h1> */}
+                {/* <h1>{this.props.favorites.place_id}</h1> */}
                </div>
             )
         // }
