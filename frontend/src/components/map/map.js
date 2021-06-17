@@ -5,9 +5,10 @@ import {
     Marker,
     InfoWindow,
 } from "@react-google-maps/api";
-//fuck
+
 import Search from "./search";
 import mapStyles from "./mapStyles";
+import { getPlaceInfo } from "../../util/map_api_util";
 
 require("dotenv").config(); 
 
@@ -28,6 +29,9 @@ const options = {
 
 };
 
+//Get place_id from click on business (maybe add favorites button), then submit 
+//places search request (HTTP request, probably) to get full set of info.
+//Figure out custom infoWindow(?)
 const Map = () => {
     const { isLoaded, loadError } = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -44,6 +48,7 @@ const Map = () => {
         mapRef.current.setZoom(16);
     })
 
+
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
 
@@ -58,7 +63,10 @@ const Map = () => {
             center={center}
             options={options}
             onClick={(e) => {
-                console.log(e);
+                getPlaceInfo(e)
+                    .then((res) => (
+                        console.log(res)
+                    ))
             }}
             onLoad={onMapLoad}
             />
