@@ -15,7 +15,7 @@ import "@reach/combobox/styles.css";
 
 const libraries = ["places"];
 
-const Search = () => {
+const Search = ({ panTo }) => {
 
   const {
     ready,
@@ -32,9 +32,19 @@ const Search = () => {
 
   return (
     <div className="search">
-      <Combobox
-        onSelect={(address) => {
-          console.log(address);
+      <Combobox className="search-bar"
+        onSelect={async (address) => {
+            setValue(address, true);
+            clearSuggestions();
+
+            try {
+                const result = await getGeocode({address});
+                const { lat, lng } = await getLatLng(result[0]);
+                panTo({lat, lng});
+            } catch(error) {
+                console.log("error!")
+            }
+
         }}
       >
         <ComboboxInput
@@ -45,6 +55,11 @@ const Search = () => {
           disabled={!ready}
           placeholder="Search for a business"
         />
+        <ComboboxPopover>
+            {status === "OK" && data.map(({id, description}) => (
+                <ComboboxOption key={id} value={description} />
+            ))}
+        </ComboboxPopover>
       </Combobox>
     </div>
   );
