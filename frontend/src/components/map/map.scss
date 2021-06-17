@@ -9,9 +9,15 @@
 
 .map-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   background: var(--mid-blue);
-  position: fixed;
+  // position: relative;
+  // z-index: 0;
+}
+
+.map-div {
+  position: relative;
+  z-index: 0;
 }
 
 .google-map {
@@ -42,6 +48,16 @@
   outline: none;
   border: 3px solid var(--mid-blue);
   border-radius: 12px;
+}
+
+.header {
+  position: relative;
+  z-index: 0;
+}
+
+.switch {
+  position: absolute;
+  z-index: 10;
 }
 
 

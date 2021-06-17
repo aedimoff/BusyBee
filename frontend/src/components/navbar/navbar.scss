@@ -44,7 +44,12 @@
   display: flex;
   justify-content: space-between;
   background: var(--mid-blue);
+  // position: sticky;
 };
+
+.navbar-container {
+  position: sticky;
+}
 
 .login-signup {
   display: flex;

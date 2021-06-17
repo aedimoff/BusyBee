@@ -7,15 +7,28 @@
 }
 
 .splash-container {
-  background: var(--main-yellow);
+  // background: var(--main-yellow);
+  background: transparent;
+  position: absolute;
+  z-index: 10;
+}
+
+.home-container {
+  position: absolute;
+  z-index: 10;
+  top: 80px;
 }
 
 .favorites-index {
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 50px;
-  z-index: 20;
+  z-index: 3;
+  overflow: scroll;
+  width: 200px;
+  height: 800px;
 }
 
 .business-card {

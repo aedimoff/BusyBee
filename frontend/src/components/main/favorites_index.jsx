@@ -31,6 +31,13 @@ class FavoritesIndex extends React.Component {
                 <BusinessCard />
                 <BusinessCard />
                 <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
+                <BusinessCard />
                 {/* <h1>List of favorite businesses here</h1> */}
                 {/* <h1>{this.props.favorites.place_id}</h1> */}
                </div>
