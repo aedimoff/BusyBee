@@ -10,7 +10,11 @@
 .map-container {
   display: flex;
   justify-content: center;
-  background: var(--main-orange);
+  background: var(--mid-blue);
+}
+
+.google-map {
+  border: 30px #e3841e;;
 }
 
 .search-bar > input {
@@ -24,17 +28,17 @@
   font-family: inherit;
   font-size: inherit;
   border: 2px solid var(--mid-blue);
-  background-color: var(--light-blue);
-  color: var(--dark-blue);
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
 }
 
 .search-bar > input::placeholder {
-  color: var(--dark-blue)
+  color: var(--light-blue)
 }
 
 .search-bar > input:focus {
   outline-offset: 0px;
   outline: none;
-  border: 3px solid var(--dark-blue);
+  border: 3px solid var(--mid-blue);
   border-radius: 12px;
 }
