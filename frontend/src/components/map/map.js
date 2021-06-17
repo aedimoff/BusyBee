@@ -9,6 +9,7 @@ import {
 
 import Search from "./search";
 import mapStyles from "./mapStyles";
+import Spinner from "../spinner/spinner";
 
 require("dotenv").config();
 
@@ -47,23 +48,26 @@ const Map = () => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  const display = isLoaded ? 
+        (<div className="map">
+
+          <Search panTo={panTo} />
+
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={12}
+            center={center}
+            options={options}
+            onClick={(e) => {
+              console.log(e);
+            }}
+            onLoad={onMapLoad}
+          />
+      </div>) : <Spinner />
+
   return (
     <div className="map-container">
-      <div className="map">
-
-        <Search panTo={panTo} />
-
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={12}
-          center={center}
-          options={options}
-          onClick={(e) => {
-            console.log(e);
-          }}
-          onLoad={onMapLoad}
-        />
-      </div>
+        {display}
     </div>
   );
 };
