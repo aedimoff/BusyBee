@@ -6,8 +6,8 @@ import { closeModal, openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
   return {
-  currentUser: state.session.user,
-  session: state.session
+  currentUser: state.sessionApi.user,
+  session: state.sessionApi
   }
 };
 

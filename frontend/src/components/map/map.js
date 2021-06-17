@@ -1,4 +1,5 @@
 import React from 'react';
+import './map.scss';
 import {
     GoogleMap,
     useLoadScript,
@@ -41,27 +42,29 @@ const Map = () => {
 
     const panTo = React.useCallback(({lat, lng}) => {
         mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(16);
+        mapRef.current.setZoom(20);
     })
 
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
 
     return (
-        <div>
-            <h1 className="map-header">ErrantErrands</h1>
+        <div className="map-container">
+            <div className="map">
+                <h1 className="map-header">Errant Errands</h1>
 
-            <Search panTo={panTo}/>
+                <Search panTo={panTo}/>
 
-            <GoogleMap mapContainerStyle={mapContainerStyle}
-            zoom={12}
-            center={center}
-            options={options}
-            onClick={(e) => {
-                console.log(e);
-            }}
-            onLoad={onMapLoad}
-            />
+                <GoogleMap mapContainerStyle={mapContainerStyle}
+                zoom={12}
+                center={center}
+                options={options}
+                onClick={(e) => {
+                    console.log(e);
+                }}
+                onLoad={onMapLoad}
+                />
+            </div>
         </div>
     )
 }

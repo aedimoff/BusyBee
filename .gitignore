@@ -71,3 +71,5 @@ yarn-debug.log*
 frontend/node_modules
 
 config/keys_dev
+
+keys.js
