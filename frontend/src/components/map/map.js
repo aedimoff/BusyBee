@@ -1,53 +1,53 @@
-import React from 'react';
+import React from "react";
+import "./map.scss";
 import {
-    GoogleMap,
-    useLoadScript,
-    Marker,
-    InfoWindow,
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
 } from "@react-google-maps/api";
 
 import Search from "./search";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
+import Spinner from "../spinner/spinner";
 
-require("dotenv").config(); 
+require("dotenv").config();
 
 const libraries = ["places"];
 const mapContainerStyle = {
-    width: "75vw",
-    height: "75vh",
+  width: "75vw",
+  height: "75vh",
 };
 const center = {
-    lat: 33.830296,
-    lng: -116.545296,
-}
+  lat: 33.830296,
+  lng: -116.545296,
+};
 
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
-
 };
 
 //Get place_id from click on business (maybe add favorites button), then submit 
 //places search request (HTTP request, probably) to get full set of info.
 //Figure out custom infoWindow(?)
 const Map = () => {
-    const { isLoaded, loadError } = useLoadScript({
-      googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
-      libraries,
-    });
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+    libraries,
+  });
 
-    const mapRef = React.useRef();
-    const onMapLoad = React.useCallback((map) => {
-        mapRef.current = map;
-    })
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  });
 
-    const panTo = React.useCallback(({lat, lng}) => {
-        mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(16);
-    })
-
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(20);
+  });
 
     const getFavorite = (placeId) => {
         MapAPIUtil.getPlaceInfo(placeId).then(res=>
@@ -60,25 +60,30 @@ const Map = () => {
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
 
-    return (
-        <div>
-            <h1 className="map-header">ErrantErrands</h1>
 
-            <Search panTo={panTo}/>
+  const display = isLoaded ? 
+        (<div className="map">
 
-            <GoogleMap mapContainerStyle={mapContainerStyle}
+          <Search panTo={panTo} />
+
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
             zoom={12}
             center={center}
             options={options}
             onClick={(e) => {
-                console.log(e.placeId)
                 getFavorite(e.placeId)
             }}
             onLoad={onMapLoad}
-            />
-        </div>
-    )
-}
+          />
+      </div>) : <Spinner />
+
+  return (
+    <div className="map-container">
+        {display}
+    </div>
+  );
+};
 
 // function Search() {
 //   const {
@@ -114,6 +119,4 @@ const Map = () => {
 //   );
 // };
 
-
-
-export default Map
+export default Map;

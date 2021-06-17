@@ -2,17 +2,20 @@ import React from 'react';
 // import MapContainer from './map_container'
 import FavoritesIndexContainer from './favorites_index_container'
 
-class Splash extends React.Component {
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
 
   render() {
     return (
-      <div className="splash-container">
-        <h1>ErrantErrands</h1>
+      <div className="home-container">
         <FavoritesIndexContainer />
-        {/* <MapContainer /> */}
       </div>
     );
   }
 }
 
-export default Splash;
+export default Home;
