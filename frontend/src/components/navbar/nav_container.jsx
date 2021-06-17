@@ -1,13 +1,15 @@
 import { signup, login, logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
-import Nav from './navbar';
+import NavBar from './navbar';
 import { closeModal, openModal } from "../../actions/modal_actions";
+import { withRouter } from 'react-router-dom';
 // import * as NavCss from '../../../public/stylesheets/components/nav_modal.scss';
 
 const mapStateToProps = state => {
   return {
-  currentUser: state.sessionApi.user,
-  session: state.sessionApi
+  currentUser: state.sessionApi.currentUser,
+  session: state.sessionApi,
+  loggedin: state.sessionApi.isAuthenticated
   }
 };
 
@@ -19,4 +21,4 @@ const mapDispatchToProps = dispatch => ({
   openModal: (formType) => dispatch(openModal(formType))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

@@ -1,43 +1,56 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './navbar.scss';
-
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import "./navbar.scss";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.getLinks = this.getLinks.bind(this);
   }
 
-  // showModal() {
-  //   state = {
-  //     show: false,
-  //   };
-  //   showModal = (e) => {
-  //     this.setState({ show: true });
-  //   };
-  // }
+  getLinks() {
+    const { openModal } = this.props;
+    if (this.props.loggedin)  {
+      console.log(this.props);
+      return (
+        <div className="navbar">
+          <div className="nav-greeting">
+            <div className="user-greeting">
+              Hello, {this.props.session.currentUser.name}!
+            </div>
+            <div className="nav-logout" onClick={this.props.logout}>
+              Logout
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="navbar">
+          <div className="login-signup">
+            <div className="login-btn" onClick={() => openModal("login")}>
+              Log in
+            </div>
+            <div className="signup-btn" onClick={() => openModal("signup")}>
+              Sign up
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+
 
   render() {
-    const { openModal } = this.props;
-
-    const display = this.props.currentUser ? (
-      <div className="nav-greeting">
-          <div className="user-greeting">Hello, {this.props.currentUser.name}!</div>
-        <div className="nav-logout" onClick={this.props.logout}>Logout</div>
-      </div>
-    ) : (
-      <div className="login-signup">
-        <div className="login-btn" onClick={() => openModal('login')}>Log in</div>
-        <div className="signup-btn" onClick={() => openModal('signup')}>Sign up</div>
-      </div>
-    );
-
     return (
       <nav className="navbar">
-        {display}
+        {this.getLinks()}
       </nav>
-    )
-  };
-};
+    );
+  }
+}
 
 export default NavBar;
+
+
