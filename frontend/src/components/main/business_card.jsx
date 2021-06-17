@@ -5,21 +5,29 @@ class BusinessCard extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = {
-        placeId: null,
-        Name: "",
-        LatLng: "",
-        Hours: ""
-    }
+    // this.state = {
+    //     placeId: null,
+    //     Name: "",
+    //     LatLng: "",
+    //     Hours: ""
+    // }
   }
 
   render() {
-    return(
+      
 
+        
+    return(
           <div className="business-card">
-              <div onClick={this.props.addFavorite(this.state.placeId)}><AiOutlineHeart className="favorite-button"/></div>
-            <span>{this.state.name}</span>
-            <span>{this.state.hours}</span>
+              <ul>
+                  {this.props.businesses.map(business => (
+                    <div onClick={this.props.addFavorite(business.placeId)}>
+                    <AiOutlineHeart className="favorite-button"/>
+                    <span>{business.name}</span>
+                    <span>{business.hours}</span>
+                    </div>
+                ))}
+                </ul>
           </div>
        
     )

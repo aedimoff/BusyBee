@@ -32,7 +32,7 @@ class FavoritesIndex extends React.Component {
         //         </div>
                <div>
                 <button className="select-button"><AiOutlineCheckSquare size={15}/>Select</button>
-                <h1>List of favorite businesses here</h1>
+                {/* <h1>List of favorite businesses here</h1> */}
                </div>
             )
         // }
