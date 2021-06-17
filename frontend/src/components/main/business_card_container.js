@@ -3,12 +3,14 @@ import { addFavorite, deleteFavorite } from '../../actions/favorites_actions'
 import BusinessCard from './business_card'
 
 const mSTP = state => ({
-    favorites: this.state.user.favorites
+    currentUser: state.sessionApi.currentUser,
+    session: state.sessionApi,
+    favorites: state.sessionApi.currentUser.favorites
 })
 
 const mDTP = dispatch => ({
-    addFavorite: (placeId) => dispatch(addFavorite(placeId)),
-    deleteFavorite: (placeId) => dispatch(deleteFavorite(placeId))
+    addFavorite: placeId => dispatch(addFavorite(placeId)),
+    deleteFavorite: placeId => dispatch(deleteFavorite(placeId))
 })
 
 export default connect(mSTP, mDTP)(BusinessCard)

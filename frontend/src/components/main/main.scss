@@ -26,9 +26,10 @@
   justify-content: center;
   align-items: flex-start;
   // box-sizing: border-box;
-  padding: 50px 0px;
+  // padding: 50px 0px;
   z-index: 3;
   overflow: scroll;
+  padding-top: 80px;
   width: 250px;
   height: 500px;
 }
@@ -36,6 +37,7 @@
 .business-card-container {
   width: 100%;
   border-bottom: rgb(231, 230, 230) 5px solid;
+  box-sizing: border-box;
 }
 
 .business-card {

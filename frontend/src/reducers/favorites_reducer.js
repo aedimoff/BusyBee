@@ -8,9 +8,9 @@ const FavoritesReducer = (state = {}, action) => {
         case RECEIVE_FAVORITES:
             return action.favorites;
         case RECEIVE_FAVORITE:
-            nextState[action.favorite.placeId] = action.favorite;
+            nextState[action.favorite.place_id] = action.favorite;
         case REMOVE_FAVORITE:
-            delete nextState[action.placeId];
+            delete nextState[action.place_id];
             return nextState;
         default:
             return state;
