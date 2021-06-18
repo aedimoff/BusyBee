@@ -39,6 +39,16 @@ const MapThing = (props) => {
     libraries,
   });
 
+  // const getId = (props) => {
+  //   if (props.session.currentUser) {
+  //     return props.session.currentUser.id
+  //   } else {
+  //     return props.session.user.id
+  //   }
+  // };
+
+  
+
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
@@ -50,8 +60,8 @@ const MapThing = (props) => {
   });
 
     const getFavorite = (placeId) => {
-        MapAPIUtil.getPlaceInfo(placeId).then(res =>
-            props.addFavorite(res)
+        MapAPIUtil.getPlaceInfo(placeId).then(res => 
+            props.addFavorite(res) 
         ).catch(err =>
             console.log("error on frontend", err)
         )

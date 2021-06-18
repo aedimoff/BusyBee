@@ -17,6 +17,5 @@ export const login = (userData) => {
 };
 
 export const addFavorite = (favorite) => {
-    // console.log("in apiutil", favorite)
-    return axios.post(`api/users/favorites`, favorite.data.result)
+    return axios.post(`api/users/favorites`, favorite)
 };

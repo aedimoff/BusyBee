@@ -26,7 +26,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 router.post(
   "/favorites",
   (req, res) => {
-     res.send(res)
+     res.send()
   }
 );
 
