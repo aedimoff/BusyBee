@@ -7,6 +7,64 @@
 }
 
 .splash-container {
-  background: var(--main-yellow);
+  // background: var(--main-yellow);
+  background: transparent;
+  position: absolute;
+  z-index: 10;
 }
 
+.home-container {
+  position: absolute;
+  z-index: 10;
+  top: 80px;
+}
+
+.favorites-index {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  // box-sizing: border-box;
+  // padding: 50px 0px;
+  z-index: 3;
+  overflow: scroll;
+  padding-top: 80px;
+  width: 250px;
+  height: 500px;
+}
+
+.business-card-container {
+  width: 100%;
+  border-bottom: rgb(231, 230, 230) 5px solid;
+  box-sizing: border-box;
+}
+
+.business-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px 0px;
+  width: 100%;
+}
+
+.click-icons > * {
+  padding: 5px;
+}
+
+.heart-icon:hover {
+  color: rgb(245, 124, 144);
+}
+
+.check-icon:hover {
+  color: rgb(1, 156, 1);
+}
+
+.business-title {
+  font-size: 18px;
+}
+
+.business-address {
+  font-size: 12px;
+}

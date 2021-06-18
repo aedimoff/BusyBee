@@ -9,12 +9,24 @@
 
 .map-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   background: var(--mid-blue);
+  // position: relative;
+  // z-index: 0;
+}
+
+.map-div {
+  position: relative;
+  z-index: 0;
+
 }
 
 .google-map {
-  border: 30px #e3841e;;
+  border: 30px #e3841e;
+}
+
+.map {
+  
 }
 
 .search-bar > input {
@@ -42,4 +54,6 @@
   border: 3px solid var(--mid-blue);
   border-radius: 12px;
 }
+
+
 

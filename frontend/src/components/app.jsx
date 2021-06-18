@@ -17,19 +17,20 @@ require('dotenv').config()
 const App = () => (
     <div className="App">
       <Modal />
-      <header>
+      <Home />
+      <header className="header">
         <Route path="/" component={NavBarContainer}></Route>
-        <div>
-          <MapContainer />
+        <div className="map-div">
+            <MapContainer />
         </div>
       </header>
-      <Switch>
+      <Switch className="switch">
           <ProtectedRoute exact path="/home" component={Home} />
           <AuthRoute exact path="/" component={Splash} />
           <Redirect to="/"/>
       </Switch>
       <footer>
-          Copyright &copy; 2021 a DreamTeam production tm
+          Copyright &copy; 2021 a DreamTeam production
       </footer>
     </div>
 );
