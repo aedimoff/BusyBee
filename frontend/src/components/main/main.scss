@@ -10,17 +10,18 @@
   // background: var(--main-yellow);
   background: transparent;
   position: absolute;
-  z-index: 10;
 }
 
 .home-container {
-  position: absolute;
-  z-index: 10;
-  top: 80px;
+  position: relative;
+  // top: 80px;
+  display: block;
+  box-sizing: border-box;
+  align-items: center;
 }
 
 .favorites-index {
-  background-color: whitesmoke;
+  background-color: #b4dfe5c4;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,10 +29,18 @@
   // box-sizing: border-box;
   // padding: 50px 0px;
   z-index: 3;
-  overflow: scroll;
-  padding-top: 80px;
-  width: 250px;
-  height: 500px;
+  overflow-y: auto;
+  // overflow-y: scroll;
+  // padding-top: 80px;
+  width: 220px;
+  height: 528px;
+  position: relative; bottom: 620px; left: 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 16px;
+}
+
+.index-container {
+  height: 0px;
 }
 
 .business-card-container {
