@@ -3,8 +3,6 @@ import "./map.scss";
 import {
   GoogleMap,
   useLoadScript,
-  // Marker,
-  // InfoWindow,
 } from "@react-google-maps/api";
 
 import Search from "./search";
@@ -30,24 +28,11 @@ const options = {
   zoomControl: true,
 };
 
-//Get place_id from click on business (maybe add favorites button), then submit 
-//places search request (HTTP request, probably) to get full set of info.
-//Figure out custom infoWindow(?)
 const MapThing = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
   });
-
-  // const getId = (props) => {
-  //   if (props.session.currentUser) {
-  //     return props.session.currentUser.id
-  //   } else {
-  //     return props.session.user.id
-  //   }
-  // };
-
-  
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {

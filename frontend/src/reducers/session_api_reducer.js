@@ -20,7 +20,6 @@ export default function(state = initialState, action) {
         };
     case RECEIVE_FAVORITE:
         const favorites = state.user.favorites
-        // favorites.push(action.favorite)
         favorites.push(JSON.parse(action.favorite.config.data).data.result)
 
         return {
