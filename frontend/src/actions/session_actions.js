@@ -12,9 +12,8 @@ export const receiveCurrentUser = (currentUser) => ({
   currentUser,
 });
 
-export const receiveUserSignIn = (user) => ({
-  type: RECEIVE_USER_SIGN_IN,
-  user: user,
+export const receiveUserSignIn = () => ({
+  type: RECEIVE_USER_SIGN_IN
 });
 
 export const receiveErrors = (errors) => ({

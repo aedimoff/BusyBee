@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { fetchFavorites, fetchFavorite, addFavorite, deleteFavorite } from '../../actions/favorites_actions'
-import FavoritesIndex from './favorites_index'
+import { fetchFavorites, fetchFavorite, addFavorite, deleteFavorite } from '../../actions/favorites_actions';
+import FavoritesIndex from './favorites_index';
 
 const mSTP = state => ({
     favorites: []
