@@ -37,9 +37,9 @@ export const receiveFavorite = (favorite) => ({
   favorite,
 });
 
-export const removeFavorite = (placeId) => ({
+export const removeFavorite = (favorite) => ({
   type: REMOVE_FAVORITE,
-  placeId,
+  favorite,
 });
 
 export const signup = (user) => (dispatch) =>

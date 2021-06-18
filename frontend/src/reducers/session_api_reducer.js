@@ -34,7 +34,8 @@ export default function (state = initialState, action) {
       };
     case REMOVE_FAVORITE:
       let nextState = Object.assign({}, state);
-      delete nextState[action.user.favorites.place_id];
+      console.log("reducer", action);
+      delete nextState[action.sessionApi.user.favorites.place_id];
       return nextState;
     case RECEIVE_USER_LOGOUT:
       return initialState;
