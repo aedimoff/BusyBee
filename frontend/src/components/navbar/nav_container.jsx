@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return {
-  currentUser: state.sessionApi.currentUser,
+  user: state.sessionApi.user,
   session: state.sessionApi,
   loggedin: state.sessionApi.isAuthenticated
   }

@@ -4,7 +4,7 @@ import { RECEIVE_CURRENT_USER,
 
 const initialState = {
     isAuthenticated: false,
-    currentUser: {
+    user: {
         favorites: []
     }
 };
@@ -14,8 +14,8 @@ export default function(state = initialState, action) {
     case RECEIVE_CURRENT_USER:
         return {
           ...state,
-          isAuthenticated: !!action.currentUser,
-          currentUser: action.currentUser,
+          isAuthenticated: !!action.user,
+          user: action.user,
           isSignedIn: true
         };
     case RECEIVE_FAVORITE:
