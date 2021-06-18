@@ -38,7 +38,7 @@ class BusinessCard extends React.Component{
               </div>
                 <h1 className="business-title">{name}</h1>
                 <h3 className="business-address">{formatted_address}</h3>
-                <h3>{rating}</h3>
+                <h3 className="business-rating">Rating: {rating}</h3>
                 <h3> {website}</h3>
           </div>
         </div>
