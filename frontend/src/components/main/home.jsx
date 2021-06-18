@@ -10,7 +10,7 @@ class Home extends React.Component {
   }
 
   // displayMap() {
-  //   if (this.props.sessionApi.currentUser || this.props.sessionApi.user) {
+  //   if (this.props.sessionApi.user || this.props.sessionApi.user) {
   //     return <MapContainer />
   //   }
   // };

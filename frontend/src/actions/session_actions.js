@@ -8,9 +8,9 @@ export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
 
-export const receiveCurrentUser = (currentUser) => ({
+export const receiveuser = (user) => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser,
+  user,
 });
 
 export const receiveUserSignIn = (user) => ({
@@ -51,7 +51,7 @@ export const login = (user) => (dispatch) =>
       handleLoginOrSignUpSuccess(res, dispatch);
     })
     .catch((err) => {
-      dispatch(receiveErrors(err.response.data));
+      dispatch(receiveErrors(err));
     });
 
 const handleLoginOrSignUpSuccess = (res, dispatch) => {
@@ -59,7 +59,7 @@ const handleLoginOrSignUpSuccess = (res, dispatch) => {
   localStorage.setItem("jwtToken", token);
   APIUtil.setAuthToken(token);
   const decoded = jwt_decode(token);
-  dispatch(receiveCurrentUser(decoded));
+  dispatch(receiveuser(decoded));
 };
 
 export const logout = () => (dispatch) => {

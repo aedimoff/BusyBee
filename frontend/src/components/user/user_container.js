@@ -3,7 +3,7 @@
 
 // const mSTP = state => ({
 //     favorites: Object.values(state.user.favorites),
-//     currentUser: state.user[state.session.id]
+//     user: state.user[state.session.id]
 // })
 
 // const mDTP = dispatch => ({
