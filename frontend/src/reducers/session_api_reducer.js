@@ -13,6 +13,7 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+  let favorites
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -23,8 +24,9 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_FAVORITE:
-      const favorites = state.user.favorites;
-      favorites.push(JSON.parse(action.favorite.config.data).data.result);
+      console.log("ACTION", action)
+      favorites = state.user.favorites;
+      favorites.push(action.favorite);
       return {
         ...state,
         user: {
@@ -33,10 +35,23 @@ export default function (state = initialState, action) {
         },
       };
     case REMOVE_FAVORITE:
-      let nextState = Object.assign({}, state);
-      console.log("reducer", action);
-      delete nextState[action.sessionApi.user.favorites.place_id];
-      return nextState;
+      favorites = state.user.favorites;
+      let index = favorites.findIndex(function(fav){
+          return fav.place_id === action.place_id;
+      })
+
+      // if index not in favorites, don't remove.
+      // index of -1 means not found. 
+      if (index !== -1) favorites.splice(index, 1);
+
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favorites: favorites,
+        },
+      };
+      
     case RECEIVE_USER_LOGOUT:
       return initialState;
     default:

@@ -14,28 +14,77 @@ const validateLoginInput = require('../../validation/login');
 //     res.json(response.toJson())    
 //   })
 // }
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
-    res.json({
-      id: req.user.id,
-      name: req.user.name,
-      email: req.user.email,
-    });
+// router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
+//     res.json({
+//       id: req.user.id,
+//       name: req.user.name,
+//       email: req.user.email,
+//     });
+//   })
+
+
+// router.post(
+//   "/favorites",
+//   (req, res) => {
+
+//     // TODO: create a favorite in mongo
+//      res.send()
+//   }
+// );
+
+router.post("/favorites", (req, res) => {
+  // User.findById(req.body.user_id).then(user => {
+  //   user.favorites = []
+  //   user.save()
+  // })
+  
+  console.log("req at /favorites", req.body)
+  
+  User.findById(req.body.user_id).then(user => {
+
+    const favorites = user.favorites
+    
+    favorites.push(req.body.favorite)
+    user.save().then(savedUser => {
+      res.json({
+        savedUser,
+        success: true
+      })
+    }).catch(saveErr => {
+      res.status(500).json({
+        success: false,
+        user: saveErr
+      })
+    })
+
+
+  }).catch(err => {
+    res.status(500).json({user: err})
   })
+});
 
+router.delete("/favorites", (req, res) => {
+  
+  User.findOne({ user_id }).then(user => {
+    if (!user) {
+      errors.user_id = "This user does not exist";
+      return res.status(400).json(errors);
+    }
 
-router.post(
-  "/favorites",
-  (req, res) => {
-     res.send()
-  }
-);
+    const favorites = user.favorites
+    
+    let index = favorites.findIndex(function(fav){
+      return fav.place_id === req.place_id
+    })
 
-router.delete(
-  "/favorites",
-  (req, res) => {
-    res.send()
-  }
-);
+    favorites.splice(index, 1)
+      return res.status(200).json({
+        msg:data
+    }) 
+
+  })
+});
+
 
 router.post('/register', (req, res) => {
   

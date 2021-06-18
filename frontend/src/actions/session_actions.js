@@ -37,9 +37,9 @@ export const receiveFavorite = (favorite) => ({
   favorite,
 });
 
-export const removeFavorite = (favorite) => ({
+export const removeFavorite = (place_id) => ({
   type: REMOVE_FAVORITE,
-  favorite,
+  place_id
 });
 
 export const signup = (user) => (dispatch) =>
@@ -56,6 +56,7 @@ export const login = (user) => (dispatch) =>
       handleLoginOrSignUpSuccess(res, dispatch);
     })
     .catch((err) => {
+      console.log(err)
       dispatch(receiveErrors(err.response.data));
     });
 
@@ -73,12 +74,12 @@ export const logout = () => (dispatch) => {
   dispatch(logoutUser());
 };
 
-export const addFavorite = (favorite) => (dispatch) =>
-  APIUtil.addFavorite(favorite)
-    .then((favorite) => dispatch(receiveFavorite(favorite)))
+export const addFavorite = (favorite, user_id) => (dispatch) =>
+  APIUtil.addFavorite(favorite, user_id)
+    .then((_response) => dispatch(receiveFavorite(favorite)))
     .catch((err) => console.log(err));
 
-export const deleteFavorite = (placeId) => (dispatch) =>
-  APIUtil.deleteFavorite(placeId)
-    .then((placeId) => dispatch(removeFavorite(placeId)))
-    .catch((err) => console.log(err));
+export const deleteFavorite = (place_id, user_id) => (dispatch) =>
+  APIUtil.deleteFavorite(place_id, user_id)
+    .then((_response) => dispatch(removeFavorite(place_id)))
+    .catch((err) => console.log("ERROR DELETING", err));

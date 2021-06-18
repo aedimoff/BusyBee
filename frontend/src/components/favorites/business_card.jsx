@@ -20,13 +20,13 @@ class BusinessCard extends React.Component{
     }
 
   render() {
-    const { formatted_address, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
+    const { formatted_address, place_id, user_id, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
  
     return(
         <div className="business-card-container">
           <div className="business-card">
               <div className="click-icons"> 
-                <AiOutlineHeart size={18} onClick={deleteFavorite} className="heart-icon"/>
+                <AiOutlineHeart size={18} onClick={() => deleteFavorite(place_id, user_id)} className="heart-icon"/>
                 <AiOutlineCheckSquare size={18} className="check-icon"/>
               </div>
                 <h1 className="business-title">{name}</h1>
