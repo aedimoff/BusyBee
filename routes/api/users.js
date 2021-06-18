@@ -18,9 +18,17 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     res.json({
       id: req.user.id,
       name: req.user.name,
-      email: req.user.email
+      email: req.user.email,
     });
   })
+
+
+router.post(
+  "/favorites",
+  (req, res) => {
+     res.send()
+  }
+);
 
 router.post('/register', (req, res) => {
   
@@ -38,7 +46,8 @@ router.post('/register', (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        favorites: []
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -48,7 +57,7 @@ router.post('/register', (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { id: user.id, email: user.email, name: user.name };
+              const payload = { id: user.id, email: user.email, name: user.name, favorites: user.favorites };
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -83,7 +92,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, name: user.name, email: user.email };
+        const payload = { id: user.id, name: user.name, email: user.email, favorites: user.favorites };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({

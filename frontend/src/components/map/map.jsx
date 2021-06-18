@@ -3,8 +3,6 @@ import "./map.scss";
 import {
   GoogleMap,
   useLoadScript,
-  Marker,
-  InfoWindow,
 } from "@react-google-maps/api";
 
 import Search from "./search";
@@ -30,10 +28,7 @@ const options = {
   zoomControl: true,
 };
 
-//Get place_id from click on business (maybe add favorites button), then submit 
-//places search request (HTTP request, probably) to get full set of info.
-//Figure out custom infoWindow(?)
-const Map = () => {
+const MapThing = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
@@ -50,8 +45,8 @@ const Map = () => {
   });
 
     const getFavorite = (placeId) => {
-        MapAPIUtil.getPlaceInfo(placeId).then(res=>
-            console.log("Response on frontend", res)
+        MapAPIUtil.getPlaceInfo(placeId).then(res => 
+            props.addFavorite(res) 
         ).catch(err =>
             console.log("error on frontend", err)
         )
@@ -78,6 +73,7 @@ const Map = () => {
           />
       </div>) : <Spinner />
 
+
   return (
     <div className="map-container">
         {display}
@@ -85,38 +81,4 @@ const Map = () => {
   );
 };
 
-// function Search() {
-//   const {
-//     ready,
-//     value,
-//     suggestions: { status, data },
-//     setValue,
-//     clearSuggestions,
-//   } = usePlacesAutocomplete({
-//     requestOptions: {
-//       location: { lat: () => 33.830296, lng: () => -116.545296 },
-//       radius: 200 * 1000,
-//     },
-//   });
-
-//   return (
-//     <div className="search">
-//       <Combobox
-//         onSelect={(address) => {
-//           console.log(address);
-//         }}
-//       >
-//         <ComboboxInput
-//           value={value}
-//           onChange={(e) => {
-//             setValue(e.target.value);
-//           }}
-//           disabled={!ready}
-//           placeholder="Search for a business"
-//         />
-//       </Combobox>
-//     </div>
-//   );
-// };
-
-export default Map;
+export default MapThing;

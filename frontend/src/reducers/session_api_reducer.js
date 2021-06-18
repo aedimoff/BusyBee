@@ -1,10 +1,12 @@
 import { RECEIVE_CURRENT_USER, 
     RECEIVE_USER_LOGOUT, 
-    RECEIVE_USER_SIGN_IN } from '../actions/session_actions';
+    RECEIVE_FAVORITE } from '../actions/session_actions';
 
 const initialState = {
     isAuthenticated: false,
-    currentUser: {}
+    currentUser: {
+        favorites: []
+    }
 };
 
 export default function(state = initialState, action) {
@@ -16,6 +18,17 @@ export default function(state = initialState, action) {
           currentUser: action.currentUser,
           isSignedIn: true
         };
+    case RECEIVE_FAVORITE:
+        const favorites = state.user.favorites
+        favorites.push(JSON.parse(action.favorite.config.data).data.result)
+
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                favorites: favorites
+            }
+        }
     case RECEIVE_USER_LOGOUT:
         return initialState;
     default:

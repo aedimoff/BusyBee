@@ -1,15 +1,14 @@
 import React from 'react';
 // import MapContainer from './map_container'
-import FavoritesIndexContainer from './favorites_index_container'
-import BusinessCardContainer from './business_card_container';
+// import FavoritesIndexContainer from './favorites_index_container'
 
 class Splash extends React.Component {
 
   render() {
     return (
       <div className="splash-container">
-        {/* <BusinessCardContainer /> */}
-        <FavoritesIndexContainer />
+        <h1>ErrantErrands</h1>
+        {/* <FavoritesIndexContainer /> */}
         {/* <MapContainer /> */}
       </div>
     );
