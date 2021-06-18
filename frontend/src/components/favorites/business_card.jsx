@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
 import '../main/main.scss'
 
@@ -33,7 +34,7 @@ class BusinessCard extends React.Component{
         <div className="business-card-container">
           <div className="business-card">
               <div className="click-icons"> 
-                <AiOutlineHeart size={18} className="heart-icon"/>
+                <AiFillHeart size={18} className="heart-icon"/>
                 <AiOutlineCheckSquare size={18} onClick={`{this.addToSelected}`} className="check-icon"/>
               </div>
                 <h1 className="business-title">{name}</h1>

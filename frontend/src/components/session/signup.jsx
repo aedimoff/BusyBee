@@ -62,7 +62,7 @@ displayErrors() {
       <div className="signup-container">
         <div onClick={this.props.closeModal} className="close-x"><MdClose size={25}/></div>
         <div className="auth-title">
-          <h2>Welcome to ErrantErrands</h2>
+          <h2>Welcome to Busy Bee</h2>
         </div>
         <form className="signup-form-box" onSubmit={this.handleSubmit}>
         <br/>
@@ -101,7 +101,7 @@ displayErrors() {
             </label>
             <div className="auth-btn" onClick={this.handleSubmit}>Sign Up</div>
             <div className="auth-footer">
-                <h6>By continuing, you agree to ErrantErrands's Terms of</h6>
+                <h6>By continuing, you agree to Busy Bee's Terms of</h6>
                 <h6>Service, Privacy policy.</h6>
             </div>
             <div className="already-member" onClick={() => openModal('login')}>

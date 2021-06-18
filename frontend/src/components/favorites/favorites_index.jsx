@@ -11,6 +11,8 @@ class FavoritesIndex extends React.Component {
         // Filter out null or undefined values (bad data)
         const filteredFavorites = favorites.filter((fav) => fav !== null || fav !== undefined)
             return (
+
+                <div className="index-wrapper">
                 <ul className="favorites-index">
                     {
                         filteredFavorites ? filteredFavorites.map((favorite, i) => (
@@ -31,6 +33,8 @@ class FavoritesIndex extends React.Component {
                         )) : ""
                     }
                 </ul>
+                </div>
+
             )
         }
 }

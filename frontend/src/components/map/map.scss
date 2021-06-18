@@ -11,14 +11,6 @@
   display: flex;
   justify-content: flex-end;
   background: var(--mid-blue);
-  // position: relative;
-  // z-index: 0;
-}
-
-.map-div {
-  position: relative;
-  z-index: 0;
-
 }
 
 .google-map {
@@ -42,6 +34,7 @@
   border: 2px solid var(--mid-blue);
   background-color: var(--dark-blue);
   color: var(--light-blue);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .search-bar > input::placeholder {
@@ -51,7 +44,7 @@
 .search-bar > input:focus {
   outline-offset: 0px;
   outline: none;
-  border: 3px solid var(--mid-blue);
+  border: 3px solid var(--main-salmon);
   border-radius: 12px;
 }
 
