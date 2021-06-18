@@ -1,21 +1,9 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
-import './main.scss'
+import '../main/main.scss'
 
 class BusinessCard extends React.Component{
-  constructor(props){
-    super(props);
-  }
-
-  getFavorites() {
-    if (this.props.session.currentUser) {
-      return this.props.session.currentUser.favorites
-    } else {
-      return this.props.session.user.favorites
-    }
-  };
-
     addToFavorites() {
 
     }
@@ -39,7 +27,8 @@ class BusinessCard extends React.Component{
     }
 
   render() {
-        
+    const { formatted_address, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
+ 
     return(
         <div className="business-card-container">
           <div className="business-card">
@@ -47,8 +36,10 @@ class BusinessCard extends React.Component{
                 <AiOutlineHeart size={18} className="heart-icon"/>
                 <AiOutlineCheckSquare size={18} onClick={`{this.addToSelected}`} className="check-icon"/>
               </div>
-                <h1 className="business-title">Business 1</h1>
-                <p className="business-address">123 Fake St</p>
+                <h1 className="business-title">{name}</h1>
+                <h3 className="business-address">{formatted_address}</h3>
+                <h3>{rating}</h3>
+                <h3> {website}</h3>
           </div>
         </div>
     )

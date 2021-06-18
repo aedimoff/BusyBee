@@ -6,13 +6,9 @@ const FavoritesReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_FAVORITE:
-<<<<<<< HEAD
-            nextState[action.favorite.place_id] = action.favorite;
-=======
             nextState[action.favorite.placeId] = action.favorite;
         case RECEIVE_FAVORITES:
             return action.favorites;
->>>>>>> e2d596ba9511fa9cc712ea904f17227dfafc093e
         case REMOVE_FAVORITE:
             delete nextState[action.place_id];
             return nextState;

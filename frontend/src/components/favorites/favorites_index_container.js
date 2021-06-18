@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
 import { addFavorite, deleteFavorite } from '../../actions/favorites_actions'
-import BusinessCard from './business_card'
+import FavoritesIndex from './favorites_index'
 
 const mSTP = state => ({
-    currentUser: state.sessionApi.currentUser,
-    session: state.sessionApi,
-    favorites: state.sessionApi.currentUser.favorites
+    user: state.sessionApi.user,
+    favorites: state?.sessionApi?.user?.favorites
 })
 
 const mDTP = dispatch => ({
@@ -13,4 +12,4 @@ const mDTP = dispatch => ({
     deleteFavorite: placeId => dispatch(deleteFavorite(placeId))
 })
 
-export default connect(mSTP, mDTP)(BusinessCard)
+export default connect(mSTP, mDTP)(FavoritesIndex)
