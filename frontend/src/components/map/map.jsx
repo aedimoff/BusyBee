@@ -18,8 +18,8 @@ const mapContainerStyle = {
   height: "84vh",
 };
 const center = {
-  lat: 33.830296,
-  lng: -116.545296,
+  lat: 36.974117,
+  lng: -122.030792,
 };
 
 const options = {
@@ -63,7 +63,7 @@ const MapThing = (props) => {
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            zoom={12}
+            zoom={14}
             center={center}
             options={options}
             onClick={(e) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.scss";
-import logo1 from "../../assets/busy_bee.png";
-import logo2 from "../../assets/busybeelogo2.png";
+import logo1 from "../../assets/busybeebrown.png";
+import logo2 from "../../assets/busybeeblue.png";
 import { FaGithub } from 'react-icons/fa';
 
 
@@ -28,7 +28,7 @@ class NavBar extends React.Component {
       return (
         <div className="navbar2">
           <div className="logo-container">
-            <img className="top-logo2" src={logo1} alt="bee logo"/>
+            <img className="top-logo2" src={logo2} alt="bee logo"/>
           </div>
           <div className="nav-greeting">
             <a href="https://github.com/aedimoff/ErrantErrands/wiki" target="_blank"
@@ -46,7 +46,7 @@ class NavBar extends React.Component {
       return (
         <div className="navbar">
           <div className="logo-container">
-            <img className="top-logo" src={logo2} alt="bee logo"/>
+            <img className="top-logo" src={logo1} alt="bee logo"/>
           </div>
           <div className="login-signup">
             <div className="login-btn" onClick={() => openModal("login")}>Log in</div>
