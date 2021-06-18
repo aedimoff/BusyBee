@@ -9,9 +9,9 @@ export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
-export const receiveCurrentUser = (currentUser) => ({
+export const receiveuser = (user) => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser,
+  user,
 });
 
 export const receiveUserSignIn = (user) => ({
@@ -64,7 +64,7 @@ const handleLoginOrSignUpSuccess = (res, dispatch) => {
   localStorage.setItem("jwtToken", token);
   APIUtil.setAuthToken(token);
   const decoded = jwt_decode(token);
-  dispatch(receiveCurrentUser(decoded));
+  dispatch(receiveuser(decoded));
 };
 
 export const logout = () => (dispatch) => {

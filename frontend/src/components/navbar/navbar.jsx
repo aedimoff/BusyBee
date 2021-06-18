@@ -13,8 +13,8 @@ class NavBar extends React.Component {
   }
 
   getName() {
-    if (this.props.session.currentUser) {
-      return this.props.session.currentUser.name
+    if (this.props.session.user) {
+      return this.props.session.user.name
     } else {
       return this.props.session.user.name
     }

@@ -70,7 +70,7 @@ router.post('/register', (req, res) => {
                 res.json({
                   success: true,
                   token: "Bearer " + token,
-                  currentUser: user
+                  user: user
                 });
               });
             })
@@ -105,7 +105,7 @@ router.post("/login", (req, res) => {
           res.json({
             success: true,
             token: "Bearer " + token,
-            currentUser: user
+            user: user
           });
         });
       } else {
