@@ -30,6 +30,13 @@ router.post(
   }
 );
 
+router.delete(
+  "/favorites",
+  (req, res) => {
+    res.send()
+  }
+);
+
 router.post('/register', (req, res) => {
   
     const { errors, isValid } = validateRegisterInput(req.body);

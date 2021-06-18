@@ -1,21 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const setAuthToken = token => {
+export const setAuthToken = (token) => {
   if (token) {
-    axios.defaults.headers.common['Authorization'] = token;
+    axios.defaults.headers.common["Authorization"] = token;
   } else {
-    delete axios.defaults.headers.common['Authorization'];
+    delete axios.defaults.headers.common["Authorization"];
   }
 };
 
 export const signup = (userData) => {
-  return axios.post('/api/users/register', userData);
+  return axios.post("/api/users/register", userData);
 };
 
 export const login = (userData) => {
-  return axios.post('/api/users/login', userData);
+  return axios.post("/api/users/login", userData);
 };
 
 export const addFavorite = (favorite) => {
-    return axios.post(`api/users/favorites`, favorite)
+  return axios.post(`api/users/favorites`, favorite);
+};
+
+export const deleteFavorite = (placeId) => {
+  return axios.delete(`api/users/favorites`, placeId);
 };
