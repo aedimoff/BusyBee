@@ -5,10 +5,10 @@ const FavoritesReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
 
     switch (action.type) {
-        case RECEIVE_FAVORITES:
-            return action.favorites;
         case RECEIVE_FAVORITE:
             nextState[action.favorite.placeId] = action.favorite;
+        case RECEIVE_FAVORITES:
+            return action.favorites;
         case REMOVE_FAVORITE:
             delete nextState[action.placeId];
             return nextState;

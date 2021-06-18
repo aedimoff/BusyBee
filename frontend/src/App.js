@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Map from "./components/map/map";
+import MapContainer from "./components/map/map_container";
+
 require('dotenv').config()
+
 
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          {Map()}
+          <MapContainer />
         </div>
         <img src={logo} className="App-logo" alt="logo" />
       </header>

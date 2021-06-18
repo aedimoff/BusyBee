@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 export const fetchSelecteds = () => {
-    return axios.get(`api/user/favorites`)
+    return axios.get(`api/users/favorites`)
 };
 
 export const fetchSelected = (placeId) => {
-    return axios.get(`api/user/favorites/selected/${placeId}`)
+    return axios.get(`api/users/favorites/selected/${placeId}`)
 };
 
 export const addSelected = (placeId) => {
-    return axios.post(`api/user/favorites/selected`)
+    return axios.post(`api/users/favorites/selected`)
 };
 
 export const removeSelected = (placeId) => {
-    return axios.delete(`api/user/favorites/selected`)
+    return axios.delete(`api/users/favorites/selected`)
 };

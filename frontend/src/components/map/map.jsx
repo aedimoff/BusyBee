@@ -33,22 +33,11 @@ const options = {
 //Get place_id from click on business (maybe add favorites button), then submit 
 //places search request (HTTP request, probably) to get full set of info.
 //Figure out custom infoWindow(?)
-const Map = (props) => {
-  console.log("props in map", props)
+const MapThing = (props) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
   });
-
-  // const getId = (props) => {
-  //   if (props.session.currentUser) {
-  //     return props.session.currentUser.id
-  //   } else {
-  //     return props.session.user.id
-  //   }
-  // };
-
-  
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -60,9 +49,9 @@ const Map = (props) => {
     mapRef.current.setZoom(20);
   });
 
-    const getFavorite = (placeId, user) => {
-        MapAPIUtil.getPlaceInfo(placeId).then(res=>
-            console.log("Response on frontend", res, user)
+    const getFavorite = (placeId) => {
+        MapAPIUtil.getPlaceInfo(placeId).then(res =>
+            props.addFavorite(res)
         ).catch(err =>
             console.log("error on frontend", err)
         )
@@ -89,6 +78,7 @@ const Map = (props) => {
           />
       </div>) : <Spinner />
 
+
   return (
     <div className="map-container">
         {display}
@@ -96,4 +86,4 @@ const Map = (props) => {
   );
 };
 
-export default Map;
+export default MapThing;

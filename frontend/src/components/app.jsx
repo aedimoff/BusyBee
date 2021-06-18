@@ -8,7 +8,7 @@ import LoginFormContainer from './session/login_container';
 import SignupFormContainer from './session/signup_container';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
-import Map from './map/map';
+import MapContainer from './map/map_container';
 import './app1.scss';
 require('dotenv').config()
 
@@ -20,7 +20,7 @@ const App = () => (
       <header>
         <Route path="/" component={NavBarContainer}></Route>
         <div>
-          {Map()}
+          <MapContainer />
         </div>
       </header>
       <Switch>
