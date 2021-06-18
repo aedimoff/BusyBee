@@ -68,7 +68,7 @@ class Login extends React.Component {
         </div>
         <form className="login-form-box" onSubmit={this.handleSubmit}>
           <div className="auth-title">
-            <h2>Welcome to Errant Errands</h2>
+            <h2>Welcome to Busy Bee</h2>
           </div>
           {this.displayErrors()}
           <div className="login-form">
@@ -93,11 +93,11 @@ class Login extends React.Component {
                   Continue as Demo User
               </div>
               <div className="auth-footer">
-                <h6>By continuing, you agree to ErrantErrands's Terms of</h6>
+                <h6>By continuing, you agree to Busy Bee's Terms of</h6>
                 <h6>Service, Privacy policy.</h6>
               </div>
               <div className="need-account" onClick={() => openModal("signup")}>
-                Not on ErrantErrands yet? Sign up
+                Not on Busy Bee yet? Sign up
               </div>
             </div>
           </div>

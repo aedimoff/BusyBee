@@ -22,9 +22,9 @@ class Home extends React.Component {
           <MapContainer />
             {/* {this.displayMap()} */}
         </div>
-        <div className="index-container">
+        {/* <div className="index-container"> */}
           <FavoritesIndexContainer />
-        </div>
+        {/* </div> */}
       </div>
     );
   }
