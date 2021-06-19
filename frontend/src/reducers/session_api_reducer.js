@@ -9,7 +9,7 @@ const initialState = {
   isAuthenticated: false,
   user: {
     favorites: [],
-  },
+  }
 };
 
 export default function (state = initialState, action) {

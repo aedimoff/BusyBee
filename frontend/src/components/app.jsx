@@ -4,11 +4,9 @@ import { Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/nav_container';
 import Home from './main/home';
 import Splash from './main/splash';
-import LoginFormContainer from './session/login_container';
-import SignupFormContainer from './session/signup_container';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
-import MapContainer from './map/map_container';
+// import MapContainer from './map/map_container';
 import './app1.scss';
 require('dotenv').config()
 
@@ -17,12 +15,9 @@ require('dotenv').config()
 const App = () => (
     <div className="App">
       <Modal />
-      <Home />
+      {/* <Home /> */}
       <header className="header">
         <Route path="/" component={NavBarContainer}></Route>
-        <div className="map-div">
-            <MapContainer />
-        </div>
       </header>
       <Switch className="switch">
           <ProtectedRoute exact path="/home" component={Home} />
@@ -30,7 +25,7 @@ const App = () => (
           <Redirect to="/"/>
       </Switch>
       <footer>
-          Copyright &copy; 2021 a DreamTeam production
+          Copyright &copy; 2021 A DreamTeam Production
       </footer>
     </div>
 );
