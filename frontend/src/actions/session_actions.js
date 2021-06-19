@@ -79,7 +79,7 @@ export const addFavorite = (favorite, user_id) => (dispatch) =>
     .then((_response) => dispatch(receiveFavorite(favorite)))
     .catch((err) => console.log(err));
 
-export const deleteFavorite = (place_id, user_id) => (dispatch) =>
+export const deleteFavorite = (place_id, user_id) => (dispatch) => {
   APIUtil.deleteFavorite(place_id, user_id)
     .then((_response) => dispatch(removeFavorite(place_id)))
-    .catch((err) => console.log("ERROR DELETING", err));
+    .catch((err) => console.log("ERROR DELETING", err)); }

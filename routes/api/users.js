@@ -57,27 +57,33 @@ router.post("/favorites", (req, res) => {
 router.delete("/favorites", (req, res) => {
   
   User.findById(req.body.user_id).then(user => {
-
     const favorites = user.favorites
+
     
     let index = favorites.findIndex(function(fav){
-      return fav.place_id === req.place_id
+      return fav.place_id === req.body.place_id
     })
-
+    
     favorites.splice(index, 1)
-    user.save().then(saveUser => {
+    
+    user.save().then(savedUser => {
       res.json({
         savedUser,
         success: true
       })
-    }).catch(saveErr => {
-      res.status(500).json({
-        success: false,
-        user: saveErr
-      }).catch(err => {
-        res.status(500).json({user: err})
-      })
-  })
+    }).catch(err => {
+      console.log(err)
+    })
+    // .catch(saveErr => {
+    //   res.status(500).json({
+    //     success: false,
+    //     user: saveErr
+    //   }).catch(err => {
+    //     res.status(500).json({user: err})
+    //   })
+    // })
+
+  });
 });
 
 

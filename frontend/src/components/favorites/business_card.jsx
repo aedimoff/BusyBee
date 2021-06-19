@@ -22,7 +22,6 @@ class BusinessCard extends React.Component{
 
   render() {
     const { formatted_address, place_id, user_id, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
- 
     return(
         <div className="business-card-container">
           <div className="business-card">

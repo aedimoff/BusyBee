@@ -24,7 +24,6 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_FAVORITE:
-      console.log("ACTION", action)
       favorites = state.user.favorites;
       favorites.push(action.favorite);
       return {

@@ -17,10 +17,9 @@ export const login = (userData) => {
 };
 
 export const addFavorite = (favorite, user_id) => {
-  console.log("userID in util", user_id)
   return axios.post(`api/users/favorites`, { favorite, user_id })
 };
 
 export const deleteFavorite = (place_id, user_id) => {
-  return axios.delete(`api/users/favorites`, { place_id, user_id } );
+  return axios.delete(`api/users/favorites`, { data: {place_id, user_id }} );
 };

@@ -29,7 +29,6 @@ const options = {
 };
 
 const MapThing = (props) => {
-  console.log("mapProps", props)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
@@ -49,7 +48,7 @@ const MapThing = (props) => {
         MapAPIUtil.getPlaceInfo(placeId).then(res => { 
             return props.addFavorite(res.data.result, props.userId) 
         }).catch(err =>
-            console.log("error on frontend", err)
+            console.log(err)
         )
     }
 

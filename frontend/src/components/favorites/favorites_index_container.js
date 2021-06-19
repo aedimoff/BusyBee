@@ -9,7 +9,7 @@ const mSTP = (state) => ({
 
 const mDTP = (dispatch) => ({
   addFavorite: (placeId) => dispatch(addFavorite(placeId)),
-  deleteFavorite: (placeId) => dispatch(deleteFavorite(placeId)),
+  deleteFavorite: (placeId, userId) => dispatch(deleteFavorite(placeId, userId)),
 });
 
 export default connect(mSTP, mDTP)(FavoritesIndex);
