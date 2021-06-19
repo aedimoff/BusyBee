@@ -45,10 +45,10 @@ const MapThing = (props) => {
   });
 
     const getFavorite = (placeId) => {
-        MapAPIUtil.getPlaceInfo(placeId).then(res => 
-            props.addFavorite(res) 
-        ).catch(err =>
-            console.log("error on frontend", err)
+        MapAPIUtil.getPlaceInfo(placeId).then(res => { 
+            return props.addFavorite(res.data.result, props.userId) 
+        }).catch(err =>
+            console.log(err)
         )
     }
 

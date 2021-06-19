@@ -7,6 +7,7 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 
 export const receiveuser = (user) => ({
   type: RECEIVE_CURRENT_USER,
@@ -33,17 +34,21 @@ export const removeErrors = () => ({
 
 export const receiveFavorite = (favorite) => ({
   type: RECEIVE_FAVORITE,
-  favorite
-})
+  favorite,
+});
+
+export const removeFavorite = (place_id) => ({
+  type: REMOVE_FAVORITE,
+  place_id
+});
 
 export const signup = (user) => (dispatch) =>
-  APIUtil.signup(user)
-    .then((res) => {
-      handleLoginOrSignUpSuccess(res, dispatch);
-    })
-    // .catch((err) => {
-    //   dispatch(receiveErrors(err.response.data));
-    // });
+  APIUtil.signup(user).then((res) => {
+    handleLoginOrSignUpSuccess(res, dispatch);
+  });
+// .catch((err) => {
+//   dispatch(receiveErrors(err.response.data));
+// });
 
 export const login = (user) => (dispatch) =>
   APIUtil.login(user)
@@ -51,7 +56,8 @@ export const login = (user) => (dispatch) =>
       handleLoginOrSignUpSuccess(res, dispatch);
     })
     .catch((err) => {
-      dispatch(receiveErrors(err));
+      console.log(err)
+      dispatch(receiveErrors(err.response.data));
     });
 
 const handleLoginOrSignUpSuccess = (res, dispatch) => {
@@ -68,8 +74,12 @@ export const logout = () => (dispatch) => {
   dispatch(logoutUser());
 };
 
-export const addFavorite = (favorite) => dispatch => (
-    APIUtil.addFavorite(favorite)
-    .then((favorite) => dispatch(receiveFavorite(favorite)))
-    .catch(err => console.log(err))
-);
+export const addFavorite = (favorite, user_id) => (dispatch) =>
+  APIUtil.addFavorite(favorite, user_id)
+    .then((_response) => dispatch(receiveFavorite(favorite)))
+    .catch((err) => console.log(err));
+
+export const deleteFavorite = (place_id, user_id) => (dispatch) => {
+  APIUtil.deleteFavorite(place_id, user_id)
+    .then((_response) => dispatch(removeFavorite(place_id)))
+    .catch((err) => console.log("ERROR DELETING", err)); }

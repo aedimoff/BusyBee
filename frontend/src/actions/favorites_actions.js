@@ -14,10 +14,7 @@
 //         favorite
 // });
 
-// export const removeFavorite = (placeId) => ({
-//         type: REMOVE_FAVORITE,
-//         placeId
-// });
+
 
 // export const fetchFavorites = () => dispatch => (
 //     ApiUtil.fetchFavorites()
@@ -33,8 +30,3 @@
 
 
 
-// export const deleteFavorite = (placeId) => dispatch => (
-//     ApiUtil.deleteFavorite(placeId)
-//     .then((placeId) => dispatch(removeFavorite(placeId)))
-//     .catch(err => console.log(err))
-// );

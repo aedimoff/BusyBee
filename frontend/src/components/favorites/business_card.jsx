@@ -5,13 +5,6 @@ import { AiOutlineCheckSquare } from 'react-icons/ai';
 import '../main/main.scss'
 
 class BusinessCard extends React.Component{
-    addToFavorites() {
-
-    }
-
-    removeFromFavorites() {
-    
-    }
 
     addToSelected() {
         // if !selected
@@ -28,14 +21,13 @@ class BusinessCard extends React.Component{
     }
 
   render() {
-    const { formatted_address, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
- 
+    const { formatted_address, place_id, user_id, name, lat, lng, rating, types, website, addFavorite, deleteFavorite } = this.props
     return(
         <div className="business-card-container">
           <div className="business-card">
               <div className="click-icons"> 
-                <AiFillHeart size={18} className="heart-icon"/>
-                <AiOutlineCheckSquare size={18} onClick={`{this.addToSelected}`} className="check-icon"/>
+                <AiOutlineHeart size={18} onClick={() => deleteFavorite(place_id, user_id)} className="heart-icon"/>
+                <AiOutlineCheckSquare size={18} className="check-icon"/>
               </div>
                 <h1 className="business-title">{name}</h1>
                 <h3 className="business-address">{formatted_address}</h3>

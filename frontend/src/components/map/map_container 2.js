@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 
 // TODO: Take property off the google response 
 const mapDispatchToProps = dispatch => ({
-    addFavorite: (property, user_id) => dispatch(addFavorite(property, user_id))
+    addFavorite: property => dispatch(addFavorite(property))
 })
 
 
