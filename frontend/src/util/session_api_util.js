@@ -22,5 +22,5 @@ export const addFavorite = (favorite, user_id) => {
 };
 
 export const deleteFavorite = (place_id, user_id) => {
-  return axios.delete(`api/users/favorites`, { data: { place_id, user_id}} );
+  return axios.delete(`api/users/favorites`, { place_id, user_id } );
 };

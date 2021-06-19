@@ -33,15 +33,8 @@ const validateLoginInput = require('../../validation/login');
 // );
 
 router.post("/favorites", (req, res) => {
-  // User.findById(req.body.user_id).then(user => {
-  //   user.favorites = []
-  //   user.save()
-  // })
-  
-  console.log("req at /favorites", req.body)
-  
-  User.findById(req.body.user_id).then(user => {
 
+  User.findById(req.body.user_id).then(user => {
     const favorites = user.favorites
     
     favorites.push(req.body.favorite)
@@ -56,8 +49,6 @@ router.post("/favorites", (req, res) => {
         user: saveErr
       })
     })
-
-
   }).catch(err => {
     res.status(500).json({user: err})
   })
@@ -65,11 +56,7 @@ router.post("/favorites", (req, res) => {
 
 router.delete("/favorites", (req, res) => {
   
-  User.findOne({ user_id }).then(user => {
-    if (!user) {
-      errors.user_id = "This user does not exist";
-      return res.status(400).json(errors);
-    }
+  User.findById(req.body.user_id).then(user => {
 
     const favorites = user.favorites
     
@@ -78,10 +65,18 @@ router.delete("/favorites", (req, res) => {
     })
 
     favorites.splice(index, 1)
-      return res.status(200).json({
-        msg:data
-    }) 
-
+    user.save().then(saveUser => {
+      res.json({
+        savedUser,
+        success: true
+      })
+    }).catch(saveErr => {
+      res.status(500).json({
+        success: false,
+        user: saveErr
+      }).catch(err => {
+        res.status(500).json({user: err})
+      })
   })
 });
 
