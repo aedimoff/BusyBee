@@ -6,7 +6,6 @@ import {
 } from "@react-google-maps/api";
 
 import Search from "./search";
-import Locate from "./locate";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
@@ -15,12 +14,12 @@ require("dotenv").config();
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "100vw",
-  height: "84vh",
+  width: "75vw",
+  height: "75vh",
 };
 const center = {
-  lat: 36.974117,
-  lng: -122.030792,
+  lat: 33.830296,
+  lng: -116.545296,
 };
 
 const options = {
@@ -30,6 +29,7 @@ const options = {
 };
 
 const MapThing = (props) => {
+  console.log("mapProps", props)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
@@ -47,9 +47,10 @@ const MapThing = (props) => {
 
     const getFavorite = (placeId) => {
         MapAPIUtil.getPlaceInfo(placeId).then(res => { 
+            console.log("RESPONE FROM MAPAPIUTIL", res.data.result)
             return props.addFavorite(res.data.result, props.userId) 
         }).catch(err =>
-            console.log(err)
+            console.log("error on frontend", err)
         )
     }
 
@@ -61,11 +62,10 @@ const MapThing = (props) => {
         (<div className="map">
 
           <Search panTo={panTo} />
-          <Locate panTo={panTo} />
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            zoom={14}
+            zoom={12}
             center={center}
             options={options}
             onClick={(e) => {
