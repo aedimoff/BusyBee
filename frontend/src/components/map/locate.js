@@ -21,7 +21,7 @@ const Locate = ({ panTo }) => {
             panTo({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-            });
+            }); //do something with lat/lng
         }, () => null);
     }}>
       <img src="compass.svg" alt="compass - locate me" />
