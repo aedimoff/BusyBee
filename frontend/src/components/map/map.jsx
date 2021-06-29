@@ -58,7 +58,7 @@ const MapThing = (props) => {
 
 
   const display = isLoaded ? 
-        (<div className="map">
+        (<div className="map" id="map">
 
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
@@ -84,3 +84,4 @@ const MapThing = (props) => {
 };
 
 export default MapThing;
+
