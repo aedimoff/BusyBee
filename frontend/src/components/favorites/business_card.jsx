@@ -28,7 +28,7 @@ class BusinessCard extends React.Component{
               <div className="click-icons"> 
               <p>Remove Favorite</p>
               <AiOutlineHeart size={18} onClick={() => deleteFavorite(place_id, user_id)} className="heart-icon"/>
-                {/* <AiOutlineCheckSquare size={18} className="check-icon"/> */}
+                <AiOutlineCheckSquare size={18} className="check-icon"/>
               </div>
                 <h1 className="business-title">{name}</h1>
                 <h3 className="business-address">{formatted_address}</h3>

@@ -16,6 +16,9 @@ const UserSchema = new Schema({
   },
   favorites: {
     type: Array,
+    selected: {
+      type: Boolean,
+    }
   },
 }, {
   timestamps: true
