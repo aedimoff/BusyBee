@@ -12,21 +12,52 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-const libraries = ["places"];
+// const libraries = ["places"];
 
-const Locate = ({ panTo }) => {
-  return (
-    <button className="locate" onClick={() => {
+class Locate extends React.Component {
+  // = ({ panTo }) => {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      showText: "false"
+    }
+  }
+
+  handleEvent() {
+    if (this.state.showText === "false") {
+      document.getElementById("compass-div").className = "compass-two";
+      this.setState({showText: "true"})
+    } else {
+      document.getElementById("compass-div").className = "compass-one";
+      this.setState({showText: "false"})
+    };
+  }
+
+  render() { 
+    return (
+      <button 
+      className="locate" 
+      onMouseEnter={() => this.handleEvent()} 
+      onMouseLeave={() => this.handleEvent()}
+      onClick={() => {
         navigator.geolocation.getCurrentPosition((position) => {
-            panTo({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            });
+          this.props.panTo({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
         }, () => null);
-    }}>
-      <img src="compass.svg" alt="compass - locate me" />
-    </button>
-  );
+      }}>
+        <div id="compass-div" className="compass-one">Go To Current Location</div>
+        <img 
+        className="compass-img"
+        src="compass.svg" 
+        alt="compass - locate me"
+        />
+
+      </button>
+    );
+  }
 };
 
 export default Locate;
