@@ -50,6 +50,7 @@
 
 .locate {
   position: absolute;
+  display: flex;
   top: 1rem;
   right: 1rem;
   background: none;
@@ -61,4 +62,12 @@
   cursor: pointer;
 }
 
+.compass-one {
+  display: none;
+}
 
+.compass-two {
+  background-color: lightgray;
+  border-radius: 5px;
+  align-self: flex-end;
+}
