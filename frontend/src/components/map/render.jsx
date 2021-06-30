@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import "./map.scss";
-// import mapStyles from "./mapStyles";
+import mapStyles from "./mapStyles";
 
 const options = {
-  //   styles: mapStyles,
+    styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
   zoom: 14,
@@ -42,11 +42,11 @@ function calcRoute() {
     region: "US",
   };
 
-  directionsService.route((response, status) => {
-    if (status == "OK") {
-      directionsRenderer.setDirections(response);
-    }
-  });
+  directionsService.route(directionsRequest, function(response, status) {
+      if (status == 'OK') {
+        directionsRenderer.setDirections(response);
+      }
+    });
 }
 
 export default calcRoute;
