@@ -7,6 +7,7 @@ import {
 
 import Search from "./search";
 import Locate from "./locate";
+import calcRoute from "./render";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
@@ -57,11 +58,13 @@ const MapThing = (props) => {
     if (!isLoaded) return "Loading Maps";
 
 
+    
   const display = isLoaded ? 
         (<div className="map" id="map">
 
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
+          <button onClick={calcRoute}>Test Route</button>
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
