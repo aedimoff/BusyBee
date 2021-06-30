@@ -50,6 +50,7 @@ class Locate extends React.Component {
       }}>
         <div id="compass-div" className="compass-one">Go To Current Location</div>
         <img 
+        className="compass-img"
         src="compass.svg" 
         alt="compass - locate me"
         />

@@ -67,7 +67,12 @@
 }
 
 .compass-two {
-  background-color: lightgray;
-  border-radius: 5px;
+  background-color: #b4dfe5b7;
+  padding: 5px;
+  border-radius: 12px;
+  border: solid 1px var(--main-salmon);
   align-self: flex-end;
+  color: var(--dark-blue);
+  font-size: 14px;
+  margin-right: 4px;
 }
