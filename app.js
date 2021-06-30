@@ -25,7 +25,6 @@ mongoose
     .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
-    // res.send("hello")
     res.sendFile(path.join(__dirname, './frontend/public', 'index.html'))
     })
 
@@ -38,23 +37,6 @@ app.use(bodyParser.json());
 app.use("/api/users", users)
 app.use("/api/googleroute", googleroute)
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   next();
-// });
-
-// app.get("/api/googleroute", (req, res) => {
-//   request(
-//     { url: "https://maps.googleapis.com/maps/api/place/details" },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: "error", message: err.message });
-//       }
-
-//       res.json(JSON.parse(body));
-//     }
-//   );
-// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`servers is running on port ${port}`))
