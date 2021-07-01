@@ -1,9 +1,6 @@
 import React from "react";
 import "./map.scss";
-import {
-  GoogleMap,
-  useLoadScript,
-} from "@react-google-maps/api";
+
 
 import Search from "./search";
 import Locate from "./locate";
@@ -12,6 +9,11 @@ import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
 
+import {
+  GoogleMap,
+  useLoadScript,
+} from "@react-google-maps/api";
+
 require("dotenv").config();
 
 const libraries = ["places"];
@@ -19,10 +21,44 @@ const mapContainerStyle = {
   width: "100vw",
   height: "84vh",
 };
-const center = {
-  lat: 36.974117,
-  lng: -122.030792,
-};
+
+
+
+// let center = {
+//   lat: 37.774929,
+//   lng: -122.419418
+// }
+
+// navigator.geolocation.getCurrentPosition((position) => {
+//   center = {
+//     lat: position.coords.latitude,
+//     lng: position.coords.longitude,
+//   }
+// }, () => {
+//   center = {
+//     lat: 37.774929,
+//     lng: -122.419418
+//   }
+// })
+  var center;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          center = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+        },
+
+      );
+    } else {
+      center = {
+    lat: 37.774929,
+    lng: -122.419418
+  }
+    }
+ 
+
 
 const options = {
   styles: mapStyles,
@@ -31,6 +67,7 @@ const options = {
 };
 
 const MapThing = (props) => {
+  console.log(center)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,

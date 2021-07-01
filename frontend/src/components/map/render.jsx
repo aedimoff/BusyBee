@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
+import React from "react";
 import "./map.scss";
 import mapStyles from "./mapStyles";
+
 
 const options = {
     styles: mapStyles,
@@ -15,11 +17,10 @@ const options = {
   width: "100vw",
 };
 var map;
-function calcRoute() {
+const calcRoute = (props) => {
   let directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
   map = new window.google.maps.Map(document.getElementById("map"), options);
-  console.log("IM THE MAP", map);
   directionsRenderer.setMap(map);
   let directionsRequest = {
     origin: new window.google.maps.LatLng({
@@ -50,42 +51,3 @@ function calcRoute() {
 }
 
 export default calcRoute;
-//  const DirectionsService = new window.google.maps.DirectionsService();
-
-// const directionsRequest = ({DirectionsService, origin, destination}) => {
-//     new Promise((resolve, reject) => {
-//         DirectionsService.route(
-//           {
-//             origin: new window.google.maps.LatLng({
-//               lat: 36.974117,
-//               lng: -122.030792,
-//             }),
-//             destination: new window.google.maps.LatLng({
-//               lat: 33.830296,
-//               lng: -116.545296,
-//             }),
-//             travelMode: window.google.maps.TravelMode.DRIVING,
-//           },
-//           (result, status) => {
-//             if (status === window.google.maps.DirectionsStatus.OK) {
-//               resolve(result);
-//             } else {
-//               reject(status);
-//             }
-//           }
-//         );
-//     })
-// }
-
-// const DIRECTION_REQUEST_DELAY = 300;
-
-// const delay = (time) =>
-//   new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve();
-//     }, time);
-//   });
-
-// const [directions, setDirections] = React.useState({});
-
-// const getDirections = (directions)
