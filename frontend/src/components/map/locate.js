@@ -1,11 +1,7 @@
 import React from "react";
 import "@reach/combobox/styles.css";
 
-// const libraries = ["places"];
-
 class Locate extends React.Component {
-  // = ({ panTo }) => {
-
   constructor(props) {
     super(props)
     this.state = {
