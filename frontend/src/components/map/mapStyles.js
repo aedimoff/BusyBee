@@ -1,4 +1,4 @@
-export default [
+const style = [
   {
     featureType: "all",
     elementType: "labels.icon",
@@ -222,3 +222,5 @@ export default [
     ],
   },
 ];
+
+export default style;
