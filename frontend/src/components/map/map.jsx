@@ -82,7 +82,7 @@ const MapThing = (props) => {
             options={options}
             onClick={(e) => {
               // e.preventDefault()
-                openModal("marker", e.placeId)
+                openModal("marker", { placeId: e.placeId })
             }}
 
             onLoad={onMapLoad}
