@@ -4,6 +4,7 @@ import "./map.scss";
 import {
   GoogleMap,
   useLoadScript,
+  Marker
 } from "@react-google-maps/api";
 
 import Search from "./search";
@@ -11,6 +12,7 @@ import Locate from "./locate";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
+// import CustomMarker from "./customMarker";
 
 require("dotenv").config();
 
@@ -36,6 +38,8 @@ const MapThing = (props) => {
     libraries,
   });
 
+  const { openModal } = props;
+
   const mapRef = React.useRef();
   const onMapLoad = ((map) => {
     mapRef.current = map;
@@ -54,6 +58,12 @@ const MapThing = (props) => {
         )
     }
 
+  // function disablePOIInfoWindow(){
+  //   var fnSet = google.maps.InfoWindow.prototype.set;
+  //   google.maps.InfoWindow.prototype.set = function () {
+  //   };
+  // }
+
 
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
@@ -71,8 +81,10 @@ const MapThing = (props) => {
             center={center}
             options={options}
             onClick={(e) => {
-                getFavorite(e.placeId)
+              // e.preventDefault()
+                openModal("marker", e.placeId)
             }}
+
             onLoad={onMapLoad}
           />
       </div>) : <Spinner />
