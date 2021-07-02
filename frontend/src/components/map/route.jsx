@@ -18,15 +18,14 @@ const options = {
 };
 var map;
 const calcRoute = (props) => {
+      console.log("props in calcRoute", props);
+
   let directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
   map = new window.google.maps.Map(document.getElementById("map"), options);
   directionsRenderer.setMap(map);
   let directionsRequest = {
-    origin: new window.google.maps.LatLng({
-      lat: 36.974117,
-      lng: -122.030792,
-    }),
+    origin: props.currentLocation,
     destination: new window.google.maps.LatLng({
       lat: 33.830296,
       lng: -116.545296,

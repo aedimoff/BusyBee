@@ -8,6 +8,7 @@ export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const RECIEVE_LOCATION = "RECIEVE_LOCATION";
 
 export const receiveuser = (user) => ({
   type: RECEIVE_CURRENT_USER,
@@ -42,13 +43,14 @@ export const removeFavorite = (place_id) => ({
   place_id
 });
 
+export const setUserCurrentLocation = currentLocation => ({
+  type: RECIEVE_LOCATION,
+  currentLocation
+})
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then((res) => {
     handleLoginOrSignUpSuccess(res, dispatch);
   });
-// .catch((err) => {
-//   dispatch(receiveErrors(err.response.data));
-// });
 
 export const login = (user) => (dispatch) =>
   APIUtil.login(user)

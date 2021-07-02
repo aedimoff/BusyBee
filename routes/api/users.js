@@ -8,30 +8,6 @@ const keys = require('../../config/keys.js');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-
-// router.get(/getPlace, request) {
-//   MapApiUtil.getCurrentPlace(request).then(response => {
-//     res.json(response.toJson())    
-//   })
-// }
-// router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
-//     res.json({
-//       id: req.user.id,
-//       name: req.user.name,
-//       email: req.user.email,
-//     });
-//   })
-
-
-// router.post(
-//   "/favorites",
-//   (req, res) => {
-
-//     // TODO: create a favorite in mongo
-//      res.send()
-//   }
-// );
-
 router.post("/favorites", (req, res) => {
 
   User.findById(req.body.user_id).then(user => {
