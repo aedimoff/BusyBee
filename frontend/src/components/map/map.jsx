@@ -37,11 +37,11 @@ const MapThing = (props) => {
   });
 
   const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const onMapLoad = ((map) => {
     mapRef.current = map;
   });
 
-  const panTo = React.useCallback(({ lat, lng }) => {
+  const panTo = (({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(20);
   });

@@ -20,15 +20,6 @@ class Signup extends React.Component {
     this.props.removeErrors();
   }
 
-  // showModal() {
-  //   state = {
-  //       show: false,
-  //   };
-  //   showModal = (e) => {
-  //       this.setState({ show: true });
-  //   };
-  // }
-
   handleInput(type) {
     return (e) => {
         this.setState({ [type]: e.target.value })
@@ -57,7 +48,7 @@ displayErrors() {
   };
 
   render () {
-    const { openModal, closeModal } = this.props;
+    const { openModal } = this.props;
     return (
       <div className="signup-container">
         <div onClick={this.props.closeModal} className="close-x"><MdClose size={25}/></div>

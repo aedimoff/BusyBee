@@ -12,7 +12,7 @@ const initialState = {
   }
 };
 
-export default function (state = initialState, action) {
+const sessionApiReducer = (state = initialState, action) => {
   let favorites;
   Object.freeze(state);
   switch (action.type) {
@@ -57,3 +57,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default sessionApiReducer;
