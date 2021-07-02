@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from "react";
 import "./map.scss";
 import {
@@ -52,6 +53,7 @@ const MapThing = (props) => {
             console.log(err)
         )
     }
+
 
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
