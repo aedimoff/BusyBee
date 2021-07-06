@@ -32,10 +32,13 @@ export const removeErrors = () => ({
   type: REMOVE_ERRORS,
 });
 
-export const receiveFavorite = (favorite) => ({
+export const receiveFavorite = (favorite) => {
+  console.log("in receive favourite", favorite)
+  return {
   type: RECEIVE_FAVORITE,
   favorite,
-});
+  }
+};
 
 export const removeFavorite = (place_id) => ({
   type: REMOVE_FAVORITE,
@@ -74,10 +77,12 @@ export const logout = () => (dispatch) => {
   dispatch(logoutUser());
 };
 
-export const addFavorite = (favorite, user_id) => (dispatch) =>
-  APIUtil.addFavorite(favorite, user_id)
+export const addFavorite = (favorite, user_id) => (dispatch) => {
+  console.log("API util", favorite) 
+  return (APIUtil.addFavorite(favorite, user_id)
     .then((_response) => dispatch(receiveFavorite(favorite)))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err)))
+  };
 
 export const deleteFavorite = (place_id, user_id) => (dispatch) => {
   APIUtil.deleteFavorite(place_id, user_id)

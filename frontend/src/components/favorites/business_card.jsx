@@ -5,15 +5,20 @@ import { AiOutlineCheckSquare } from 'react-icons/ai';
 import '../main/main.scss'
 
 class BusinessCard extends React.Component{
+  constructor(props) {
+    super(props)
 
-    addToSelected() {
-        // if !selected
-        // some function to add to selected if we're still doing that
-        // selected add to "selected" array, which interacts with directions api, 
+    this.state = {
+      selected: 'false'
     }
+  }
 
-    removeFromSelected() {
-        // if selected 
+    toggleSelected() {
+        if (this.state.selected === 'false') {
+          this.setState({selected: 'true'});
+        } else {
+          this.setState({selected: 'false'});
+        }
     }
     
     handleClick() {
@@ -28,7 +33,7 @@ class BusinessCard extends React.Component{
               <div className="click-icons"> 
               <p>Remove Favorite</p>
               <AiOutlineHeart size={18} onClick={() => deleteFavorite(place_id, user_id)} className="heart-icon"/>
-                {/* <AiOutlineCheckSquare size={18} className="check-icon"/> */}
+                <AiOutlineCheckSquare onClick={() => this.toggleSelected()} size={18} className="check-icon"/>
               </div>
                 <h1 className="business-title">{name}</h1>
                 <h3 className="business-address">{formatted_address}</h3>

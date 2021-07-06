@@ -57,6 +57,21 @@ const MapThing = (props) => {
             console.log(err)
         )
     }
+    function fixInfoWindow() {
+      //Here we redefine set() method.
+      //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
+      //As Google doesn't know about this option, its InfoWindows will not be opened.
+      var set = google.maps.InfoWindow.prototype.set;
+      google.maps.InfoWindow.prototype.set = function (key, val) {
+          if (key === 'map') {
+              if (!this.get('noSupress')) {
+                  console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
+                  return;
+              }
+          }
+          set.apply(this, arguments);
+      }
+  }
 
   // function disablePOIInfoWindow(){
   //   var fnSet = google.maps.InfoWindow.prototype.set;
@@ -81,8 +96,9 @@ const MapThing = (props) => {
             center={center}
             options={options}
             onClick={(e) => {
-              // e.preventDefault()
+              if (e.placeId) {
                 openModal("marker", { placeId: e.placeId })
+              }
             }}
 
             onLoad={onMapLoad}

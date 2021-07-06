@@ -19,6 +19,7 @@ function Modal({type, params, closeModal}) {
       component = <SignupFormContainer />;
       break;
     case 'marker':
+      // component = <InfoWindowContainer placeId={params.placeId}/>;
       component = <InfoWindowContainer placeId={params.placeId}/>;
       break;
     default:
