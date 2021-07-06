@@ -7,7 +7,6 @@ const mapStateToProps = state => ({
     currentLocation: state.sessionApi.location
 })
 
-// TODO: Take property off the google response 
 const mapDispatchToProps = dispatch => ({
     addFavorite: (property, user_id) => dispatch(addFavorite(property, user_id)),
     setUserCurrentLocation: (currentLocation) => dispatch(setUserCurrentLocation(currentLocation))
