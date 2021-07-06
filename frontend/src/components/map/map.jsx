@@ -82,30 +82,28 @@ const MapThing = (props) => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-  
 
-  const display = isLoaded ? (
-    <div className="map" id="map">
-      <Search panTo={panTo} />
-      <Locate panTo={panTo} />
-      <button onClick={calcRoute}>Test Route</button>
+  return (
+    <div className="map-container">
+        <div className="map" id="map">
+          <Search panTo={panTo} />
+          <Locate panTo={panTo} />
+          <button onClick={() => calcRoute(props.currentLocation)}>Test Route</button>
 
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={14}
-        center={center}
-        options={options}
-        onClick={(e) => {
-          getFavorite(e.placeId);
-        }}
-        onLoad={onMapLoad}
-      />
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={14}
+            center={center}
+            options={options}
+            onClick={(e) => {
+              getFavorite(e.placeId);
+            }}
+            onLoad={onMapLoad}
+          />
+        </div>  
     </div>
-  ) : (
-    <Spinner />
-  );
+  )
 
-  return <div className="map-container">{display}</div>;
 };
 
 export default MapThing;

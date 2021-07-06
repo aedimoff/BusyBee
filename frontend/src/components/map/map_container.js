@@ -4,7 +4,7 @@ import MapThing from './map'
 
 const mapStateToProps = state => ({
     userId: state?.sessionApi?.user?.id,
-    currentLocation: state.sessionApi.currentLocation
+    currentLocation: state.sessionApi.location
 })
 
 // TODO: Take property off the google response 
