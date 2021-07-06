@@ -2,10 +2,15 @@
 import React from "react";
 import "./map.scss";
 import mapStyles from "./mapStyles";
+import Directions from "./directions";
 
+// const favs = [
+//   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
+//   { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
+// ];
 
 const options = {
-    styles: mapStyles,
+  styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true,
   zoom: 14,
@@ -17,8 +22,7 @@ const options = {
   width: "100vw",
 };
 var map;
-const calcRoute = (currentLocation) => {
-
+const calcRoute = (currentLocation, selectedFavorites) => {
   let directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
   map = new window.google.maps.Map(document.getElementById("map"), options);
@@ -32,19 +36,18 @@ const calcRoute = (currentLocation) => {
       trafficModel: "bestguess",
     },
     //   unitSystem: google.maps.UnitSystem.METRIC,
-    waypoints: [
-      { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
-      { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
-    ],
-    // optimizeWaypoints: Boolean,
+    waypoints: selectedFavorites,
+    optimizeWaypoints: true,
     provideRouteAlternatives: true,
     region: "US",
   };
-  directionsService.route(directionsRequest, function(response, status) {
-      if (status == 'OK') {
-        directionsRenderer.setDirections(response);
-      }
-    });
-}
+  directionsService.route(directionsRequest, function (response, status) {
+    if (status == "OK") {
+      
+      const legs = response.routes[0].legs;
+      directionsRenderer.setDirections(response);
+    }
+  });
+};
 
 export default calcRoute;

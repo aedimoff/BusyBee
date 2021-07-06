@@ -4,7 +4,8 @@ import MapThing from './map'
 
 const mapStateToProps = state => ({
     userId: state?.sessionApi?.user?.id,
-    currentLocation: state.sessionApi.location
+    currentLocation: state.sessionApi.location,
+    favorites: state?.sessionApi?.user?.favorites
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -29,6 +29,26 @@ const MapThing = (props) => {
     disableDefaultUI: true,
     zoomControl: true,
   };
+
+  //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
+  // { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
+
+const selectedFavorites = favorites => {
+   let selected = [];
+   for (let i = 0; i < favorites.length; i++) {
+     let fave = favorites[i];
+    //  if (fave.selected) {
+       selected.push({
+         location: {
+           lat: fave.geometry.location.lat,
+           lng: fave.geometry.location.lng,
+         },
+         stopover: true,
+       });
+    //  }
+   }
+   return selected;
+ } 
   
   const [center, setCenter] = useState(defaultCenter)
   // console.log("CENTER in map state", center);
@@ -88,7 +108,7 @@ const MapThing = (props) => {
         <div className="map" id="map">
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
-          <button onClick={() => calcRoute(props.currentLocation)}>Test Route</button>
+          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.favorites))}>Test Route</button>
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
@@ -96,7 +116,9 @@ const MapThing = (props) => {
             center={center}
             options={options}
             onClick={(e) => {
-              getFavorite(e.placeId);
+              if(e.placeId) {
+                getFavorite(e.placeId);
+              }
             }}
             onLoad={onMapLoad}
           />
