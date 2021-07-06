@@ -78,7 +78,7 @@ export const logout = () => (dispatch) => {
 };
 
 export const addFavorite = (favorite, user_id) => (dispatch) => {
-  console.log("API util", favorite) 
+  console.log("API util", user_id) 
   return (APIUtil.addFavorite(favorite, user_id)
     .then((_response) => dispatch(receiveFavorite(favorite)))
     .catch((err) => console.log(err)))

@@ -4,7 +4,7 @@ import InfoWindow from './infoWindow';
 import { closeModal } from "../../actions/modal_actions";
 
 const mSTP = (state) => ({
-  user: state.sessionApi.user,
+  userId: state.sessionApi.user.id,
   favorites: state?.sessionApi?.user?.favorites,
 });
 

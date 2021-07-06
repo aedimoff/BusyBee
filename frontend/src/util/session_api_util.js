@@ -17,7 +17,6 @@ export const login = (userData) => {
 };
 
 export const addFavorite = (favorite, user_id) => {
-  console.log("add-favorite API UTIL", favorite)
   return axios.post(`api/users/favorites`, { favorite, user_id })
 };
 

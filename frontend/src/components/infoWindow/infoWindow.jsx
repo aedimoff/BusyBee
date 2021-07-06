@@ -25,7 +25,7 @@ class InfoWindow extends React.Component {
       <div className="business-card-container">
       <div className="business-card">
           <div className="click-icons"> 
-          <AiOutlineHeart size={18} onClick={() => {this.getFavorite(placeId); closeModal()}} className="heart-icon"/>
+          <AiOutlineHeart size={18} onClick={() => {this.getFavorite(placeId)}} className="heart-icon"/>
           </div>
             <h1 className="business-title">{name}</h1>
             <h3 className="business-address">{formatted_address}</h3>
