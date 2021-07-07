@@ -46,7 +46,7 @@ class NavBar extends React.Component {
       return (
         <div className="navbar">
           <div className="logo-container">
-            <img className="top-logo" src={logo1} alt="bee logo"/>
+            <img className="top-logo" src={logo2} alt="bee logo"/>
           </div>
           <div className="login-signup">
             <div className="login-btn" onClick={() => openModal("login")}>Log in</div>

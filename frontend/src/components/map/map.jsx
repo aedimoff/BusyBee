@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import "./map.scss";
+=======
+/* eslint-disable no-undef */
+import React from "react";
+import "./map.scss";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker
+} from "@react-google-maps/api";
+>>>>>>> 6677f4df082843901e8eed417571858592cef86d
 
 import Search from "./search";
 import Locate from "./locate";
@@ -7,6 +18,7 @@ import calcRoute from "./route";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
 import Spinner from "../spinner/spinner";
+// import CustomMarker from "./customMarker";
 
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
@@ -59,6 +71,8 @@ const selectedFavorites = favorites => {
     libraries: ["places"],
   });
 
+  const { openModal } = props;
+
   const mapRef = React.useRef();
   const onMapLoad = (map) => {
     mapRef.current = map;
@@ -97,7 +111,32 @@ const selectedFavorites = favorites => {
       // console.log("in else");
       setCenter(defaultCenter);
     }
+<<<<<<< HEAD
   });
+=======
+    function fixInfoWindow() {
+      //Here we redefine set() method.
+      //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
+      //As Google doesn't know about this option, its InfoWindows will not be opened.
+      var set = google.maps.InfoWindow.prototype.set;
+      google.maps.InfoWindow.prototype.set = function (key, val) {
+          if (key === 'map') {
+              if (!this.get('noSupress')) {
+                  console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
+                  return;
+              }
+          }
+          set.apply(this, arguments);
+      }
+  }
+
+  // function disablePOIInfoWindow(){
+  //   var fnSet = google.maps.InfoWindow.prototype.set;
+  //   google.maps.InfoWindow.prototype.set = function () {
+  //   };
+  // }
+
+>>>>>>> 6677f4df082843901e8eed417571858592cef86d
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -116,10 +155,11 @@ const selectedFavorites = favorites => {
             center={center}
             options={options}
             onClick={(e) => {
-              if(e.placeId) {
-                getFavorite(e.placeId);
+              if (e.placeId) {
+                openModal("marker", { placeId: e.placeId })
               }
             }}
+
             onLoad={onMapLoad}
           />
         </div>  

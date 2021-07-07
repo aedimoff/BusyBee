@@ -9,7 +9,6 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 router.post("/favorites", (req, res) => {
-
   User.findById(req.body.user_id).then(user => {
     const favorites = user.favorites
     

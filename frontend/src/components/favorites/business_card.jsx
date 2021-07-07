@@ -5,15 +5,20 @@ import { AiOutlineCheckSquare } from 'react-icons/ai';
 import '../main/main.scss'
 
 class BusinessCard extends React.Component{
+  constructor(props) {
+    super(props)
 
-    addToSelected() {
-        // if !selected
-        // some function to add to selected if we're still doing that
-        // selected add to "selected" array, which interacts with directions api, 
+    this.state = {
+      selected: 'false'
     }
+  }
 
-    removeFromSelected() {
-        // if selected 
+    toggleSelected() {
+        if (this.state.selected === 'false') {
+          this.setState({selected: 'true'});
+        } else {
+          this.setState({selected: 'false'});
+        }
     }
     
     handleClick() {

@@ -4,7 +4,7 @@ export const getPlaceInfo = (placeId) => {
         `/api/googleroute/getplace`,
         { params: { 
             placeId: placeId
-          } 
+            } 
         }
     );
 }

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { addFavorite, deleteFavorite } from "../../actions/session_actions";
 import { receiveSelected, removeSelected, clearSelected } from "../../actions/selected_actions";
 import FavoritesIndex from "./favorites_index";
+import { closeModal } from "../../actions/modal_actions";
 
 const mSTP = (state) => ({
   user: state.sessionApi.user,
