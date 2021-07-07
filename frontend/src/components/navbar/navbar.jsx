@@ -31,7 +31,7 @@ class NavBar extends React.Component {
             <img className="top-logo2" src={logo2} alt="bee logo"/>
           </div>
           <div className="nav-greeting">
-            <a href="https://github.com/aedimoff/ErrantErrands/wiki" target="_blank"
+            <a href="https://github.com/aedimoff/ErrantErrands/wiki" 
             className="nav-icons"><FaGithub size={28}/></a>
             <div className="user-greeting">
               Hello, {this.getName()}!

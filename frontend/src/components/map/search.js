@@ -7,21 +7,9 @@ import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
-  ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-
-
-const libraries = ["places"];
-
-const Locate = ({panTo}) => {
-  return (
-  <button className="locate">
-    <img src="compass.svg" alt="compass - locate me" />
-  </button>
-  );
-}
 
 const Search = ({ panTo }) => {
 
