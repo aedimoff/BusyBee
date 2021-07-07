@@ -1,26 +1,14 @@
-<<<<<<< HEAD
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
 import "./map.scss";
-=======
-/* eslint-disable no-undef */
-import React from "react";
-import "./map.scss";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker
-} from "@react-google-maps/api";
->>>>>>> 6677f4df082843901e8eed417571858592cef86d
-
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import Search from "./search";
 import Locate from "./locate";
 import calcRoute from "./route";
 import mapStyles from "./mapStyles";
 import * as MapAPIUtil from "../../util/map_api_util";
-import Spinner from "../spinner/spinner";
 // import CustomMarker from "./customMarker";
 
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 require("dotenv").config();
 
@@ -45,10 +33,10 @@ const MapThing = (props) => {
   //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
   // { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
 
-const selectedFavorites = favorites => {
+const selectedFavorites = selectedArray => {
    let selected = [];
-   for (let i = 0; i < favorites.length; i++) {
-     let fave = favorites[i];
+   for (let i = 0; i < selectedArray.length; i++) {
+     let fave = selectedArray[i];
     //  if (fave.selected) {
        selected.push({
          location: {
@@ -83,13 +71,13 @@ const selectedFavorites = favorites => {
     mapRef.current.setZoom(20);
   };
 
-  const getFavorite = (placeId) => {
-    MapAPIUtil.getPlaceInfo(placeId)
-      .then((res) => {
-        return props.addFavorite(res.data.result, props.userId);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const getFavorite = (placeId) => {
+  //   MapAPIUtil.getPlaceInfo(placeId)
+  //     .then((res) => {
+  //       return props.addFavorite(res.data.result, props.userId);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -111,32 +99,7 @@ const selectedFavorites = favorites => {
       // console.log("in else");
       setCenter(defaultCenter);
     }
-<<<<<<< HEAD
   });
-=======
-    function fixInfoWindow() {
-      //Here we redefine set() method.
-      //If it is called for map option, we hide InfoWindow, if "noSupress" option isnt true.
-      //As Google doesn't know about this option, its InfoWindows will not be opened.
-      var set = google.maps.InfoWindow.prototype.set;
-      google.maps.InfoWindow.prototype.set = function (key, val) {
-          if (key === 'map') {
-              if (!this.get('noSupress')) {
-                  console.log('This InfoWindow is supressed. To enable it, set "noSupress" option to true');
-                  return;
-              }
-          }
-          set.apply(this, arguments);
-      }
-  }
-
-  // function disablePOIInfoWindow(){
-  //   var fnSet = google.maps.InfoWindow.prototype.set;
-  //   google.maps.InfoWindow.prototype.set = function () {
-  //   };
-  // }
-
->>>>>>> 6677f4df082843901e8eed417571858592cef86d
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -147,7 +110,7 @@ const selectedFavorites = favorites => {
         <div className="map" id="map">
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
-          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.favorites))}>Test Route</button>
+          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}>Test Route</button>
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
