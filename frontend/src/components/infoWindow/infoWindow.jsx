@@ -9,6 +9,7 @@ class InfoWindow extends React.Component {
   constructor(props) {
     super(props);
     this.getFavorite = this.getFavorite.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   getFavorite = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId).then(res => { 
@@ -17,15 +18,19 @@ class InfoWindow extends React.Component {
         console.log(err)
     )
   }
+
+  handleClick = (placeId) => {
+    this.getFavorite(placeId)
+    this.props.closeModal()
+  }
   render() {
     
     const { formatted_address, placeId, name, rating, website, closeModal } = this.props
-    console.log("props in infowindow", this.props)
     return (
       <div className="business-card-container">
       <div className="business-card">
           <div className="click-icons"> 
-          {/* <AiOutlineHeart size={18} onClick={() => {this.getFavorite(placeId), closeModal()}} className="heart-icon"/> */}
+          <AiOutlineHeart size={18} onClick={() => {this.handleClick(placeId)}} className="heart-icon"/>
           </div>
             <h1 className="business-title">{name}</h1>
             <h3 className="business-address">{formatted_address}</h3>
