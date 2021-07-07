@@ -33,9 +33,7 @@ const validateLoginInput = require('../../validation/login');
 // );
 
 router.post("/favorites", (req, res) => {
-  console.log("in user route")
   User.findById(req.body.user_id).then(user => {
-    console.log("in route", user)
     const favorites = user.favorites
     
     favorites.push(req.body.favorite)
