@@ -6,7 +6,7 @@ import '../main/main.scss'
 class FavoritesIndex extends React.Component {
 
     render() {
-        const { favorites, user, addFavorite, deleteFavorite } = this.props
+        const { favorites, user, addFavorite, deleteFavorite, receiveSelected } = this.props
 
         // Filter out null or undefined values (bad data)
         const filteredFavorites = favorites.filter((fav) => fav != null || fav != undefined)
@@ -27,8 +27,10 @@ class FavoritesIndex extends React.Component {
                                     website={favorites.website}  
                                     place_id={favorite.place_id}
                                     user_id={user.id}
+                                    favorite={favorite}
                                     addFavorite={addFavorite}   
                                     deleteFavorite={deleteFavorite}
+                                    receiveSelected={receiveSelected}
                                 />
                             )) : ""
                         }
