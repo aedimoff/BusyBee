@@ -42,8 +42,9 @@ const calcRoute = (currentLocation, selectedFavorites) => {
   };
   directionsService.route(directionsRequest, function (response, status) {
     if (status === "OK") {
-      
       const legs = response.routes[0].legs;
+      // console.log("legs", legs)
+      Directions(legs);
       directionsRenderer.setDirections(response);
     }
   });
