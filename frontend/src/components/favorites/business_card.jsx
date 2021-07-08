@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
+// import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
 import '../main/main.scss'
 
@@ -26,7 +26,7 @@ class BusinessCard extends React.Component{
     }
 
   render() {
-    const { formatted_address, favorite, place_id, user_id, name, lat, lng, rating, types, website, addFavorite, deleteFavorite, receiveSelected } = this.props
+    const { formatted_address, favorite, place_id, user_id, name, rating, website, deleteFavorite, receiveSelected } = this.props
     return(
         <div className="business-card-container">
           <div className="business-card">

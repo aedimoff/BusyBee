@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import React from "react";
 import "./map.scss";
 import mapStyles from "./mapStyles";
 import Directions from "./directions";
@@ -42,7 +41,7 @@ const calcRoute = (currentLocation, selectedFavorites) => {
     region: "US",
   };
   directionsService.route(directionsRequest, function (response, status) {
-    if (status == "OK") {
+    if (status === "OK") {
       
       const legs = response.routes[0].legs;
       directionsRenderer.setDirections(response);

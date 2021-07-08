@@ -6,8 +6,6 @@ import Search from "./search";
 import Locate from "./locate";
 import calcRoute from "./route";
 import mapStyles from "./mapStyles";
-import * as MapAPIUtil from "../../util/map_api_util";
-// import CustomMarker from "./customMarker";
 
 
 require("dotenv").config();
@@ -52,10 +50,12 @@ const selectedFavorites = selectedArray => {
   
   const [center, setCenter] = useState(defaultCenter)
 
+  const libraries = ['places']
+
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
-    libraries: ["places"],
+    libraries,
   });
 
   const { openModal } = props;

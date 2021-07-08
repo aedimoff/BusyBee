@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillHeart } from 'react-icons/ai';
-import { AiOutlineCheckSquare } from 'react-icons/ai';
+// import { AiFillHeart } from 'react-icons/ai';
+// import { AiOutlineCheckSquare } from 'react-icons/ai';
 import * as MapAPIUtil from "../../util/map_api_util";
 
 class InfoWindow extends React.Component {

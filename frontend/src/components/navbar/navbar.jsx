@@ -1,6 +1,5 @@
 import React from "react";
 import "./navbar.scss";
-import logo1 from "../../assets/busybeebrown.png";
 import logo2 from "../../assets/busybeeblue.png";
 import { FaGithub } from 'react-icons/fa';
 
