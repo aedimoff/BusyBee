@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
+import { getDirections } from "../../actions/directions_actions";
 import "./map.scss";
 import mapStyles from "./mapStyles";
-import { getDirections } from "../../actions/directions_actions"
 
 // const favs = [
 //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
@@ -21,21 +21,42 @@ const options = {
   width: "100vw",
 };
 var map;
-const calcRoute = (currentLocation, selectedFavorites) => {
-  let directionsService = new google.maps.DirectionsService();
-  var directionsRenderer = new google.maps.DirectionsRenderer();
+var directionsService;
+var directionsRenderer;
+const calcRoute = (props) => {
+  console.log("LEGSLEGSLEGS", props)
+
+  const selectedFavorites = (selectedArray) => {
+    let selected = [];
+    for (let i = 0; i < selectedArray.length; i++) {
+      let fave = selectedArray[i];
+      //  if (fave.selected) {
+      selected.push({
+        location: {
+          lat: fave.geometry.location.lat,
+          lng: fave.geometry.location.lng,
+        },
+        stopover: true,
+      });
+      //  }
+    }
+    return selected;
+  }; 
+
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer();
   map = new window.google.maps.Map(document.getElementById("map"), options);
   directionsRenderer.setMap(map);
   let directionsRequest = {
-    origin: currentLocation,
-    destination: currentLocation,
+    origin: props.currentLocation,
+    destination: props.currentLocation,
     travelMode: "DRIVING",
     drivingOptions: {
       departureTime: new Date(Date.now()),
       trafficModel: "bestguess",
     },
     //   unitSystem: google.maps.UnitSystem.METRIC,
-    waypoints: selectedFavorites,
+    waypoints: selectedFavorites(props.selected),
     optimizeWaypoints: true,
     provideRouteAlternatives: true,
     region: "US",
@@ -43,11 +64,10 @@ const calcRoute = (currentLocation, selectedFavorites) => {
   directionsService.route(directionsRequest, function (response, status) {
     if (status === "OK") {
       const legs = response.routes[0].legs;
-      // console.log("legs", legs)
-      getDirections(legs);
+      props.getDirections(legs);
       directionsRenderer.setDirections(response);
     }
-  });
+  })
 };
 
 export default calcRoute;

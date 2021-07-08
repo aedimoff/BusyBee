@@ -7,6 +7,7 @@ import Splash from './main/splash';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
 import Directions from './map/directions';
+// import RouteContainer from "../components/map/route_container";
 // import MapContainer from './map/map_container';
 import './app1.scss';
 require('dotenv').config()
@@ -25,6 +26,7 @@ const App = () => {
       <header className="header">
         <Route path="/" component={NavBarContainer}></Route>
       </header>
+      {/* <RouteContainer></RouteContainer> */}
       <Directions></Directions>
       <Switch className="switch">
           <ProtectedRoute exact path="/home" component={Home} />

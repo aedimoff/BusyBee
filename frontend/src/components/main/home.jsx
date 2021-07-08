@@ -1,5 +1,6 @@
 import React from 'react';
 import MapContainer from '../map/map_container';
+import RouteContainer from "../map/route_container";
 import FavoritesIndexContainer from '../favorites/favorites_index_container';
 
 class Home extends React.Component {
@@ -8,7 +9,7 @@ class Home extends React.Component {
     return (
       <div className="home-container">
         <div className="map-container">
-          <MapContainer />
+          <MapContainer><RouteContainer/></MapContainer>
         </div>
           <FavoritesIndexContainer />
       </div>

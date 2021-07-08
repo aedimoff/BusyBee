@@ -30,23 +30,6 @@ const MapThing = (props) => {
 
   //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
   // { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
-
-const selectedFavorites = selectedArray => {
-   let selected = [];
-   for (let i = 0; i < selectedArray.length; i++) {
-     let fave = selectedArray[i];
-    //  if (fave.selected) {
-       selected.push({
-         location: {
-           lat: fave.geometry.location.lat,
-           lng: fave.geometry.location.lng,
-         },
-         stopover: true,
-       });
-    //  }
-   }
-   return selected;
- } 
   
   const [center, setCenter] = useState(defaultCenter)
 
@@ -106,7 +89,7 @@ const selectedFavorites = selectedArray => {
         <div className="map" id="map">
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
-          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}>Test Route</button>
+          <button onClick={calcRoute}>Test Route</button>
 
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
