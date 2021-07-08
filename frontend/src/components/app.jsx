@@ -12,7 +12,12 @@ require('dotenv').config()
 
 
 
-const App = () => (
+const App = () => {
+    React.useEffect(() => {
+      localStorage.setItem("favorites", JSON.stringify());
+    });
+    
+  return (
     <div className="App">
       <Modal />
       {/* <Home /> */}
@@ -28,7 +33,8 @@ const App = () => (
           Copyright &copy; 2021 A DreamTeam Production
       </footer>
     </div>
-);
+  )
+  };
 
 
 export default App;

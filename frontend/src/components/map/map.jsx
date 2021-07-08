@@ -51,7 +51,6 @@ const selectedFavorites = selectedArray => {
  } 
   
   const [center, setCenter] = useState(defaultCenter)
-  // console.log("CENTER in map state", center);
 
 
   const { isLoaded, loadError } = useLoadScript({
@@ -83,7 +82,6 @@ const selectedFavorites = selectedArray => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         if (position) {
-          // console.log("in position branch");
           const center = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
@@ -91,12 +89,10 @@ const selectedFavorites = selectedArray => {
           setCenter(center);
           props.setUserCurrentLocation(center)
         } else {
-          // console.log("in position else");
           setCenter(defaultCenter);
         }
       });
     } else {
-      // console.log("in else");
       setCenter(defaultCenter);
     }
   });

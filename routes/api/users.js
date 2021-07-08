@@ -10,6 +10,15 @@ const validateLoginInput = require('../../validation/login');
 
 router.post("/favorites", (req, res) => {
   User.findById(req.body.user_id).then(user => {
+    res.send(user.favorites)
+  }).catch(error =>{
+    console.log("ERROR!!!!")
+    console.log(error)
+  })
+});
+
+router.post("/favorite", (req, res) => {
+  User.findById(req.body.user_id).then(user => {
     const favorites = user.favorites
     
     favorites.push(req.body.favorite)
@@ -30,8 +39,10 @@ router.post("/favorites", (req, res) => {
 });
 
 router.delete("/favorites", (req, res) => {
+  console.log("in delete route", req)
   
   User.findById(req.body.user_id).then(user => {
+    console.log("USER in delete route", user)
     const favorites = user.favorites
 
     

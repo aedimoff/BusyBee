@@ -3,6 +3,7 @@ import {
   RECEIVE_USER_LOGOUT,
   RECEIVE_FAVORITE,
   REMOVE_FAVORITE,
+  RECEIVE_ALL_FAVORITES,
   RECIEVE_LOCATION
 } from "../actions/session_actions";
 
@@ -29,6 +30,16 @@ const sessionApiReducer = (state = initialState, action) => {
         ...state,
         location: action.currentLocation
       }
+    case RECEIVE_ALL_FAVORITES:
+      console.log("in reducer", action.favorites.data)
+      favorites = action.favorites.data
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favorites: favorites
+        }
+      };
     case RECEIVE_FAVORITE:
       favorites = state.user.favorites;
       favorites.push(action.favorite);

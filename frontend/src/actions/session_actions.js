@@ -8,6 +8,7 @@ export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const RECEIVE_FAVORITE = "RECEIVE_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const RECEIVE_ALL_FAVORITES = "RECEIVE_ALL_FAVORITES";
 export const RECIEVE_LOCATION = "RECIEVE_LOCATION";
 
 export const receiveuser = (user) => ({
@@ -33,16 +34,19 @@ export const removeErrors = () => ({
   type: REMOVE_ERRORS,
 });
 
-export const receiveFavorite = (favorite) => {
-  return {
+export const receiveFavorite = (favorite) => ({
   type: RECEIVE_FAVORITE,
   favorite,
-  }
-};
+});
+
+export const receiveAllFavorites = (favorites) => ({
+  type: RECEIVE_ALL_FAVORITES,
+  favorites
+});
 
 export const removeFavorite = (place_id) => ({
-  type: REMOVE_FAVORITE,
-  place_id
+    type: REMOVE_FAVORITE,
+    place_id
 });
 
 export const setUserCurrentLocation = currentLocation => ({
@@ -88,3 +92,10 @@ export const deleteFavorite = (place_id, user_id) => (dispatch) => {
   APIUtil.deleteFavorite(place_id, user_id)
     .then((_response) => dispatch(removeFavorite(place_id)))
     .catch((err) => console.log("ERROR DELETING", err)); }
+
+export const fetchAllFavorites = (userId) => (dispatch) => {
+  APIUtil.getAllFavorites(userId)
+    .then(favorites => dispatch(receiveAllFavorites(favorites)))
+}
+
+

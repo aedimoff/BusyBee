@@ -2,7 +2,6 @@ import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
-import { closeModal } from '../../actions/modal_actions';
 import * as MapAPIUtil from "../../util/map_api_util";
 
 class InfoWindow extends React.Component {
@@ -25,7 +24,7 @@ class InfoWindow extends React.Component {
   }
   render() {
     
-    const { formatted_address, placeId, name, rating, website, closeModal } = this.props
+    const { formatted_address, placeId, name, rating, website } = this.props
     return (
       <div className="business-card-container">
       <div className="business-card">
