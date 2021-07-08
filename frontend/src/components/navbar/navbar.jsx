@@ -1,6 +1,5 @@
 import React from "react";
 import "./navbar.scss";
-import logo1 from "../../assets/busybeebrown.png";
 import logo2 from "../../assets/busybeeblue.png";
 import { FaGithub } from 'react-icons/fa';
 
@@ -46,7 +45,7 @@ class NavBar extends React.Component {
       return (
         <div className="navbar">
           <div className="logo-container">
-            <img className="top-logo" src={logo1} alt="bee logo"/>
+            <img className="top-logo" src={logo2} alt="bee logo"/>
           </div>
           <div className="login-signup">
             <div className="login-btn" onClick={() => openModal("login")}>Log in</div>

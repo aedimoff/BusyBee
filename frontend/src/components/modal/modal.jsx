@@ -3,19 +3,24 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_container';
 import SignupFormContainer from '../session/signup_container';
+import InfoWindowContainer from '../infoWindow/infoWindowContainer';
 import './_modal.scss';
 
-function Modal({modal, closeModal}) {
-  if (!modal) {
+function Modal({type, params, closeModal}) {
+  if (!type) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (type) {
     case 'login':
       component = <LoginFormContainer />;
       break;
     case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'marker':
+      // component = <InfoWindowContainer placeId={params.placeId}/>;
+      component = <InfoWindowContainer placeId={params.placeId}/>;
       break;
     default:
       return null;
@@ -31,7 +36,8 @@ function Modal({modal, closeModal}) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.modal
+    type: state.modal.type,
+    params: state.modal.params
   };
 };
 

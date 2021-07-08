@@ -8,32 +8,16 @@ const keys = require('../../config/keys.js');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-
-// router.get(/getPlace, request) {
-//   MapApiUtil.getCurrentPlace(request).then(response => {
-//     res.json(response.toJson())    
-//   })
-// }
-// router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
-//     res.json({
-//       id: req.user.id,
-//       name: req.user.name,
-//       email: req.user.email,
-//     });
-//   })
-
-
-// router.post(
-//   "/favorites",
-//   (req, res) => {
-
-//     // TODO: create a favorite in mongo
-//      res.send()
-//   }
-// );
-
 router.post("/favorites", (req, res) => {
+  User.findById(req.body.user_id).then(user => {
+    res.send(user.favorites)
+  }).catch(error =>{
+    console.log("ERROR!!!!")
+    console.log(error)
+  })
+});
 
+router.post("/favorite", (req, res) => {
   User.findById(req.body.user_id).then(user => {
     const favorites = user.favorites
     
@@ -74,15 +58,6 @@ router.delete("/favorites", (req, res) => {
     }).catch(err => {
       console.log(err)
     })
-    // .catch(saveErr => {
-    //   res.status(500).json({
-    //     success: false,
-    //     user: saveErr
-    //   }).catch(err => {
-    //     res.status(500).json({user: err})
-    //   })
-    // })
-
   });
 });
 
