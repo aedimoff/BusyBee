@@ -3,11 +3,13 @@ import {
   REMOVE_SELECTED,
   CLEAR_SELECTED,
 } from "../actions/selected_actions";
+// import { GET_DIRECTIONS } from "../actions/directions_actions";
 const initialState = {
   selected: []
 };
 
 const SelectedReducer = (state = initialState, action) => {
+  console.log("selected reducer", action)
   Object.freeze(state);
   let selected = [];
 

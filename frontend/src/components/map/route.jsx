@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import "./map.scss";
 import mapStyles from "./mapStyles";
-import Directions from "./directions";
+import { getDirections } from "../../actions/directions_actions"
 
 // const favs = [
 //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
@@ -44,7 +44,7 @@ const calcRoute = (currentLocation, selectedFavorites) => {
     if (status === "OK") {
       const legs = response.routes[0].legs;
       // console.log("legs", legs)
-      Directions(legs);
+      getDirections(legs);
       directionsRenderer.setDirections(response);
     }
   });
