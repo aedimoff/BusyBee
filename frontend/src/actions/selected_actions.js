@@ -1,5 +1,3 @@
-import * as ApiUtil from '../util/selecteds_api_util';
-
 export const RECEIVE_SELECTED = "RECEIVE_SELECTED"
 export const REMOVE_SELECTED = "REMOVE_SELECTED"
 export const CLEAR_SELECTED = "CLEAR_SELECTED"

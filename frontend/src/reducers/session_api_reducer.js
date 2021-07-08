@@ -31,7 +31,6 @@ const sessionApiReducer = (state = initialState, action) => {
         location: action.currentLocation
       }
     case RECEIVE_ALL_FAVORITES:
-      console.log("in reducer", action.favorites.data)
       favorites = action.favorites.data
       return {
         ...state,

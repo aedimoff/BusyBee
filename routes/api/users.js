@@ -39,10 +39,8 @@ router.post("/favorite", (req, res) => {
 });
 
 router.delete("/favorites", (req, res) => {
-  console.log("in delete route", req)
   
   User.findById(req.body.user_id).then(user => {
-    console.log("USER in delete route", user)
     const favorites = user.favorites
 
     
@@ -60,15 +58,6 @@ router.delete("/favorites", (req, res) => {
     }).catch(err => {
       console.log(err)
     })
-    // .catch(saveErr => {
-    //   res.status(500).json({
-    //     success: false,
-    //     user: saveErr
-    //   }).catch(err => {
-    //     res.status(500).json({user: err})
-    //   })
-    // })
-
   });
 });
 

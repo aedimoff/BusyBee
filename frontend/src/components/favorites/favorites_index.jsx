@@ -10,7 +10,6 @@ class FavoritesIndex extends React.Component {
 
   render() {
     const { favorites, user, addFavorite, deleteFavorite, receiveSelected } = this.props;
-    console.log("indexfaves", favorites)
     // Filter out null or undefined values (bad data)
     const filteredFavorites = favorites.filter(
       (fav) => fav != null || fav != undefined
