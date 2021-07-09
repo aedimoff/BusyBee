@@ -10,17 +10,15 @@ function useForceUpdate() {
 const Directions = (props) => {
   const forceUpdate = useForceUpdate();
 
-  function fuckingWork(n) {
+  function handleClick(n) {
     i += n;
     forceUpdate();
   }
 
-  console.log("in fuckingwork", Object.keys(props.directions).length);
   let leg = props.directions[i];
 
   return (
     <div className="LEGS">
-      {console.log("LORD HAVE MERCY", props.directions.length)}
       <h1>
         <p>Destination: {leg?.end_address}</p>
         <p>Distance: {leg?.distance.text}</p>
@@ -28,14 +26,14 @@ const Directions = (props) => {
       </h1>
       <div>
         {i > 0 ? (
-          <button onClick={() => fuckingWork(-1)}>Previous Leg</button>
+          <button onClick={() => handleClick(-1)}>Previous Leg</button>
         ) : (
-          "fuck"
+          ""
         )}
-        {i <= Object.keys(props.directions).length ? (
-          <button onClick={() => fuckingWork(1)}>Next Leg</button>
+        {i < Object.keys(props.directions).length - 1 ? (
+          <button onClick={() => handleClick(1)}>Next Leg</button>
         ) : (
-          Object.keys(props.directions).length
+          ""
         )}
       </div>
       <ul className="steps">
