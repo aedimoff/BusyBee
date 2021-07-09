@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 // import { AiFillHeart } from 'react-icons/ai';
-import { AiOutlineCheckSquare } from "react-icons/ai";
+import { AiOutlineCheckSquare, AiFillCheckSquare } from "react-icons/ai";
 import "../main/main.scss";
 
 class BusinessCard extends React.Component {
@@ -34,6 +34,7 @@ class BusinessCard extends React.Component {
       website,
       deleteFavorite,
       receiveSelected,
+      deleteSelected,
     } = this.props;
     return (
       <div className="business-card-container">
@@ -48,6 +49,11 @@ class BusinessCard extends React.Component {
             <AiOutlineCheckSquare
               size={18}
               onClick={() => receiveSelected(favorite)}
+              className="check-icon"
+            />
+            <AiFillCheckSquare
+              size={18}
+              onClick={() => deleteSelected(favorite)}
               className="check-icon"
             />
           </div>

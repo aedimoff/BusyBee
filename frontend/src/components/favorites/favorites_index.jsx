@@ -9,7 +9,7 @@ class FavoritesIndex extends React.Component {
   }
 
   render() {
-    const { favorites, user, addFavorite, deleteFavorite, receiveSelected } = this.props;
+    const { favorites, user, addFavorite, deleteFavorite, receiveSelected, deleteSelected} = this.props;
     // Filter out null or undefined values (bad data)
     const filteredFavorites = favorites.filter(
       (fav) => fav != null || fav != undefined
@@ -34,6 +34,7 @@ class FavoritesIndex extends React.Component {
                   addFavorite={addFavorite}
                   deleteFavorite={deleteFavorite}
                   receiveSelected={receiveSelected}
+                  deleteSelected={deleteSelected}
                 />
               ))
             : ""}
