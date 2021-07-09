@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const SelectedReducer = (state = initialState, action) => {
-  console.log("selected reducer", action)
   Object.freeze(state);
   let selected = [];
 
