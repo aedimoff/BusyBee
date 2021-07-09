@@ -1,7 +1,7 @@
-import React from 'react'; 
+import React from "react";
 // import { AiOutlineCheckSquare } from 'react-icons/ai'
-import BusinessCard from './business_card';
-import '../main/main.scss'
+import BusinessCard from "./business_card";
+import "../main/main.scss";
 
 class FavoritesIndex extends React.Component {
   componentDidMount() {
@@ -9,11 +9,21 @@ class FavoritesIndex extends React.Component {
   }
 
   render() {
-    const { favorites, user, addFavorite, deleteFavorite, receiveSelected } = this.props;
+    const {
+      favorites,
+      user,
+      selected,
+      addFavorite,
+      deleteFavorite,
+      receiveSelected,
+      deleteSelected,
+    } = this.props;
+
     // Filter out null or undefined values (bad data)
     const filteredFavorites = favorites.filter(
       (fav) => fav != null || fav != undefined
     );
+    
     return (
       <div className="index-wrapper">
         <ul className="favorites-index">
@@ -33,7 +43,9 @@ class FavoritesIndex extends React.Component {
                   favorite={favorite}
                   addFavorite={addFavorite}
                   deleteFavorite={deleteFavorite}
+                  selected={selected}
                   receiveSelected={receiveSelected}
+                  deleteSelected={deleteSelected}
                 />
               ))
             : ""}
@@ -43,4 +55,4 @@ class FavoritesIndex extends React.Component {
   }
 }
 
-export default FavoritesIndex
+export default FavoritesIndex;

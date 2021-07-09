@@ -9,7 +9,7 @@ const RootReducer = combineReducers({
   sessionApi: sessionApiReducer,
   modal: modalReducer,
   errors: errorsReducer,
-  selected: selectedReducer,
+  selectedFavorites: selectedReducer,
   directions: directionsReducer,
 });
 
