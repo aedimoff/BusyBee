@@ -16,14 +16,3 @@ export const clearSelected = () => ({
     type: CLEAR_SELECTED,
 })
 
-// export const addSelected = (favorite) => dispatch => (
-//     ApiUtil.addSelected(favorite)
-//     .then(favorite => dispatch(receiveSelected(favorite)))
-//     .catch(err => console.log(err))
-// );
-
-// export const removeSelected = (placeId) => dispatch => (
-//     ApiUtil.removeSelected(placeId)
-//     .then((placeId) => dispatch(removeSelected(placeId)))
-//     .catch(err => console.log(err))
-// );

@@ -7,7 +7,6 @@ import Splash from './main/splash';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
 import DirectionsContainer from './map/directions_container';
-// import MapContainer from './map/map_container';
 import './app1.scss';
 require('dotenv').config()
 

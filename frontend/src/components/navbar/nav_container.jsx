@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import NavBar from './navbar';
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { withRouter } from 'react-router-dom';
-// import * as NavCss from '../../../public/stylesheets/components/nav_modal.scss';
 
 const mapStateToProps = state => {
   return {

@@ -3,7 +3,7 @@ import {
   DELETE_SELECTED,
   CLEAR_SELECTED,
 } from "../actions/selected_actions";
-// import { GET_DIRECTIONS } from "../actions/directions_actions";
+
 const initialState = {
   selected: []
 };
