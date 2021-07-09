@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-// import { AiFillHeart } from 'react-icons/ai';
+import { BiSquare } from "react-icons/bi";
+import {IoHeartDislikeOutline } from 'react-icons/io5'
+import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineCheckSquare, AiFillCheckSquare } from "react-icons/ai";
 import "../main/main.scss";
 
@@ -33,23 +34,20 @@ const BusinessCard = (props) => {
     <div className="business-card-container">
       <div className="business-card">
         <div className="click-icons">
-          <p>Remove Favorite</p>
-          <AiOutlineHeart
+          <IoHeartDislikeOutline
             size={18}
             onClick={() => deleteFavorite(place_id, user_id)}
             className="heart-icon"
           />
           <div className="check-icon">
             {isSelected ? (
-              <AiFillCheckSquare
+              <AiOutlineCheckSquare
+                id="checked-square"
                 size={18}
                 onClick={() => handleClick()}
               />
             ) : (
-              <AiOutlineCheckSquare
-                size={18}
-                onClick={() => handleClick()}
-              />
+              <BiSquare size={18} onClick={() => handleClick()} />
             )}
           </div>
         </div>
