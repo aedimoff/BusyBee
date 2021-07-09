@@ -5,17 +5,15 @@ import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import Search from "./search";
 import Locate from "./locate";
 import mapStyles from "./mapStyles";
-
+import Spinner from "../spinner/spinner";
 
 require("dotenv").config();
 
 
 const MapThing = (props) => {
   const defaultCenter = 
-  props.currentLocation ? props.currentLocation : {
-    lat: 37.774929,
-    lng: -122.419418,
-  };
+  props.currentLocation 
+
   const mapContainerStyle = {
     width: "100vw",
     height: "84vh",
@@ -31,29 +29,27 @@ const MapThing = (props) => {
 
   const libraries = ['places']
 
-
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     libraries,
   });
-
-  const { openModal } = props;
 
   const mapRef = React.useRef();
   const onMapLoad = (map) => {
     mapRef.current = map;
   };
 
+  //set zoom options for map 
   const panTo = ({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(20);
   };
 
+  //creates object literal from lat/lng of all currently selected addresses
   const selectedFavorites = (selectedArray) => {
     let selected = [];
     for (let i = 0; i < selectedArray.length; i++) {
       let fave = selectedArray[i];
-      //  if (fave.selected) {
       selected.push({
         location: {
           lat: fave.geometry.location.lat,
@@ -61,13 +57,12 @@ const MapThing = (props) => {
         },
         stopover: true,
       });
-      //  }
     }
     return selected;
   }; 
 
+  //renders route on map and generates all direction steps
   var map;
-
   const calcRoute = (location, selectedFavorites) => {
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -81,7 +76,6 @@ const MapThing = (props) => {
         departureTime: new Date(Date.now()),
         trafficModel: "bestguess",
       },
-      //   unitSystem: google.maps.UnitSystem.METRIC,
       waypoints: selectedFavorites,
       optimizeWaypoints: true,
       provideRouteAlternatives: true,
@@ -96,6 +90,7 @@ const MapThing = (props) => {
     });
   };
 
+  //sets center user's current location 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -121,28 +116,28 @@ const MapThing = (props) => {
 
   return (
     <div className="map-container">
-      <div className="map" id="map">
-        <Search panTo={panTo} />
-        <Locate panTo={panTo} />
-        <button
-          onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}
-        >
-          Generate Route
-        </button>
+      {props.currentLocation ? 
+        <div className="map" id="map">
+          <Search panTo={panTo} />
+          <Locate panTo={panTo} />
+          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}>
+            Generate Route
+          </button>
 
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={14}
-          center={center}
-          options={options}
-          onClick={(e) => {
-            if (e.placeId) {
-              openModal("marker", { placeId: e.placeId });
-            }
-          }}
-          onLoad={onMapLoad}
-        />
-      </div>
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={14}
+            center={center}
+            options={options}
+            onClick={(e) => {
+              if (e.placeId) {
+                props.openModal("marker", { placeId: e.placeId });
+              }
+            }}
+            onLoad={onMapLoad}
+          />
+        </div> :
+         <Spinner/> }
     </div>
   );
 
