@@ -18,7 +18,7 @@ const Directions = (props) => {
   let leg = props.directions[i];
 
   return (
-    <div className="LEGS">
+    <div className="direction-legs">
       <h1>
         <p>Destination: {leg?.end_address}</p>
         <p>Distance: {leg?.distance.text}</p>
@@ -38,7 +38,7 @@ const Directions = (props) => {
       </div>
       <ul className="steps">
         {props.directions[i]?.steps.map((step, i) => (
-          <h3 key={i} className="step">
+          <h3 key={i} className="step-item">
             {step.instructions
               .split("<b>")
               .join(" ")
