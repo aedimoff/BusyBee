@@ -1,12 +1,7 @@
 /* eslint-disable no-undef */
+import { getDirections } from "../../actions/directions_actions";
 import "./map.scss";
 import mapStyles from "./mapStyles";
-import Directions from "./directions";
-
-// const favs = [
-//   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
-//   { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
-// ];
 
 const options = {
   styles: mapStyles,
@@ -21,14 +16,16 @@ const options = {
   width: "100vw",
 };
 var map;
-const calcRoute = (currentLocation, selectedFavorites) => {
-  let directionsService = new google.maps.DirectionsService();
+
+const calcRoute = (location, selectedFavorites) => {
+
+  var directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
   map = new window.google.maps.Map(document.getElementById("map"), options);
   directionsRenderer.setMap(map);
   let directionsRequest = {
-    origin: currentLocation,
-    destination: currentLocation,
+    origin: location,
+    destination: location,
     travelMode: "DRIVING",
     drivingOptions: {
       departureTime: new Date(Date.now()),
@@ -42,11 +39,11 @@ const calcRoute = (currentLocation, selectedFavorites) => {
   };
   directionsService.route(directionsRequest, function (response, status) {
     if (status === "OK") {
-      
       const legs = response.routes[0].legs;
+      props.getDirections(legs);
       directionsRenderer.setDirections(response);
     }
-  });
+  })
 };
 
 export default calcRoute;

@@ -27,26 +27,6 @@ const MapThing = (props) => {
     disableDefaultUI: true,
     zoomControl: true,
   };
-
-  //   { location: { lat: 33.830296, lng: -116.545296 }, stopover: true },
-  // { location: { lat: 36.169941, lng: -115.139832 }, stopover: true },
-
-const selectedFavorites = selectedArray => {
-   let selected = [];
-   for (let i = 0; i < selectedArray.length; i++) {
-     let fave = selectedArray[i];
-    //  if (fave.selected) {
-       selected.push({
-         location: {
-           lat: fave.geometry.location.lat,
-           lng: fave.geometry.location.lng,
-         },
-         stopover: true,
-       });
-    //  }
-   }
-   return selected;
- } 
   
   const [center, setCenter] = useState(defaultCenter)
 
@@ -70,13 +50,52 @@ const selectedFavorites = selectedArray => {
     mapRef.current.setZoom(20);
   };
 
-  // const getFavorite = (placeId) => {
-  //   MapAPIUtil.getPlaceInfo(placeId)
-  //     .then((res) => {
-  //       return props.addFavorite(res.data.result, props.userId);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const selectedFavorites = (selectedArray) => {
+    let selected = [];
+    for (let i = 0; i < selectedArray.length; i++) {
+      let fave = selectedArray[i];
+      //  if (fave.selected) {
+      selected.push({
+        location: {
+          lat: fave.geometry.location.lat,
+          lng: fave.geometry.location.lng,
+        },
+        stopover: true,
+      });
+      //  }
+    }
+    return selected;
+  }; 
+
+  var map;
+
+  const calcRoute = (location, selectedFavorites) => {
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    map = new window.google.maps.Map(document.getElementById("map"), options);
+    directionsRenderer.setMap(map);
+    let directionsRequest = {
+      origin: location,
+      destination: location,
+      travelMode: "DRIVING",
+      drivingOptions: {
+        departureTime: new Date(Date.now()),
+        trafficModel: "bestguess",
+      },
+      //   unitSystem: google.maps.UnitSystem.METRIC,
+      waypoints: selectedFavorites,
+      optimizeWaypoints: true,
+      provideRouteAlternatives: true,
+      region: "US",
+    };
+    directionsService.route(directionsRequest, function (response, status) {
+      if (status === "OK") {
+        const legs = response.routes[0].legs;
+        props.getDirections(legs);
+        directionsRenderer.setDirections(response);
+      }
+    });
+  };
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -103,27 +122,30 @@ const selectedFavorites = selectedArray => {
 
   return (
     <div className="map-container">
-        <div className="map" id="map">
-          <Search panTo={panTo} />
-          <Locate panTo={panTo} />
-          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}>Test Route</button>
+      <div className="map" id="map">
+        <Search panTo={panTo} />
+        <Locate panTo={panTo} />
+        <button
+          onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}
+        >
+          Test Route
+        </button>
 
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            zoom={14}
-            center={center}
-            options={options}
-            onClick={(e) => {
-              if (e.placeId) {
-                openModal("marker", { placeId: e.placeId })
-              }
-            }}
-
-            onLoad={onMapLoad}
-          />
-        </div>  
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={14}
+          center={center}
+          options={options}
+          onClick={(e) => {
+            if (e.placeId) {
+              openModal("marker", { placeId: e.placeId });
+            }
+          }}
+          onLoad={onMapLoad}
+        />
+      </div>
     </div>
-  )
+  );
 
 };
 
