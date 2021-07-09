@@ -21,8 +21,6 @@ class BusinessCard extends React.Component {
     }
   }
 
-  handleClick() {}
-
   render() {
     const {
       formatted_address,

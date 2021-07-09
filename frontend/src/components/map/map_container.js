@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { addFavorite, setUserCurrentLocation } from '../../actions/session_actions'
 import MapThing from './map'
+import { addFavorite, setUserCurrentLocation } from '../../actions/session_actions'
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { getDirections } from '../../actions/directions_actions';
 

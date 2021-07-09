@@ -4,7 +4,6 @@ import "./map.scss";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import Search from "./search";
 import Locate from "./locate";
-import calcRoute from "./route";
 import mapStyles from "./mapStyles";
 
 
@@ -128,7 +127,7 @@ const MapThing = (props) => {
         <button
           onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}
         >
-          Test Route
+          Generate Route
         </button>
 
         <GoogleMap
