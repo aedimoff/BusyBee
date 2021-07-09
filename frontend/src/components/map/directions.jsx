@@ -15,6 +15,8 @@ const Directions = (props) => {
     updateDirections();
   }
 
+  
+
   let leg = props.directions[i];
 
   return (
@@ -51,6 +53,8 @@ const Directions = (props) => {
                   .split("</div>")
                   .join(" ")
                   .split("&nbsp;")
+                  .join(" ")
+                  .split("<wbr/>")
                   .join(" ")}
                 Distance: {step.distance.text}{" "}
               </h3>
