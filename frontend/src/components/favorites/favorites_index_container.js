@@ -6,6 +6,7 @@ import FavoritesIndex from "./favorites_index";
 const mSTP = (state) => ({
   user: state.sessionApi.user,
   favorites: state?.sessionApi?.user?.favorites,
+  selected: state.selectedFavorites.selected,
 });
 
 const mDTP = (dispatch) => ({
