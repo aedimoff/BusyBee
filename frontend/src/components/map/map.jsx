@@ -136,7 +136,8 @@ const MapThing = (props) => {
             }}
             onLoad={onMapLoad}
           />
-        </div> : <Spinner/> }
+        </div> :
+         <Spinner/> }
     </div>
   );
 
