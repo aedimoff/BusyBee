@@ -24,7 +24,7 @@ const App = () => {
       <header className="header">
         <Route path="/" component={NavBarContainer}></Route>
       </header>
-      <DirectionsContainer/>
+      {/* <DirectionsContainer/> */}
       <Switch className="switch">
           <ProtectedRoute exact path="/home" component={Home} />
           <AuthRoute exact path="/" component={Splash} />

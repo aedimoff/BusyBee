@@ -153,6 +153,21 @@ const style = [
     ],
   },
   {
+    featureType: "road",
+    elementType: "labels.text",
+    stylers: [
+        {
+            visibility: "simplified"
+        },
+        {
+            color: "#303c6c"
+        },
+        {
+            weight: 0.08
+        }
+    ]
+},
+  {
     featureType: "road.highway",
     elementType: "all",
     stylers: [
@@ -224,3 +239,4 @@ const style = [
 ];
 
 export default style;
+

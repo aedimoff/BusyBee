@@ -6,6 +6,8 @@ import Search from "./search";
 import Locate from "./locate";
 import mapStyles from "./mapStyles";
 import Spinner from "../spinner/spinner";
+import Directions from "./directions";
+import DirectionsContainer from './directions_container';
 
 require("dotenv").config();
 
@@ -116,6 +118,9 @@ const MapThing = (props) => {
 
   return (
     <div className="map-container">
+      <div>
+        <DirectionsContainer/>
+      </div>
       {props.currentLocation ? 
         <div className="map" id="map">
           <Search panTo={panTo} />
@@ -137,7 +142,7 @@ const MapThing = (props) => {
             onLoad={onMapLoad}
           />
         </div> :
-         <Spinner/> }
+          <Spinner/> }
     </div>
   );
 

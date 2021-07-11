@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './directions.scss';
 
 var i = 0;
 
