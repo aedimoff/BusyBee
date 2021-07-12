@@ -118,9 +118,9 @@ const MapThing = (props) => {
 
   return (
     <div className="map-container">
-      <div>
+      {/* <div>
         <DirectionsContainer/>
-      </div>
+      </div> */}
       {props.currentLocation ? 
         <div className="map" id="map">
           <Search panTo={panTo} />
