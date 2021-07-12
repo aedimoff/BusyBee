@@ -15,7 +15,7 @@
   right: 1%;
   overflow-y: auto;
   border-radius: 16px;
-  
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .direction-legs {
@@ -30,7 +30,10 @@
   height: auto;
   padding: 3px;
   padding-left: 40px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.direction-legs > h1 > p {
+  font-size: 24px;
 }
 
 
