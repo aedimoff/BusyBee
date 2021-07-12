@@ -1,0 +1,40 @@
+:root {
+  --main-yellow: #FBE8A6;
+  --main-salmon: #F4976C;
+  --dark-blue: #303C6C;
+  --mid-blue: #B4DFe5;
+  --light-blue: #D2FDFF;
+}
+
+.directions {
+  background: #fbe8a6d4;
+  height: 72vh;
+  width: 260px;
+  position: absolute;
+  bottom: 20%;
+  right: 1%;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.direction-legs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  width: 100%;
+  border-radius: 16px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 3px;
+  padding-left: 40px;
+}
+
+.direction-legs > h1 > p {
+  font-size: 24px;
+}
+
+
+

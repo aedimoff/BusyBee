@@ -63,7 +63,7 @@
 
 .business-card-container {
   width: 100%;
-  border-bottom: #e7e6e6 5px solid;
+  // border-bottom: #e7e6e6 5px solid;
   box-sizing: border-box;
   position: relative;
   right: 12px;
@@ -91,4 +91,14 @@
 
 .business-address {
   font-size: 12px;
+}
+
+.fav-no-display {
+  display: none;
+}
+
+.fav-button {
+  position: absolute;
+  top: 13%;
+  left: 8%;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import MapContainer from '../map/map_container';
 import FavoritesIndexContainer from '../favorites/favorites_index_container';
+import DirectionsContainer from '../map/directions_container';
 
 class Home extends React.Component {
 
@@ -11,6 +12,7 @@ class Home extends React.Component {
           <MapContainer/>
         </div>
           <FavoritesIndexContainer />
+          <DirectionsContainer/>
       </div>
     );
   }

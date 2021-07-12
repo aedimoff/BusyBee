@@ -1,16 +1,29 @@
+:root {
+  --main-yellow: #FBE8A6;
+  --main-salmon: #F4976C;
+  --dark-blue: #303C6C;
+  --mid-blue: #B4DFe5;
+  --light-blue: #D2FDFF;
+  --main-orange: #e9a459;
+}
+
 .spinner {
-  border: 15px solid #F4976C;
-  border-top: 16px solid #303C6C;
+  position: absolute;
+  left: 44vw;
+  top: 40vh;
+  border: 15px solid var(--mid-dark);
+  border-top: 16px solid var(--mid-blue);
   border-radius: 50%;
   width: 120px;
   height: 120px;
   margin: 25px;
   animation: spinner 900ms linear infinite;
-  align-self: center;
+  z-index: 1000;
+  // align-self: center;
 }
 
 @keyframes spinner {
-     0%  {-webkit-transform: rotate(0deg);}
+    0%  {-webkit-transform: rotate(0deg);}
     100%  {-webkit-transform: rotate(360deg);}
 }
 

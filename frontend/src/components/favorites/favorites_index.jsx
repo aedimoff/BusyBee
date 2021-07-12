@@ -4,9 +4,33 @@ import BusinessCard from "./business_card";
 import "../main/main.scss";
 
 class FavoritesIndex extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectFav: "true"
+    }
+    this.buttonText="Collapse Favourites"
+    // this.handleFav() = this.handleFav().bind(this)
+  }
   componentDidMount() {
     this.props.fetchAllFavorites(this.props.user.id);
   }
+
+  handleFav() {
+    if (this.props.favorites.length > 0) {
+      if (this.state.selectFav === "true") {
+        document.getElementById("fav-index").className = "fav-no-display";
+        this.buttonText = "Show Favourites"
+        this.setState({selectFav: "false"})
+      } else {
+        document.getElementById("fav-index").className = "index-wrapper";
+        this.buttonText = "Collapse Favourites"
+        this.setState({selectFav: "true"})
+      };
+    };
+  }
+
+
 
   render() {
     const {
@@ -25,10 +49,16 @@ class FavoritesIndex extends React.Component {
     );
     
     return (
-      <div className="index-wrapper">
-        <ul className="favorites-index">
+      <div> 
+        <button 
+          onClick={()=>this.handleFav()}
+          className="fav-button">
+          {this.buttonText}
+        </button>
+        <div id="fav-index" className="index-wrapper">
           {filteredFavorites
             ? filteredFavorites.map((favorite, i) => (
+              <ul className="favorites-index">
                 <BusinessCard
                   key={i}
                   formatted_address={favorite.formatted_address}
@@ -47,9 +77,10 @@ class FavoritesIndex extends React.Component {
                   receiveSelected={receiveSelected}
                   deleteSelected={deleteSelected}
                 />
+            </ul>
               ))
             : ""}
-        </ul>
+        </div>
       </div>
     );
   }

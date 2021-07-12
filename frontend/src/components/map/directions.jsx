@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './directions.scss';
 
 var i = 0;
 
@@ -20,26 +21,28 @@ const Directions = (props) => {
   let leg = props.directions[i];
 
   return (
-    <div className="directions">
+    <div className="directions-container">
       {Object.keys(props.directions).length ? (
-        <div className="direction-legs">
-          <h1>
-            <p>Destination: {leg?.end_address}</p>
-            <p>Distance: {leg?.distance.text}</p>
-            <p>Duration: {leg?.duration.text}</p>
-          </h1>
-          <div>
-            {i > 0 ? (
-              <button onClick={() => handleClick(-1)}>Previous Leg</button>
-            ) : (
-              ""
-            )}
-            {i < Object.keys(props.directions).length - 1 ? (
-              <button onClick={() => handleClick(1)}>Next Leg</button>
-            ) : (
-              ""
-            )}
-          </div>
+      <div className="directions">
+          <div className="direction-legs">
+            <h1>
+              <p>Destination: {leg?.end_address}</p>
+              <p>Distance: {leg?.distance.text}</p>
+              <p>Duration: {leg?.duration.text}</p>
+            </h1>
+            <div>
+              {i > 0 ? (
+                <button onClick={() => handleClick(-1)}>Previous Leg</button>
+              ) : (
+                ""
+              )}
+              {i < Object.keys(props.directions).length - 1 ? (
+                <button onClick={() => handleClick(1)}>Next Leg</button>
+              ) : (
+                ""
+              )}
+            </div>
+
           <ul className="steps">
             {props.directions[i]?.steps.map((step, i) => (
               <h3 key={i} className="step-item">
