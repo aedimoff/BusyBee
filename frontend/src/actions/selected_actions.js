@@ -1,5 +1,5 @@
 export const RECEIVE_SELECTED = "RECEIVE_SELECTED"
-export const REMOVE_SELECTED = "REMOVE_SELECTED"
+export const DELETE_SELECTED = "DELETE_SELECTED"
 export const CLEAR_SELECTED = "CLEAR_SELECTED"
 
 export const receiveSelected = (favorite) => ({
@@ -7,9 +7,9 @@ export const receiveSelected = (favorite) => ({
         favorite
 });
 
-export const removeSelected = (placeId) => ({
-        type: REMOVE_SELECTED,
-        placeId
+export const deleteSelected = (favorite) => ({
+        type: DELETE_SELECTED,
+        favorite
 });
 
 export const clearSelected = () => ({

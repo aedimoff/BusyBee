@@ -16,6 +16,8 @@ const Directions = (props) => {
     updateDirections();
   }
 
+  
+
   let leg = props.directions[i];
 
   return (
@@ -40,29 +42,31 @@ const Directions = (props) => {
                 ""
               )}
             </div>
-            <ul className="steps">
-              {props.directions[i]?.steps.map((step, i) => (
-                <h3 key={i} className="step-item">
-                  {step.instructions
-                    .split("<b>")
-                    .join(" ")
-                    .split("</b>")
-                    .join(" ")
-                    .split('<div style="font-size:0.9em">')
-                    .join(" ")
-                    .split("</div>")
-                    .join(" ")
-                    .split("&nbsp;")
-                    .join(" ")}
-                  Distance: {step.distance.text}{" "}
-                </h3>
-              ))}
-            </ul>
-          </div>
-      </div>
-        ) : (
-          ""
-        )}
+
+          <ul className="steps">
+            {props.directions[i]?.steps.map((step, i) => (
+              <h3 key={i} className="step-item">
+                {step.instructions
+                  .split("<b>")
+                  .join(" ")
+                  .split("</b>")
+                  .join(" ")
+                  .split('<div style="font-size:0.9em">')
+                  .join(" ")
+                  .split("</div>")
+                  .join(" ")
+                  .split("&nbsp;")
+                  .join(" ")
+                  .split("<wbr/>")
+                  .join(" ")}
+                Distance: {step.distance.text}{" "}
+              </h3>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

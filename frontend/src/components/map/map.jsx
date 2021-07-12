@@ -13,8 +13,7 @@ require("dotenv").config();
 
 
 const MapThing = (props) => {
-  const defaultCenter = 
-  props.currentLocation 
+  const defaultCenter = props.currentLocation 
 
   const mapContainerStyle = {
     width: "100vw",
@@ -65,9 +64,10 @@ const MapThing = (props) => {
 
   //renders route on map and generates all direction steps
   var map;
+  var directionsRenderer;
   const calcRoute = (location, selectedFavorites) => {
+    directionsRenderer = new google.maps.DirectionsRenderer();
     var directionsService = new google.maps.DirectionsService();
-    var directionsRenderer = new google.maps.DirectionsRenderer();
     map = new window.google.maps.Map(document.getElementById("map"), options);
     directionsRenderer.setMap(map);
     let directionsRequest = {
@@ -92,6 +92,11 @@ const MapThing = (props) => {
     });
   };
 
+  const clearRoute = () => {
+    directionsRenderer.setMap(null)
+    props.clearDirections()
+  }
+
   //sets center user's current location 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -115,20 +120,13 @@ const MapThing = (props) => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-
   return (
     <div className="map-container">
-      {/* <div>
-        <DirectionsContainer/>
-      </div> */}
-      {props.currentLocation ? 
+
+      {props.currentLocation ? (
         <div className="map" id="map">
           <Search panTo={panTo} />
           <Locate panTo={panTo} />
-          <button onClick={() => calcRoute(props.currentLocation, selectedFavorites(props.selected))}>
-            Generate Route
-          </button>
-
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             zoom={14}
@@ -141,8 +139,19 @@ const MapThing = (props) => {
             }}
             onLoad={onMapLoad}
           />
-        </div> :
-          <Spinner/> }
+        </div>
+      ) : (
+        <Spinner />
+      )}
+      <div className="map-buttons">
+        <button
+          onClick={() =>
+            calcRoute(props.currentLocation, selectedFavorites(props.selected))
+          }>
+          Generate Route
+        </button> 
+        <button onClick={() => clearRoute()}>Clear Route</button>
+      </div>
     </div>
   );
 
