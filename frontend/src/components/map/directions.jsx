@@ -64,9 +64,10 @@ const Directions = (props) => {
             ))}
           </ul>
         </div>
-      ) : (
-        ""
-      )}
+        </div>
+        ) : (
+          ""
+        )}
     </div>
   );
 };
