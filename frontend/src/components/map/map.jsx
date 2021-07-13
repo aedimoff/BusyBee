@@ -93,7 +93,9 @@ const MapThing = (props) => {
   };
 
   const clearRoute = () => {
+    directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(null)
+    console.log("DR", directionsRenderer)
     props.clearDirections()
   }
 
@@ -125,7 +127,7 @@ const MapThing = (props) => {
 
       {props.currentLocation ? (
         <div className="map" id="map">
-          <Search panTo={panTo} />
+          {props.userId ? <Search panTo={panTo} /> : ""}
           <Locate panTo={panTo} />
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
