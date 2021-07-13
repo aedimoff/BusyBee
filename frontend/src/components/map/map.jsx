@@ -143,7 +143,8 @@ const MapThing = (props) => {
       ) : (
         <Spinner />
       )}
-      <div className="map-buttons">
+    {props.userId ? (
+    <div className="map-buttons">
         <button
           onClick={() =>
             calcRoute(props.currentLocation, selectedFavorites(props.selected))
@@ -151,7 +152,7 @@ const MapThing = (props) => {
           Generate Route
         </button> 
         <button onClick={() => clearRoute()}>Clear Route</button>
-      </div>
+      </div>) : ""}
     </div>
   );
 
