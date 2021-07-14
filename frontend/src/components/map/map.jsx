@@ -102,9 +102,7 @@ const MapContainer = (props) => {
   const clearRoute = () => {
     props.clearDirections()
     directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setDirections({routes: []})
-    map = new window.google.maps.Map(document.getElementById("map"), options);
-    directionsRenderer.setMap(map);
+    directionsRenderer.setMap(null)
   }
 
   //sets center user's current location 
