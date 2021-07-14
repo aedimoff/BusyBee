@@ -12,7 +12,8 @@ import DirectionsContainer from './directions_container';
 require("dotenv").config();
 
 
-const MapThing = (props) => {
+
+const MapContainer = (props) => {
   const defaultCenter = props.currentLocation 
 
   const mapContainerStyle = {
@@ -27,6 +28,7 @@ const MapThing = (props) => {
   };
   
   const [center, setCenter] = useState(defaultCenter)
+  const [mapstate, setMap] = useState(true)
 
   const libraries = ['places']
 
@@ -62,6 +64,7 @@ const MapThing = (props) => {
     return selected;
   }; 
 
+
   //renders route on map and generates all direction steps
   var map;
   var directionsRenderer;
@@ -92,9 +95,14 @@ const MapThing = (props) => {
     });
   };
 
+  //create hook to re-render map on route clear
+
+
+
   const clearRoute = () => {
-    directionsRenderer.setMap(null)
     props.clearDirections()
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(null)
   }
 
   //sets center user's current location 
@@ -125,7 +133,7 @@ const MapThing = (props) => {
 
       {props.currentLocation ? (
         <div className="map" id="map">
-          <Search panTo={panTo} />
+          {props.userId ? <Search panTo={panTo} /> : ""}
           <Locate panTo={panTo} />
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
@@ -143,7 +151,8 @@ const MapThing = (props) => {
       ) : (
         <Spinner />
       )}
-      <div className="map-buttons">
+    {props.userId ? (
+    <div className="map-buttons">
         <button
           onClick={() =>
             calcRoute(props.currentLocation, selectedFavorites(props.selected))
@@ -151,10 +160,10 @@ const MapThing = (props) => {
           Generate Route
         </button> 
         <button onClick={() => clearRoute()}>Clear Route</button>
-      </div>
+      </div>) : ""}
     </div>
   );
 
 };
 
-export default MapThing;
+export default MapContainer;
