@@ -12,7 +12,8 @@ import DirectionsContainer from './directions_container';
 require("dotenv").config();
 
 
-const MapThing = (props) => {
+
+const MapContainer = (props) => {
   const defaultCenter = props.currentLocation 
 
   const mapContainerStyle = {
@@ -27,6 +28,7 @@ const MapThing = (props) => {
   };
   
   const [center, setCenter] = useState(defaultCenter)
+  const [mapstate, setMap] = useState(true)
 
   const libraries = ['places']
 
@@ -62,6 +64,7 @@ const MapThing = (props) => {
     return selected;
   }; 
 
+
   //renders route on map and generates all direction steps
   var map;
   var directionsRenderer;
@@ -92,11 +95,16 @@ const MapThing = (props) => {
     });
   };
 
+  //create hook to re-render map on route clear
+
+
+
   const clearRoute = () => {
-    directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(null)
-    console.log("DR", directionsRenderer)
     props.clearDirections()
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setDirections({routes: []})
+    map = new window.google.maps.Map(document.getElementById("map"), options);
+    directionsRenderer.setMap(map);
   }
 
   //sets center user's current location 
@@ -160,4 +168,4 @@ const MapThing = (props) => {
 
 };
 
-export default MapThing;
+export default MapContainer;
