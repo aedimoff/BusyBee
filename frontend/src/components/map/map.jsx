@@ -7,28 +7,27 @@ import Locate from "./locate";
 import mapStyles from "./mapStyles";
 import Spinner from "../spinner/spinner";
 import Directions from "./directions";
-import DirectionsContainer from './directions_container';
+import DirectionsContainer from "./directions_container";
 
 require("dotenv").config();
 
-
 const MapThing = (props) => {
-  const defaultCenter = props.currentLocation 
+  const defaultCenter = props.currentLocation;
 
   const mapContainerStyle = {
     width: "100vw",
     height: "84vh",
   };
-  
+
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
     zoomControl: true,
   };
-  
-  const [center, setCenter] = useState(defaultCenter)
 
-  const libraries = ['places']
+  const [center, setCenter] = useState(defaultCenter);
+
+  const libraries = ["places"];
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -40,7 +39,7 @@ const MapThing = (props) => {
     mapRef.current = map;
   };
 
-  //set zoom options for map 
+  //set zoom options for map
   const panTo = ({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(20);
@@ -60,7 +59,7 @@ const MapThing = (props) => {
       });
     }
     return selected;
-  }; 
+  };
 
   //renders route on map and generates all direction steps
   var map;
@@ -93,11 +92,11 @@ const MapThing = (props) => {
   };
 
   const clearRoute = () => {
-    directionsRenderer.setMap(null)
-    props.clearDirections()
-  }
+    directionsRenderer.setMap(null);
+    props.clearDirections();
+  };
 
-  //sets center user's current location 
+  //sets center user's current location
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -107,7 +106,7 @@ const MapThing = (props) => {
             lng: position.coords.longitude,
           };
           setCenter(center);
-          props.setUserCurrentLocation(center)
+          props.setUserCurrentLocation(center);
         } else {
           setCenter(defaultCenter);
         }
@@ -122,7 +121,6 @@ const MapThing = (props) => {
 
   return (
     <div className="map-container">
-
       {props.currentLocation ? (
         <div className="map" id="map">
           <Search panTo={panTo} />
@@ -147,14 +145,14 @@ const MapThing = (props) => {
         <button
           onClick={() =>
             calcRoute(props.currentLocation, selectedFavorites(props.selected))
-          }>
+          }
+        >
           Generate Route
-        </button> 
+        </button>
         <button onClick={() => clearRoute()}>Clear Route</button>
       </div>
     </div>
   );
-
 };
 
 export default MapThing;
