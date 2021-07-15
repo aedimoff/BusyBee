@@ -28,7 +28,7 @@ const MapContainer = (props) => {
   const [center, setCenter] = useState(defaultCenter)
   const [mapstate, setMap] = useState(true)
 
-  const [center, setCenter] = useState(defaultCenter);
+  // const [center, setCenter] = useState(defaultCenter);
 
   const libraries = ["places"];
 
