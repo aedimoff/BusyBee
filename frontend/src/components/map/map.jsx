@@ -115,8 +115,7 @@ const MapContainer = (props) => {
   //create hook to re-render map on route clear
 
   const clearRoute = () => {
-
-    directionsRenderer.setMap(null);
+    // directionsRenderer.setMap(null);
     props.clearDirections();
 
   };
