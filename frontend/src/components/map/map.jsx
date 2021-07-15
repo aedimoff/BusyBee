@@ -47,6 +47,7 @@ const MapContainer = (props) => {
       Clear Route
     </button>,
   ];
+
   const libraries = ["places"];
 
   const { isLoaded, loadError } = useLoadScript({
@@ -114,9 +115,10 @@ const MapContainer = (props) => {
   //create hook to re-render map on route clear
 
   const clearRoute = () => {
-    props.clearDirections();
-    directionsRenderer = new google.maps.DirectionsRenderer();
+
     directionsRenderer.setMap(null);
+    props.clearDirections();
+
   };
 
   //sets center user's current location
@@ -169,6 +171,7 @@ const MapContainer = (props) => {
       ) : (
         ""
       )}
+
     </div>
   );
 };
