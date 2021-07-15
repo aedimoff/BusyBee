@@ -12,7 +12,7 @@ import DirectionsContainer from "./directions_container";
 require("dotenv").config();
 
 const MapContainer = (props) => {
-  const defaultCenter = props.currentLocation 
+  const defaultCenter = props.currentLocation;
 
   const mapContainerStyle = {
     width: "100vw",
@@ -24,11 +24,29 @@ const MapContainer = (props) => {
     disableDefaultUI: true,
     zoomControl: true,
   };
-  
-  const [center, setCenter] = useState(defaultCenter)
-  const [mapstate, setMap] = useState(true)
 
   const [center, setCenter] = useState(defaultCenter);
+  const [mapState, setMap] = useState(true);
+  const [count, setCount] = useState(0);
+
+  const routeButtons = [
+    <button
+      onClick={() => {
+        calcRoute(props.currentLocation, selectedFavorites(props.selected));
+        setCount(count + 1);
+      }}
+    >
+      Generate Route
+    </button>,
+    <button
+      onClick={() => {
+        clearRoute();
+        setCount(count - 1);
+      }}
+    >
+      Clear Route
+    </button>,
+  ];
 
   const libraries = ["places"];
 
@@ -64,7 +82,6 @@ const MapContainer = (props) => {
     return selected;
   };
 
-
   //renders route on map and generates all direction steps
   var map;
   var directionsRenderer;
@@ -97,11 +114,11 @@ const MapContainer = (props) => {
 
   //create hook to re-render map on route clear
 
-
-
   const clearRoute = () => {
+
     directionsRenderer.setMap(null);
     props.clearDirections();
+
   };
 
   //sets center user's current location
@@ -149,17 +166,12 @@ const MapContainer = (props) => {
       ) : (
         <Spinner />
       )}
-    {props.userId ? (
-    <div className="map-buttons">
-        <button
-          onClick={() =>
-            calcRoute(props.currentLocation, selectedFavorites(props.selected))
-          }
-        >
-          Generate Route
-        </button>
-        <button onClick={() => clearRoute()}>Clear Route</button>
-      </div>) : ""}
+      {props.userId ? (
+        <div className="map-buttons">{routeButtons[count]}</div>
+      ) : (
+        ""
+      )}
+
     </div>
   );
 };
