@@ -31,7 +31,7 @@ class NavBar extends React.Component {
           </div>
           <div className="nav-greeting">
             <a href="https://github.com/aedimoff/ErrantErrands/wiki" 
-            className="nav-icons"><FaGithub size={28}/></a>
+            className="nav-icons" target="_blank"><FaGithub size={28}/></a>
             <div className="user-greeting">
               Hello, {this.getName()}!
             </div>

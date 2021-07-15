@@ -4,6 +4,7 @@ import modalReducer from './modal_reducer';
 import errorsReducer from './errors_reducer';
 import selectedReducer from './selected_reducer';
 import directionsReducer from './directions_reducer';
+import businessReducer from './business_reducer';
 
 const RootReducer = combineReducers({
   sessionApi: sessionApiReducer,
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
   errors: errorsReducer,
   selectedFavorites: selectedReducer,
   directions: directionsReducer,
+  business: businessReducer
 });
 
 export default RootReducer;
