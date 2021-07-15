@@ -7,30 +7,47 @@ import Locate from "./locate";
 import mapStyles from "./mapStyles";
 import Spinner from "../spinner/spinner";
 import Directions from "./directions";
-import DirectionsContainer from './directions_container';
+import DirectionsContainer from "./directions_container";
 
 require("dotenv").config();
 
-
-
 const MapContainer = (props) => {
-  const defaultCenter = props.currentLocation 
+  const defaultCenter = props.currentLocation;
 
   const mapContainerStyle = {
     width: "100vw",
     height: "84vh",
   };
-  
+
   const options = {
     styles: mapStyles,
     disableDefaultUI: true,
     zoomControl: true,
   };
-  
-  const [center, setCenter] = useState(defaultCenter)
-  const [mapstate, setMap] = useState(true)
 
-  const libraries = ['places']
+  const [center, setCenter] = useState(defaultCenter);
+  const [mapState, setMap] = useState(true);
+  const [count, setCount] = useState(0);
+
+  const routeButtons = [
+    <button
+      onClick={() => {
+        calcRoute(props.currentLocation, selectedFavorites(props.selected));
+        setCount(count + 1);
+      }}
+    >
+      Generate Route
+    </button>,
+    <button
+      onClick={() => {
+        clearRoute();
+        setCount(count - 1);
+      }}
+    >
+      Clear Route
+    </button>,
+  ];
+  const libraries = ["places"];
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -42,7 +59,7 @@ const MapContainer = (props) => {
     mapRef.current = map;
   };
 
-  //set zoom options for map 
+  //set zoom options for map
   const panTo = ({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(20);
@@ -62,8 +79,7 @@ const MapContainer = (props) => {
       });
     }
     return selected;
-  }; 
-
+  };
 
   //renders route on map and generates all direction steps
   var map;
@@ -97,15 +113,13 @@ const MapContainer = (props) => {
 
   //create hook to re-render map on route clear
 
-
-
   const clearRoute = () => {
-    props.clearDirections()
+    props.clearDirections();
     directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(null)
-  }
+    directionsRenderer.setMap(null);
+  };
 
-  //sets center user's current location 
+  //sets center user's current location
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -115,7 +129,7 @@ const MapContainer = (props) => {
             lng: position.coords.longitude,
           };
           setCenter(center);
-          props.setUserCurrentLocation(center)
+          props.setUserCurrentLocation(center);
         } else {
           setCenter(defaultCenter);
         }
@@ -130,7 +144,6 @@ const MapContainer = (props) => {
 
   return (
     <div className="map-container">
-
       {props.currentLocation ? (
         <div className="map" id="map">
           {props.userId ? <Search panTo={panTo} /> : ""}
@@ -151,19 +164,13 @@ const MapContainer = (props) => {
       ) : (
         <Spinner />
       )}
-    {props.userId ? (
-    <div className="map-buttons">
-        <button
-          onClick={() =>
-            calcRoute(props.currentLocation, selectedFavorites(props.selected))
-          }>
-          Generate Route
-        </button> 
-        <button onClick={() => clearRoute()}>Clear Route</button>
-      </div>) : ""}
+      {props.userId ? (
+        <div className="map-buttons">{routeButtons[count]}</div>
+      ) : (
+        ""
+      )}
     </div>
   );
-
 };
 
 export default MapContainer;
