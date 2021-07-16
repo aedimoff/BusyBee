@@ -18,23 +18,35 @@ class InfoWindow extends React.Component {
     )
   }
 
+  viewBusiness = (placeId) => {
+    MapAPIUtil.getPlaceInfo(placeId).then(res => {
+      return this.props.setBusinessToState(res.data.result)
+      
+    }).catch(err =>
+        console.log(err)
+    )
+  }
+
   handleClick = (placeId) => {
     this.getFavorite(placeId)
-    this.props.closeModal()
+    // this.props.closeModal()
   }
-  render() {
-    
-    const { formatted_address, placeId, name, rating, website } = this.props
+  render() {    
+    const { formatted_address, name, rating, website } = this.props.business;
+    const { placeId } = this.props;
+
     return (
       <div className="business-card-container">
       <div className="business-card">
           <div className="click-icons"> 
           <AiOutlineHeart size={18} onClick={() => {this.handleClick(placeId)}} className="heart-icon"/>
           </div>
-            <h1 className="business-title">{name}</h1>
-            <h3 className="business-address">{formatted_address}</h3>
-            <h3 className="business-rating">Rating: {rating}</h3>
-            <h3> {website}</h3>
+              <ul>
+                <h1 className="business-title">{name}</h1>
+                <h3 className="business-address">{formatted_address}</h3>
+                <h3 className="business-rating">Rating: {rating}</h3>
+                <a href={website} target="_blank">View Website</a>
+              </ul>
       </div>
     </div>
     )

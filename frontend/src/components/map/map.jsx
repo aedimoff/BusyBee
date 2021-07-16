@@ -8,6 +8,7 @@ import mapStyles from "./mapStyles";
 import Spinner from "../spinner/spinner";
 import Directions from "./directions";
 import DirectionsContainer from "./directions_container";
+import * as MapAPIUtil from "../../util/map_api_util";
 
 require("dotenv").config();
 
@@ -24,6 +25,7 @@ const MapContainer = (props) => {
     disableDefaultUI: true,
     zoomControl: true,
   };
+
 
   const [center, setCenter] = useState(defaultCenter);
   const [mapState, setMap] = useState(true);
@@ -143,6 +145,15 @@ const MapContainer = (props) => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  const viewBusiness = (placeId) => {
+    MapAPIUtil.getPlaceInfo(placeId).then(res => {
+      return props.setBusinessToState(res.data.result)
+      
+    }).catch(err =>
+        console.log(err)
+    )
+  }
+
   return (
     <div className="map-container">
       {props.currentLocation ? (
@@ -156,7 +167,8 @@ const MapContainer = (props) => {
             options={options}
             onClick={(e) => {
               if (e.placeId) {
-                props.openModal("marker", { placeId: e.placeId });
+                props.openModal("marker", { placeId: e.placeId }); 
+                viewBusiness(e.placeId);
               }
             }}
             onLoad={onMapLoad}
