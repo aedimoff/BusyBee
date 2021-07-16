@@ -41,7 +41,7 @@ const sessionApiReducer = (state = initialState, action) => {
       };
     case RECEIVE_FAVORITE:
       favorites = state.user.favorites;
-      favorites.push(action.favorite);
+      favorites.unshift(action.favorite);
       return {
         ...state,
         user: {
