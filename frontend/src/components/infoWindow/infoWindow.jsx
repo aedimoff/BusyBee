@@ -7,16 +7,16 @@ import * as MapAPIUtil from "../../util/map_api_util";
 class InfoWindow extends React.Component {
   constructor(props) {
     super(props);
-    this.getFavorite = this.getFavorite.bind(this);
+    // this.getFavorite = this.getFavorite.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-  getFavorite = (placeId) => {
-    MapAPIUtil.getPlaceInfo(placeId).then(res => { 
-        return this.props.addFavorite(res.data.result, this.props.userId) 
-    }).catch(err =>
-        console.log(err)
-    )
-  }
+  // getFavorite = (placeId) => {
+  //   MapAPIUtil.getPlaceInfo(placeId).then(res => { 
+  //       return this.props.addFavorite(res.data.result, this.props.userId) 
+  //   }).catch(err =>
+  //       console.log(err)
+  //   )
+  // }
 
   viewBusiness = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId).then(res => {
@@ -28,16 +28,17 @@ class InfoWindow extends React.Component {
   }
 
   handleClick = (placeId) => {
+    console.log("CLICKED")
+    console.log("addFav", this.props.addFavorite)
+    console.log("biz", this.props.business)
+    console.log("placeId", placeId)
     this.props.addFavorite(this.props.business, placeId)
-    this.props.closeModal()
+    // this.props.closeModal()
   }
-  render() {
-    // console.log(this.props.business);
-    
+  render() {    
     const { formatted_address, name, rating, website } = this.props.business;
     const { placeId } = this.props;
-    // console.log(placeId);
-    console.log(this.props)
+
     return (
       <div className="business-card-container">
       <div className="business-card">
@@ -48,7 +49,7 @@ class InfoWindow extends React.Component {
                 <h1 className="business-title">{name}</h1>
                 <h3 className="business-address">{formatted_address}</h3>
                 <h3 className="business-rating">Rating: {rating}</h3>
-                <a href={website} target="_blank">View Website</a>
+                {/* <a href={website} target="_blank">View Website</a> */}
               </ul>
       </div>
     </div>
