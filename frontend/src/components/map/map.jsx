@@ -118,7 +118,7 @@ const MapContainer = (props) => {
 
   const clearRoute = () => {
     // directionsRenderer.setMap(null);
-    props.clearDirections();
+    window.location.reload();
 
   };
 

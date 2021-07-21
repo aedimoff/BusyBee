@@ -2,6 +2,7 @@ import React from "react";
 import "./navbar.scss";
 import logo2 from "../../assets/busybeeblue.png";
 import { FaGithub } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 
 class NavBar extends React.Component {
@@ -27,7 +28,9 @@ class NavBar extends React.Component {
       return (
         <div className="navbar2">
           <div className="logo-container">
+            <NavLink to='/home'>
             <img className="top-logo2" src={logo2} alt="bee logo"/>
+            </NavLink>
           </div>
           <div className="nav-greeting">
             <a href="https://github.com/aedimoff/ErrantErrands/wiki" 
@@ -45,7 +48,9 @@ class NavBar extends React.Component {
       return (
         <div className="navbar">
           <div className="logo-container">
+            <NavLink className="linky-poo" to='/'>
             <img className="top-logo" src={logo2} alt="bee logo"/>
+            </NavLink>
           </div>
           <div className="login-signup">
             <div className="login-btn" onClick={() => openModal("login")}>Log in</div>
