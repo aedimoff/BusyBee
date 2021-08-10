@@ -1,5 +1,4 @@
 import React from "react";
-// import { AiOutlineCheckSquare } from 'react-icons/ai'
 import BusinessCard from "./business_card";
 import "../main/main.scss";
 
