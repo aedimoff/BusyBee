@@ -48,7 +48,7 @@ The main feature of Busy Bee is the interactive map, which addresses the classic
 
 Technical Challenges
 -------------------------------------------------------------------------------
-### Avoiding CORS reference errors
+#### Avoiding CORS reference errors
 One of the major challenges we encountered involved CORS errors when trying to utilize information from different Google API’s. While we were able to retrieve a business’s place id through Maps Javascript API on a click of the map, we needed to send the place id to Google Places API to retrieve that business’s information such as name, address, and opening hours. This needed to be done from the backend in order to avoid CORS errors. 
 
 The viewBusiness function gets called when a user clicks on a business on the map. 
