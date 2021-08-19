@@ -31,6 +31,11 @@ Busy Bee is an effective time-saving tool which allows users to input multiple l
 
 Features and Technical Challenges
 -------------------------------------------------------------------------------
+#### Favorites
+
+#### Map View
+
+#### Routes
 
 #### Bonus Features
 -------------------------------------------------------------------------------
