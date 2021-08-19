@@ -10,9 +10,7 @@ Welcome to BusyBee
 -   [Background and Overview](https://github.com/aedimoff/BusyBee/wiki/Background-and-Overview)
 -   [Functionality and MVP](https://github.com/aedimoff/BusyBee/wiki/Functionality-and-MVP)
 -   [Technologies and Technical Challenges](https://github.com/aedimoff/BusyBee/wiki/Technologies-and-Technical-Challenges)
--   [Group Members and Work Breakdown](https://github.com/aedimoff/BusyBee/wiki/Group-Members-and-Work-Breakdown)
 
-Background
 -----------------------------------------------------------------------------------
 
 Sometimes, when you're planning out your day of errands, it can get overwhelming to keep track of everything you have to do, and the time you have to do it in. That's where we come in! BusyBee is a website that helps you plan those pesky errands in a way that gets you through your day efficiently, and leaves you with time to spare for the things you love to do. It's this problem that drove our team to create BusyBee.
