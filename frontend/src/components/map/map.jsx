@@ -12,6 +12,8 @@ import * as MapAPIUtil from "../../util/map_api_util";
 
 require("dotenv").config();
 
+const libraries = ["places"];
+
 const MapContainer = (props) => {
   const defaultCenter = props.currentLocation;
 
@@ -33,6 +35,7 @@ const MapContainer = (props) => {
 
   const routeButtons = [
     <button
+      className="generate-route-btn"
       onClick={() => {
         calcRoute(props.currentLocation, selectedFavorites(props.selected));
         setCount(count + 1);
@@ -50,7 +53,6 @@ const MapContainer = (props) => {
     </button>,
   ];
 
-  const libraries = ["places"];
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -118,7 +120,7 @@ const MapContainer = (props) => {
 
   const clearRoute = () => {
     // directionsRenderer.setMap(null);
-    props.clearDirections();
+    window.location.reload();
 
   };
 

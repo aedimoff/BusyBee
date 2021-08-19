@@ -87,3 +87,44 @@
   bottom: 15%;
   right: 5%;
 }
+
+.generate-route-btn {
+  position: absolute;
+  top: 12%;
+  right: 20%;  
+  -webkit-animation: bounce .3s infinite alternate;
+  -moz-animation: bounce .3s infinite alternate;
+  animation: bounce .3s infinite alternate;
+}
+@-webkit-keyframes bounce {
+  to { -webkit-transform: scale(1.6); }
+}
+@-moz-keyframes bounce {
+  to { -moz-transform: scale(1.6); }
+}
+@keyframes bounce {
+  to { transform: scale(1.6); }
+}
+
+.map-buttons > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 24px;
+  padding: 8px 12px;
+  height: 40px;
+  margin: 8px;
+  font-weight: 600;
+  background: var(--dark-blue);
+  color: var(--light-blue);
+}
+
+.map-buttons > *:hover {
+  cursor: pointer;
+  background: var(--mid-blue);
+  color: var(--dark-blue);
+}

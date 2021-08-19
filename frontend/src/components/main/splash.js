@@ -1,8 +1,13 @@
 import React from 'react';
+import { openModal } from '../../actions/modal_actions';
 import MapContainer from '../map/map_container';
 // import FavoritesIndexContainer from './favorites_index_container'
 
 class Splash extends React.Component {
+
+  componentDidMount() {
+    this.props.openModal("signup")
+  };
 
   render() {
     return (
