@@ -10,8 +10,10 @@ class InfoWindow extends React.Component {
     this.getFavorite = this.getFavorite.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+
   getFavorite = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId).then(res => { 
+      console.log("RES", res)
         return this.props.addFavorite(res.data.result, this.props.userId) 
     }).catch(err =>
         console.log(err)
@@ -31,6 +33,7 @@ class InfoWindow extends React.Component {
     this.getFavorite(placeId)
     // this.props.closeModal()
   }
+
   render() {    
     const { formatted_address, name, rating, website } = this.props.business;
     const { placeId } = this.props;
