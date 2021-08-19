@@ -20,13 +20,13 @@ Overview
 -------------------------------------------------------------------------------
 Busy Bee was built with:
 
-MongoDB
-JSX/JavaScript
-PostgreSQL
-React
-Redux
-Express
-Node.js
+*MongoDB
+*JSX/JavaScript
+*PostgreSQL
+*React
+*Redux
+*Express
+*Node.js
 
 Busy Bee is an effective time-saving tool which allows users to input multiple locations and calculate fastest order of visitation using data from a variety of Google API’s. Google Maps and Places APIs provide map view and search functionality and business information such as ratings, reviews, and store hours, while Google Directions API is used to generate most routes and provide date/time specific data on traffic and road closures. BusyBee is built dynamically, with nearly global application available. Eventually, we would like to add functionality for time management, such as estimates with user input to get a better idea of how long their trip will be.
 
