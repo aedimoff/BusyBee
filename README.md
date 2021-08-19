@@ -36,6 +36,9 @@ Features and Technical Challenges
 While planning out their routes, users are able to select businesses or locations that they find they are visiting frequently.  With a click, they can add the business to their favorites list, which is saved to the database for future reference.  This favorites feature creates easier, more efficient routing for the user, and access to more detailed information about each location.
 
 #### Map View
+(image)
+Striving for an aesthetically-pleasing User Experience, the map has been styled with a custom color scheme.  Influenced by California's oceanside cities, the blues and oranges create a color palette that provides enough contrast to be accessible, while still standing out as a feature on its own.  In the future, we plan to execute customizable colors that the user can select, to make their account unique, and to accommodate any visual needs. 
+
 
 #### Routes
 
