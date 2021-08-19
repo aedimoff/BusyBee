@@ -32,6 +32,8 @@ Busy Bee is an effective time-saving tool which allows users to input multiple l
 Features and Technical Challenges
 -------------------------------------------------------------------------------
 #### Favorites
+(image)
+While planning out their routes, users are able to select businesses or locations that they find they are visiting frequently.  With a click, they can add the business to their favorites list, which is saved to the database for future reference.  This favorites feature creates easier, more efficient routing for the user, and access to more detailed information about each location.
 
 #### Map View
 
