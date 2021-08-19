@@ -1,6 +1,6 @@
 Welcome to BusyBee
 =========================
-<img width="1000" alt="Screen Shot 2021-08-19 at 10 37 51 AM" src="https://user-images.githubusercontent.com/76131255/130117247-5749b91b-0a10-429f-829e-e20984205ee9.png">
+<img width="800" alt="Screen Shot 2021-08-19 at 10 37 51 AM" src="https://user-images.githubusercontent.com/76131255/130117247-5749b91b-0a10-429f-829e-e20984205ee9.png">
 
 
 * * * * *
