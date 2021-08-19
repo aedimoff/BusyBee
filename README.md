@@ -6,13 +6,6 @@ Welcome to BusyBee
 * * * * *
 ### [Busy Bee Live Site](https://bizeebee.herokuapp.com/#/)
 
-### [](https://github.com/aedimoff/BusyBee/wiki) The Design Documents:
-
--   [Background and Overview](https://github.com/aedimoff/BusyBee/wiki/Background-and-Overview)
--   [Functionality and MVP](https://github.com/aedimoff/BusyBee/wiki/Functionality-and-MVP)
--   [Technologies and Technical Challenges](https://github.com/aedimoff/BusyBee/wiki/Technologies-and-Technical-Challenges)
-
------------------------------------------------------------------------------------
 
 Sometimes, when you're planning out your day of errands, it can get overwhelming to keep track of everything you have to do, and the time you have to do it in. That's where we come in! BusyBee is a website that helps you plan those pesky errands in a way that gets you through your day efficiently, and leaves you with time to spare for the things you love to do. It's this problem that drove our team to create BusyBee.
 
@@ -36,10 +29,11 @@ Busy Bee is an effective time-saving tool which allows users to input multiple l
 -   [ ]  Ability to generate route to selected businesses
 -   [ ]  Ability to save favorite businesses
 
-
+Features and Technical Challenges
+-------------------------------------------------------------------------------
 
 #### Bonus Features
-
+-------------------------------------------------------------------------------
 -   [ ]  Save whole trips for later use.
 -   [ ]  Enable ability to change color themes
 
