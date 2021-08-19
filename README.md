@@ -38,7 +38,7 @@ While planning out their routes, users are able to select businesses or location
 
 #### Map View
 (image)
-Striving for an aesthetically-pleasing User Experience, the map has been styled with a custom color scheme.  Influenced by California's oceanside cities, the blues and oranges create a color palette that provides enough contrast to be accessible, while still standing out as a feature on its own.  In the future, we plan to execute customizable colors that the user can select, to make their account unique, and to accommodate any visual needs. 
+Striving for an aesthetically-pleasing User Experience, the map has been styled with a custom color scheme.  Influenced by California's coastal cities, the blues and oranges create a color palette that provides enough contrast to be accessible, while still standing out as a feature on its own.  In the future, we plan to execute customizable colors that the user can select, to make their account unique, and to accommodate any visual needs. 
 
 
 #### Routes
