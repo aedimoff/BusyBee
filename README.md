@@ -43,6 +43,7 @@ Striving for an aesthetically-pleasing User Experience, the map has been styled 
 #### Routes
 (image)
 The main feature of Busy Bee is the interactive map, which addresses the classic Traveling Salesman problem of finding the quickest path from point to point.  Once the user has selected each "errand" they'd like to run, the map routes out the fastest path from start to finish.
+(talk about place id challenges here)
 
 Future Features
 -------------------------------------------------------------------------------
