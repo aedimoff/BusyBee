@@ -53,21 +53,25 @@ One of the major challenges we encountered involved CORS errors when trying to u
 
 The viewBusiness function gets called when a user clicks on a business on the map. 
 
-![image](https://user-images.githubusercontent.com/76131255/130127141-d4e2106a-35ee-42de-9c91-4d29e495a32b.png)
+
+<img src="https://user-images.githubusercontent.com/76131255/130127141-d4e2106a-35ee-42de-9c91-4d29e495a32b.png" width="480" height="120">
+
 
 This retrieves the business placeId from Javascript Maps API, sends it to getPlaceInfo, which makes an axios post request to a backend endpoint “/getplace”. 
 
-![image](https://user-images.githubusercontent.com/76131255/130127301-4190b9df-e198-4145-a60d-8fc6b976bd4d.png)
+<img src="https://user-images.githubusercontent.com/76131255/130127301-4190b9df-e198-4145-a60d-8fc6b976bd4d.png" width="410" height="180">
 
 This endpoint is an axios post request that sends the placeId from the frontend to the getPlaceInfoFromGoogle function. 
 
-![image](https://user-images.githubusercontent.com/76131255/130127503-6c5335f6-01c5-4b5f-af4c-e69de768b7ac.png)
+<img src="https://user-images.githubusercontent.com/76131255/130127503-6c5335f6-01c5-4b5f-af4c-e69de768b7ac.png" width="600" height="180">
+
 
 
 This makes an axios get request to Google Places API and returns an object containing all the necessary information about the business that was clicked on, which is
 then displayed to the user via React components.  
 
-![image](https://user-images.githubusercontent.com/76131255/130127693-998dc862-24b1-4789-b1e8-7b13e012aa72.png)
+<img src="https://user-images.githubusercontent.com/76131255/130127693-998dc862-24b1-4789-b1e8-7b13e012aa72.png" width="580" height="130">
+
 
 
 
