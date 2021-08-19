@@ -37,7 +37,7 @@ Features and Technical Challenges
 
 #### Routes
 
-#### Bonus Features
+Future Features
 -------------------------------------------------------------------------------
 -   [ ]  Save whole trips for later use.
 -   [ ]  Enable ability to change color themes
