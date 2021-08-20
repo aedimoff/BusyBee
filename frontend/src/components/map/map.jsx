@@ -153,7 +153,7 @@ const MapContainer = (props) => {
     }).catch(err =>
         console.log(err)
     )
-  }
+  };
 
   return (
     <div className="map-container">
@@ -189,3 +189,7 @@ const MapContainer = (props) => {
 };
 
 export default MapContainer;
+
+
+
+

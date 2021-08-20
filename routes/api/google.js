@@ -7,6 +7,7 @@ router.post(
   "/getplace",
   (req, res) => {
     getPlaceInfoFromGoogle(req.body.params.placeId).then(googleResponse => {
+      console.log("googleResponse", googleResponse)
       res.status(200).json(googleResponse.data)
     }).catch(err => {
       console.log(err)
