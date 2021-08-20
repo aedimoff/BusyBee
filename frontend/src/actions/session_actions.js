@@ -59,6 +59,7 @@ export const setUserCurrentLocation = currentLocation => ({
   type: RECIEVE_LOCATION,
   currentLocation
 })
+
 export const signup = (user) => (dispatch) =>
   APIUtil.signup(user).then((res) => {
     handleLoginOrSignUpSuccess(res, dispatch);
