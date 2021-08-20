@@ -22,7 +22,7 @@
   width: 100vw;
 }
 
-.search-bar > input {
+#search-bar > input {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -38,11 +38,11 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.search-bar > input::placeholder {
+#search-bar > input::placeholder {
   color: var(--light-blue)
 }
 
-.search-bar > input:focus {
+#search-bar > input:focus {
   outline-offset: 0px;
   outline: none;
   border: 3px solid var(--main-salmon);
@@ -87,3 +87,4 @@
   bottom: 15%;
   right: 5%;
 }
+
