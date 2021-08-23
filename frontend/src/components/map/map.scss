@@ -40,15 +40,15 @@
   position: absolute;
   left: 50%;
   margin-left: -25vw;
-  // right: 50%;
-
 }
 
-#search-bar > input::placeholder {
+
+
+#search-bar::placeholder {
   color: var(--light-blue)
 }
 
-#search-bar > input:focus {
+#search-bar:focus {
   outline-offset: 0px;
   outline: none;
   border: 3px solid var(--main-salmon);
