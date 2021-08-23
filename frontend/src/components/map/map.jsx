@@ -84,7 +84,7 @@ const Map = (props) => {
   var directionsService;
   const calcRoute = (location, selectedFavorites, type) => {
 
-    if (window.directionsRenderer == null) {
+    if (window.directionsRenderer === null) {
       window.directionsRenderer = new google.maps.DirectionsRenderer();
       window.directionsService = new google.maps.DirectionsService();
     }
@@ -164,7 +164,7 @@ const Map = (props) => {
   let markers = [];
   const onPlacesChanged = () => {
     const places = searchBox.getPlaces();
-    if (places.length == 0) return;
+    if (places.length === 0) return;
 
     //clears out old markers
     markers.forEach((marker) => {
@@ -220,33 +220,37 @@ const Map = (props) => {
   if (!isLoaded) return "Loading Maps";
   return (
     <div className="map-container">
-      <div className="map" id="map">
-        <Locate panTo={panTo} />
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={14}
-          center={center}
-          options={options}
-          onClick={(e) => {
-            if (e.placeId) {
-              props.openModal("marker", { placeId: e.placeId });
-              viewBusiness(e.placeId);
-            }
-          }}
-          onLoad={(map) => setMapRef(map)}
-        >
-          <StandaloneSearchBox
-            onLoad={onSearchLoad}
-            onPlacesChanged={onPlacesChanged}
+      {props.currentLocation ? (
+        <div className="map" id="map">
+          <Locate panTo={panTo} />
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={14}
+            center={center}
+            options={options}
+            onClick={(e) => {
+              if (e.placeId) {
+                props.openModal("marker", { placeId: e.placeId });
+                viewBusiness(e.placeId);
+              }
+            }}
+            onLoad={(map) => setMapRef(map)}
           >
-            <input
-              type="text"
-              placeholder="Search for a business"
-              id="search-bar"
-            />
-          </StandaloneSearchBox>
-        </GoogleMap>
-      </div>
+            <StandaloneSearchBox
+              onLoad={onSearchLoad}
+              onPlacesChanged={onPlacesChanged}
+            >
+              <input
+                type="text"
+                placeholder="Search for a business"
+                id="search-bar"
+              />
+            </StandaloneSearchBox>
+          </GoogleMap>
+        </div>
+      ) : (
+        <Spinner />
+      )}
       {props.userId ? (
         <div className="map-buttons">{routeButtons[count]}</div>
       ) : (

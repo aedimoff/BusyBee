@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { BiSquare } from "react-icons/bi";
 import {IoHeartDislikeOutline } from 'react-icons/io5'
-import { AiFillHeart } from 'react-icons/ai';
-import { AiOutlineCheckSquare, AiFillCheckSquare } from "react-icons/ai";
+import { AiOutlineCheckSquare } from "react-icons/ai";
 import "../main/main.scss";
 
 const BusinessCard = (props) => {
