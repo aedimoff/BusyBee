@@ -1,7 +1,6 @@
 import {
   RECEIVE_SELECTED,
   DELETE_SELECTED,
-  CLEAR_SELECTED,
 } from "../actions/selected_actions";
 
 const initialState = {
@@ -10,7 +9,6 @@ const initialState = {
 
 const SelectedReducer = (state = initialState, action) => {
   Object.freeze(state);
-  let selected = [];
 
   switch (action.type) {
     case RECEIVE_SELECTED:
@@ -24,9 +22,6 @@ const SelectedReducer = (state = initialState, action) => {
         }
       }
       return state;
-    case CLEAR_SELECTED:
-        selected = [];
-      return selected;
     default:
       return state;
   }

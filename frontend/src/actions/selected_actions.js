@@ -1,6 +1,5 @@
 export const RECEIVE_SELECTED = "RECEIVE_SELECTED"
 export const DELETE_SELECTED = "DELETE_SELECTED"
-export const CLEAR_SELECTED = "CLEAR_SELECTED"
 
 export const receiveSelected = (favorite) => ({
         type: RECEIVE_SELECTED,
@@ -12,7 +11,4 @@ export const deleteSelected = (favorite) => ({
         favorite
 });
 
-export const clearSelected = () => ({
-    type: CLEAR_SELECTED,
-})
 
