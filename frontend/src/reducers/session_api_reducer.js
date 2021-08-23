@@ -50,7 +50,6 @@ const sessionApiReducer = (state = initialState, action) => {
         },
       };
     case REMOVE_FAVORITE:
-      console.log("REDUCER", action.place_id)
       favorites = state.user.favorites;
       let index = favorites.findIndex(function(fav){
           return fav.place_id === action.place_id;

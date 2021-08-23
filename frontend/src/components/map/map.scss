@@ -22,20 +22,26 @@
   width: 100vw;
 }
 
-#search-bar > input {
+#search-bar {
   display: block;
   box-sizing: border-box;
-  width: 100%;
+  width: 50vw;
+  height: 5vh;
   border-radius: 12px;
   margin-bottom: 12px;
   margin-top: 4px;
-  padding: 12px 16px;
+  padding: 0px 12px;
   font-family: inherit;
   font-size: inherit;
   border: 2px solid var(--mid-blue);
   background-color: var(--dark-blue);
   color: var(--light-blue);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: absolute;
+  left: 50%;
+  margin-left: -25vw;
+  // right: 50%;
+
 }
 
 #search-bar > input::placeholder {

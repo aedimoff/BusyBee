@@ -68,9 +68,6 @@ const NewMap = (props) => {
             let latLng = e.latLng.toJSON();
 
             geocoder.geocode({ location: latLng }, function (results, status) {
-              console.log("results", results);
-              console.log("results[1]", results[0]);
-              console.log("results.place_id", results[0].place_id);
               if (results[0].place_id) {
                 let placeId = results[0].place_id;
                 props.openModal("marker", { placeId: placeId });
@@ -131,7 +128,7 @@ const NewMap = (props) => {
     let directionsRequest = {
       origin: location,
       destination: location,
-      travelMode: "DRIVING",
+      travelMode: google.maps.TravelMode.DRIVING,
       drivingOptions: {
         departureTime: new Date(Date.now()),
         trafficModel: "bestguess",
@@ -141,8 +138,7 @@ const NewMap = (props) => {
       provideRouteAlternatives: true,
       region: "US",
     };
-    console.log("its the map!", map)
-    
+
     directionsRenderer.setMap(map);
     directionsService.route(directionsRequest, function (response, status) {
       if (status === "OK") {
@@ -198,12 +194,12 @@ const NewMap = (props) => {
   };
 
   useEffect(() => {
-    const abortController = new AbortController();
-
-    getCenter();
-    initMap();
-
-    abortController.abort();
+    let mounted = false;
+    if(!mounted) {
+      getCenter();
+      initMap();
+      mounted = true;
+    }
   });
 
   return (

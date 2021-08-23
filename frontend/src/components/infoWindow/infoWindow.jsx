@@ -13,7 +13,6 @@ class InfoWindow extends React.Component {
 
   getFavorite = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId).then(res => { 
-      console.log("RES", res)
         return this.props.addFavorite(res.data.result, this.props.userId) 
     }).catch(err =>
         console.log(err)
