@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import MapContainer from '../map/map_container';
 
 const Splash = (props) => {

@@ -14,8 +14,8 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.displayErrors = this.displayErrors.bind(this);
     this.demo = {
-      email: 'demo@gmail.com',
-      password: '123456'
+      email: 'demo@busybee.com',
+      password: '123123'
   }
   }
 

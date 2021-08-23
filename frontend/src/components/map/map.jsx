@@ -35,6 +35,7 @@ const Map = (props) => {
 
   const routeButtons = [
     <button
+      className="generate-route-btn"
       onClick={() => {
         calcRoute(props.currentLocation, selectedFavorites(props.selected), "calc");
         setCount(count + 1);

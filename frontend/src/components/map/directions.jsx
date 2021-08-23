@@ -30,14 +30,14 @@ const Directions = (props) => {
               <p>Distance: {leg?.distance.text}</p>
               <p>Duration: {leg?.duration.text}</p>
             </h1>
-            <div>
+            <div className="d-buttons">
               {i > 0 ? (
-                <button onClick={() => handleClick(-1)}>Previous Leg</button>
+                <button className="direction-buttons" onClick={() => handleClick(-1)}>Previous Leg</button>
               ) : (
                 ""
               )}
               {i < Object.keys(props.directions).length - 1 ? (
-                <button onClick={() => handleClick(1)}>Next Leg</button>
+                <button className="direction-buttons" onClick={() => handleClick(1)}>Next Leg</button>
               ) : (
                 ""
               )}
