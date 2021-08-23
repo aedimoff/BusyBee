@@ -57,11 +57,6 @@ const Map = (props) => {
     libraries,
   });
 
-  // const mapRef = React.useRef();
-  // const onMapLoad = (map) => {
-  //   mapRef.current = map;
-  // };
-
   //set zoom options for map
   const panTo = ({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
