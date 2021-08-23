@@ -1,7 +1,5 @@
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
-// import { AiFillHeart } from 'react-icons/ai';
-// import { AiOutlineCheckSquare } from 'react-icons/ai';
 import * as MapAPIUtil from "../../util/map_api_util";
 
 class InfoWindow extends React.Component {
@@ -13,7 +11,6 @@ class InfoWindow extends React.Component {
 
   getFavorite = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId).then(res => { 
-      console.log("RES", res)
         return this.props.addFavorite(res.data.result, this.props.userId) 
     }).catch(err =>
         console.log(err)

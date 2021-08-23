@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import MapContainer from '../map/map_container';
-// import FavoritesIndexContainer from './favorites_index_container'
 
-class Splash extends React.Component {
+const Splash = (props) => {
 
-  componentDidMount() {
-    this.props.openModal("signup")
-  };
+  useEffect(() => {
+    props.openModal("signup")
+  });
 
-  render() {
+
     return (
       <div className="splash-container">
         <div className="map-container">
@@ -16,7 +16,7 @@ class Splash extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Splash;
