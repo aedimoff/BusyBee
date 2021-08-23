@@ -11,8 +11,6 @@ import mapStyles from "./mapStyles";
 import Spinner from "../spinner/spinner";
 import * as MapAPIUtil from "../../util/map_api_util";
 
-// require("dotenv").config();
-
 const libraries = ["places"];
 
 const Map = (props) => {
@@ -116,13 +114,13 @@ const Map = (props) => {
       });
   };
 
-  //create hook to re-render map on route clear
-
+  //clears directions
   const clearRoute = () => {
     window.directionsRenderer.setMap(null);
     props.clearDirections();
   };
 
+  //get user's location
   const getCenter = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -142,11 +140,12 @@ const Map = (props) => {
     }
   };
 
-  //sets center user's current location
+  //sets map center to user's current location
   useEffect(() => {
     getCenter();
   });
 
+  //gets business info from Google Places API
   const viewBusiness = (placeId) => {
     MapAPIUtil.getPlaceInfo(placeId)
       .then((res) => {
@@ -155,8 +154,10 @@ const Map = (props) => {
       .catch((err) => console.log(err));
   };
 
+  //creates ref to searchBox
   const [searchBox, setSearchBox] = useState(null);
 
+  //creates map markers when business type is entered in searchbox
   let markers = [];
   const onPlacesChanged = () => {
     const places = searchBox.getPlaces();
@@ -242,15 +243,15 @@ const Map = (props) => {
                 id="search-bar"
               />
             </StandaloneSearchBox>
+            {props.userId ? (
+              <div className="map-buttons">{routeButtons[count]}</div>
+            ) : (
+              ""
+            )}
           </GoogleMap>
         </div>
       ) : (
         <Spinner />
-      )}
-      {props.userId ? (
-        <div className="map-buttons">{routeButtons[count]}</div>
-      ) : (
-        ""
       )}
     </div>
   );
