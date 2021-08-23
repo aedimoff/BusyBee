@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MapContainer from './map'
+import Map from './map'
 import { addFavorite, setUserCurrentLocation } from '../../actions/session_actions'
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { getDirections, clearDirections } from '../../actions/directions_actions';
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Map)
