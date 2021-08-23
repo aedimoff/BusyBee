@@ -37,7 +37,7 @@ const Map = (props) => {
     <button
       className="generate-route-btn"
       onClick={() => {
-        calcRoute(props.currentLocation, selectedFavorites(props.selected), "calc");
+        calcRoute(props.currentLocation, selectedFavorites(props.selected));
         setCount(count + 1);
       }}
     >
@@ -83,18 +83,17 @@ const Map = (props) => {
   //renders route on map and generates all direction steps
   var directionsRenderer;
   var directionsService;
-  const calcRoute = (location, selectedFavorites, type) => {
+  const calcRoute = (location, selectedFavorites) => {
 
-    if (window.directionsRenderer === null) {
+    if (window.directionsRenderer == null) {
       window.directionsRenderer = new google.maps.DirectionsRenderer();
       window.directionsService = new google.maps.DirectionsService();
     }
 
-    directionsRenderer = window.directionsRenderer
-    directionsService = window.directionsService
+    directionsRenderer = window.directionsRenderer;
+    directionsService = window.directionsService;
 
     directionsRenderer.setMap(mapRef);
-    if(type === "calc") {
       let directionsRequest = {
         origin: location,
         destination: location,
@@ -115,17 +114,13 @@ const Map = (props) => {
           directionsRenderer.setDirections(response);
         }
       });
-    } else {
-      // directionsRenderer.setMap(null);
-      directionsRenderer.set('directions', null);
-    }
   };
 
   //create hook to re-render map on route clear
 
   const clearRoute = () => {
     window.directionsRenderer.setMap(null);
-    
+    props.clearDirections();
   };
 
   const getCenter = () => {
