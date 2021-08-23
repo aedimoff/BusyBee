@@ -83,6 +83,11 @@ const Map = (props) => {
   var directionsService;
   const calcRoute = (location, selectedFavorites) => {
 
+    if(props.selected.length < 1) {
+      alert("Please select at least one destination!");
+      setCount(count - 1);
+      return;
+    }
     if (window.directionsRenderer == null) {
       window.directionsRenderer = new google.maps.DirectionsRenderer();
       window.directionsService = new google.maps.DirectionsService();
