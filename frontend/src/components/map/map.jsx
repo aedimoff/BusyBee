@@ -31,17 +31,17 @@ const Map = (props) => {
   const [mapRef, setMapRef] = useState(true);
   const [count, setCount] = useState(0);
 
-  const [genButtonState, setGenButtonState] = React.useState(true);
-  const [clearButtonState, setClearButtonState] = React.useState(false);
+  // const [genButtonState, setGenButtonState] = React.useState(true);
+  // const [clearButtonState, setClearButtonState] = React.useState(false);
 
 
-  console.log("GenBUTTON", genButtonState);
-  console.log("clearBUTTON", clearButtonState);
+  // console.log("GenBUTTON", genButtonState);
+  // console.log("clearBUTTON", clearButtonState);
 
   const routeButtons = [
     <button
       className="generate-route-btn"
-      id={`button-state-${genButtonState}`}
+      // id={`button-state-${genButtonState}`}
       onClick={() => {
         calcRoute(props.currentLocation, selectedFavorites(props.selected));
         setCount(count + 1);
@@ -50,7 +50,7 @@ const Map = (props) => {
       Generate Route
     </button>,
     <button
-      id={`button-state-${clearButtonState}`}
+      // id={`button-state-${clearButtonState}`}
       onClick={() => {
         clearRoute();
         setCount(count - 1);
@@ -96,10 +96,10 @@ const Map = (props) => {
       directionsService.current = new google.maps.DirectionsService();
     }
 
-    directionsRenderer = directionsRenderer.current;
-    directionsService = directionsService.current;
+    // directionsRenderer = directionsRenderer.current;
+    // directionsService = directionsService.current;
 
-    directionsRenderer.setMap(mapRef);
+    directionsRenderer.current.setMap(mapRef);
     let directionsRequest = {
       origin: location,
       destination: location,
@@ -113,11 +113,11 @@ const Map = (props) => {
       provideRouteAlternatives: true,
       region: "US",
     };
-    directionsService.route(directionsRequest, function (response, status) {
+    directionsService.current.route(directionsRequest, function (response, status) {
       if (status === "OK") {
         const legs = response.routes[0].legs;
         props.getDirections(legs);
-        directionsRenderer.setDirections(response);
+        directionsRenderer.current.setDirections(response);
       }
     });
   };
@@ -150,9 +150,10 @@ const Map = (props) => {
 
   //sets map center to user's current location
   useEffect(() => {
+    console.log("component updated", props.selected.length);
+
     getCenter();
     if(props.selected.length) {
-      console.log("YUP")
     }  
   });
 
@@ -254,7 +255,7 @@ const Map = (props) => {
                 id="search-bar"
               />
             </StandaloneSearchBox>
-            <button
+            {/* <button
               className="generate-route-btn"
               id={`gen-button-state-${genButtonState}`}
               onClick={() => {
@@ -268,7 +269,6 @@ const Map = (props) => {
             >
               Generate Route
             </button>
-            ,
             <button
               id={`clear-button-state-${clearButtonState}`}
               onClick={() => {
@@ -277,7 +277,12 @@ const Map = (props) => {
               }}
             >
               Clear Route
-            </button>
+            </button> */}
+            {(props.userId && props.selected.length) ? (
+              <div className="map-buttons">{routeButtons[count]}</div>
+            ) : (
+              ""
+            )}
           </GoogleMap>
         </div>
       ) : (

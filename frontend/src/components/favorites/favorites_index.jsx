@@ -46,6 +46,7 @@ class FavoritesIndex extends React.Component {
     const filteredFavorites = favorites.filter(
       (fav) => fav != null || fav != undefined
     );
+
     
     return (
       <div> 

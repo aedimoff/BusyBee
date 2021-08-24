@@ -7,16 +7,23 @@ import DirectionsContainer from '../map/directions_container';
 class Home extends React.Component {
 
   render() {
+    const directions =  Object.values(this.props.directions)
+    console.log("PROPS", directions.length)
     return (
       <div className="home-container">
         <div className="map-container">
           <MapContainer />
         </div>
-        <FavoritesIndexContainer />
-        <DirectionsContainer />
+        {directions.length ? (
+          <DirectionsContainer />
+        ) : (
+          <FavoritesIndexContainer />
+        )}
+        {/* <FavoritesIndexContainer /> */}
+        {/* <DirectionsContainer /> */}
       </div>
     );
   }
 }
 
-export default Home;
+export default Home; 

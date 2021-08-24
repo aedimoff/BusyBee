@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/nav_container';
-import Home from './main/home';
+import HomeContainer from './main/home_container';
 import Modal from './modal/modal';
 import { Route, Redirect } from 'react-router-dom';
 import SplashContainer from './main/splash_container';
@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/" component={NavBarContainer}></Route>
       </header>
       <Switch className="switch">
-          <ProtectedRoute exact path="/home" component={Home} />
+          <ProtectedRoute exact path="/home" component={HomeContainer} />
           <AuthRoute exact path="/" component={SplashContainer} />
           <Redirect to="/"/>
       </Switch>
