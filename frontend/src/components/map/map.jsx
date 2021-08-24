@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./map.scss";
 import {
   GoogleMap,
@@ -31,9 +31,17 @@ const Map = (props) => {
   const [mapRef, setMapRef] = useState(true);
   const [count, setCount] = useState(0);
 
+  const [genButtonState, setGenButtonState] = React.useState(true);
+  const [clearButtonState, setClearButtonState] = React.useState(false);
+
+
+  console.log("GenBUTTON", genButtonState);
+  console.log("clearBUTTON", clearButtonState);
+
   const routeButtons = [
     <button
       className="generate-route-btn"
+      id={`button-state-${genButtonState}`}
       onClick={() => {
         calcRoute(props.currentLocation, selectedFavorites(props.selected));
         setCount(count + 1);
@@ -42,6 +50,7 @@ const Map = (props) => {
       Generate Route
     </button>,
     <button
+      id={`button-state-${clearButtonState}`}
       onClick={() => {
         clearRoute();
         setCount(count - 1);
@@ -79,44 +88,43 @@ const Map = (props) => {
   };
 
   //renders route on map and generates all direction steps
-  var directionsRenderer;
-  var directionsService;
+  let directionsRenderer = useRef(null);
+  let directionsService = useRef(null);
   const calcRoute = (location, selectedFavorites) => {
-
-    if (window.directionsRenderer == null) {
-      window.directionsRenderer = new google.maps.DirectionsRenderer();
-      window.directionsService = new google.maps.DirectionsService();
+    if (directionsRenderer.current == null) {
+      directionsRenderer.current = new google.maps.DirectionsRenderer();
+      directionsService.current = new google.maps.DirectionsService();
     }
 
-    directionsRenderer = window.directionsRenderer;
-    directionsService = window.directionsService;
+    directionsRenderer = directionsRenderer.current;
+    directionsService = directionsService.current;
 
     directionsRenderer.setMap(mapRef);
-      let directionsRequest = {
-        origin: location,
-        destination: location,
-        travelMode: "DRIVING",
-        drivingOptions: {
-          departureTime: new Date(Date.now()),
-          trafficModel: "bestguess",
-        },
-        waypoints: selectedFavorites,
-        optimizeWaypoints: true,
-        provideRouteAlternatives: true,
-        region: "US",
-      };
-      directionsService.route(directionsRequest, function (response, status) {
-        if (status === "OK") {
-          const legs = response.routes[0].legs;
-          props.getDirections(legs);
-          directionsRenderer.setDirections(response);
-        }
-      });
+    let directionsRequest = {
+      origin: location,
+      destination: location,
+      travelMode: "DRIVING",
+      drivingOptions: {
+        departureTime: new Date(Date.now()),
+        trafficModel: "bestguess",
+      },
+      waypoints: selectedFavorites,
+      optimizeWaypoints: true,
+      provideRouteAlternatives: true,
+      region: "US",
+    };
+    directionsService.route(directionsRequest, function (response, status) {
+      if (status === "OK") {
+        const legs = response.routes[0].legs;
+        props.getDirections(legs);
+        directionsRenderer.setDirections(response);
+      }
+    });
   };
 
   //clears directions
   const clearRoute = () => {
-    window.directionsRenderer.setMap(null);
+    directionsRenderer.current.setMap(null);
     props.clearDirections();
   };
 
@@ -143,6 +151,9 @@ const Map = (props) => {
   //sets map center to user's current location
   useEffect(() => {
     getCenter();
+    if(props.selected.length) {
+      console.log("YUP")
+    }  
   });
 
   //gets business info from Google Places API
@@ -243,11 +254,30 @@ const Map = (props) => {
                 id="search-bar"
               />
             </StandaloneSearchBox>
-            {props.userId ? (
-              <div className="map-buttons">{routeButtons[count]}</div>
-            ) : (
-              ""
-            )}
+            <button
+              className="generate-route-btn"
+              id={`gen-button-state-${genButtonState}`}
+              onClick={() => {
+                calcRoute(
+                  props.currentLocation,
+                  selectedFavorites(props.selected)
+                );
+                setGenButtonState(!genButtonState)
+                setCount(count + 1);
+              }}
+            >
+              Generate Route
+            </button>
+            ,
+            <button
+              id={`clear-button-state-${clearButtonState}`}
+              onClick={() => {
+                clearRoute();
+                setCount(count - 1);
+              }}
+            >
+              Clear Route
+            </button>
           </GoogleMap>
         </div>
       ) : (
