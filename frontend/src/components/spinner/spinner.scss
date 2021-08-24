@@ -19,11 +19,13 @@
   margin: 25px;
   animation: spinner 900ms linear infinite;
   z-index: 1000;
-  // align-self: center;
 }
 
 @keyframes spinner {
     0%  {-webkit-transform: rotate(0deg);}
     100%  {-webkit-transform: rotate(360deg);}
 }
+
+
+
 

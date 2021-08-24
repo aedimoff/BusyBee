@@ -18,6 +18,11 @@
   align-items: center;
 }
 
+.spin-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--light-blue);
+}
 
 .favorites-index {
   background-color: #b4dfe5c4;
