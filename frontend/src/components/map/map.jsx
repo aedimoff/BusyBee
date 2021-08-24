@@ -30,27 +30,18 @@ const Map = (props) => {
   const [center, setCenter] = useState(defaultCenter);
   const [mapRef, setMapRef] = useState(true);
   const [count, setCount] = useState(0);
-
-  // const [genButtonState, setGenButtonState] = React.useState(true);
-  // const [clearButtonState, setClearButtonState] = React.useState(false);
-
-
-  // console.log("GenBUTTON", genButtonState);
-  // console.log("clearBUTTON", clearButtonState);
+  const [buttonState, setButtonState] = useState(true);
 
   const routeButtons = [
     <button
       className="generate-route-btn"
-      // id={`button-state-${genButtonState}`}
       onClick={() => {
         calcRoute(props.currentLocation, selectedFavorites(props.selected));
-        setCount(count + 1);
       }}
     >
       Generate Route
     </button>,
     <button
-      // id={`button-state-${clearButtonState}`}
       onClick={() => {
         clearRoute();
         setCount(count - 1);
@@ -96,9 +87,6 @@ const Map = (props) => {
       directionsService.current = new google.maps.DirectionsService();
     }
 
-    // directionsRenderer = directionsRenderer.current;
-    // directionsService = directionsService.current;
-
     directionsRenderer.current.setMap(mapRef);
     let directionsRequest = {
       origin: location,
@@ -113,13 +101,16 @@ const Map = (props) => {
       provideRouteAlternatives: true,
       region: "US",
     };
-    directionsService.current.route(directionsRequest, function (response, status) {
-      if (status === "OK") {
-        const legs = response.routes[0].legs;
-        props.getDirections(legs);
-        directionsRenderer.current.setDirections(response);
+    directionsService.current.route(
+      directionsRequest,
+      function (response, status) {
+        if (status === "OK") {
+          const legs = response.routes[0].legs;
+          props.getDirections(legs);
+          directionsRenderer.current.setDirections(response);
+        }
       }
-    });
+    );
   };
 
   //clears directions
@@ -150,11 +141,7 @@ const Map = (props) => {
 
   //sets map center to user's current location
   useEffect(() => {
-    console.log("component updated", props.selected.length);
-
     getCenter();
-    if(props.selected.length) {
-    }  
   });
 
   //gets business info from Google Places API
@@ -255,31 +242,33 @@ const Map = (props) => {
                 id="search-bar"
               />
             </StandaloneSearchBox>
-            {/* <button
-              className="generate-route-btn"
-              id={`gen-button-state-${genButtonState}`}
-              onClick={() => {
-                calcRoute(
-                  props.currentLocation,
-                  selectedFavorites(props.selected)
-                );
-                setGenButtonState(!genButtonState)
-                setCount(count + 1);
-              }}
-            >
-              Generate Route
-            </button>
-            <button
-              id={`clear-button-state-${clearButtonState}`}
-              onClick={() => {
-                clearRoute();
-                setCount(count - 1);
-              }}
-            >
-              Clear Route
-            </button> */}
-            {(props.userId && props.selected.length) ? (
-              <div className="map-buttons">{routeButtons[count]}</div>
+            {props.userId && props.selected.length ? (
+              <div className="map-buttons">
+                <button
+                  className="generate-route-btn"
+                  id={`button-${buttonState}`}
+                  onClick={() => {
+                    calcRoute(
+                      props.currentLocation,
+                      selectedFavorites(props.selected)
+                    );
+                    setButtonState(!buttonState);
+                  }}
+                >
+                  Generate Route
+                </button>
+                <button
+                  className="generate-route-btn"
+                  id={`button-${!buttonState}`}
+                  onClick={() => {
+                    clearRoute();
+                    setButtonState(!buttonState);
+                    props.clearSelected();
+                  }}
+                >
+                  Clear Route
+                </button>
+              </div>
             ) : (
               ""
             )}

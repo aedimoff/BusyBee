@@ -64,7 +64,7 @@ const sessionApiReducer = (state = initialState, action) => {
         user: {
           ...state.user,
           favorites: favorites,
-        },
+        }
       };
       
     case RECEIVE_USER_LOGOUT:

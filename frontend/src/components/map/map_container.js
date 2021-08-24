@@ -4,6 +4,7 @@ import { addFavorite, setUserCurrentLocation } from '../../actions/session_actio
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { getDirections, clearDirections } from '../../actions/directions_actions';
 import { setBusinessToState } from "../../actions/business_actions";
+import { clearSelected } from "../../actions/selected_actions";
 
 const mapStateToProps = (state) => ({
   userId: state?.sessionApi?.user?.id,
@@ -19,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
     openModal: (modal, params) => dispatch(openModal(modal, params)),
     getDirections: (directions) => dispatch(getDirections(directions)),
     clearDirections: () => dispatch(clearDirections()),
-    setBusinessToState: (placeId) => dispatch(setBusinessToState(placeId))
+    setBusinessToState: (placeId) => dispatch(setBusinessToState(placeId)),
+    clearSelected: () => dispatch(clearSelected())
 })
 
 

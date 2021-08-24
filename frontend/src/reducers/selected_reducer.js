@@ -1,6 +1,7 @@
 import {
   RECEIVE_SELECTED,
   DELETE_SELECTED,
+  CLEAR_SELECTED
 } from "../actions/selected_actions";
 
 const initialState = {
@@ -15,18 +16,14 @@ const SelectedReducer = (state = initialState, action) => {
 
       return Object.assign({}, { selected: [...state.selected, action.favorite] });
     case DELETE_SELECTED:
-      // for (let i = 0; i < state.selected.length; i++) {
-      //   if (action.favorite.place_id === state.selected[i].place_id) {
-      //     state.selected.splice(i, 1);
-      //     break;
-      //   }
-      // }
 
       const selected = state.selected.filter(
         (selected) => selected.place_id != action.favorite.place_id
       );
 
       return Object.assign({}, { selected } );
+    case CLEAR_SELECTED: 
+        return initialState;
     default:
       return state;
   }

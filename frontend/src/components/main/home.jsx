@@ -1,6 +1,5 @@
 import React from 'react';
 import MapContainer from '../map/map_container';
-// import NewMapContainer from '../map/new_map_container';
 import FavoritesIndexContainer from '../favorites/favorites_index_container';
 import DirectionsContainer from '../map/directions_container';
 
@@ -8,7 +7,6 @@ class Home extends React.Component {
 
   render() {
     const directions =  Object.values(this.props.directions)
-    console.log("PROPS", directions.length)
     return (
       <div className="home-container">
         <div className="map-container">
