@@ -15,7 +15,6 @@ Busy Bee was built with:
 
 * MongoDB
 * JSX/JavaScript
-* PostgreSQL
 * React
 * Redux
 * Express
