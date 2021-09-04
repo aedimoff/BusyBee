@@ -32,18 +32,20 @@ Busy Bee is an effective time-saving tool which allows users to input multiple l
 Features 
 -------------------------------------------------------------------------------
 #### Favorites
-(image)
+<img width="292" alt="Screen Shot 2021-09-03 at 5 35 09 PM" src="https://user-images.githubusercontent.com/76131255/132076579-cf933d70-9054-4670-a48a-d5ba74caf0eb.png">
 While planning out their routes, users are able to select businesses or locations that they find they are visiting frequently.  With a click, they can add the business to their favorites list, which is saved to the database for future reference.  This favorites feature creates easier, more efficient routing for the user, and access to more detailed information about each location.
 
 #### Map View
-(image)
+<img width="1018" alt="Screen Shot 2021-09-03 at 5 38 38 PM" src="https://user-images.githubusercontent.com/76131255/132076674-cf4a8b84-ac48-4b58-abda-5706a09d96ad.png">
+
+
 Striving for an aesthetically-pleasing User Experience, the map has been styled with a custom color scheme.  Influenced by California's coastal cities, the blues and oranges create a color palette that provides enough contrast to be accessible, while still standing out as a feature on its own.  In the future, we plan to execute customizable colors that the user can select, to make their account unique, and to accommodate any visual needs. 
 
 
 #### Routes
 (image)
-The main feature of Busy Bee is the interactive map, which addresses the classic Traveling Salesman problem of finding the quickest path from point to point.  Once the user has selected each "errand" they'd like to run, the map routes out the fastest path from start to finish.
-(talk about place id challenges here)
+The main feature of Busy Bee is the interactive map, which addresses the classic Traveling Salesman problem of finding the quickest path through multiple destinations.  Once the user has selected each "errand" they'd like to run, the map routes out the fastest path from start to finish.
+
 
 Technical Challenges
 -------------------------------------------------------------------------------
